@@ -57,16 +57,8 @@
 
       <!-- Centered Login Card -->
       <div class="login-card">
-        <div class="login-admin-badge">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-          <span>Khu vực quản trị</span>
-        </div>
         <div class="login-card-logo">Rovva</div>
         <h2 class="login-card-title">Cổng Quản Trị Hệ Thống</h2>
-        <p class="login-card-subtitle">Đăng nhập bằng tài khoản quản trị viên được cấp quyền.</p>
 
         <!-- Error Alert Panel -->
         <div id="error-alert" class="login-error-alert" role="alert">
@@ -76,7 +68,7 @@
         <form id="login-form">
           <!-- Email Input -->
           <div class="form-group">
-            <label for="email" class="form-label">Email Quản trị</label>
+            <label for="email" class="form-label">Email quản trị</label>
             <input type="email" id="email" class="form-input" placeholder="admin@gmail.com" required autocomplete="email">
           </div>
 
@@ -127,7 +119,7 @@
   <script>
     // Redirect Guard: Check if already logged in
     if (localStorage.getItem('admin_logged_in') === 'true') {
-      window.location.href = 'index.html';
+      window.location.href = 'Main.html';
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -207,7 +199,7 @@
           
           // Success alert and redirect
           alert(`Đăng nhập thành công! Chào mừng Nguyễn Admin quay trở lại.`);
-          window.location.href = 'index.html';
+          window.location.href = 'Main.html';
         } else {
           // Show error message
           errorAlert.textContent = 'Email hoặc mật khẩu quản trị hệ thống không chính xác!';
