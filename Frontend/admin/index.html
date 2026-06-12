@@ -219,17 +219,28 @@
 
         <!-- 1. DASHBOARD VIEW -->
         <section class="view-container active" id="view-dashboard">
-          <div class="page-title-area">
-            <h1 class="page-title">Tổng quan</h1>
-            <p class="page-subtitle">Thống kê và phân tích hoạt động hệ thống</p>
+          <div class="page-title-area page-title-area-with-filter">
+            <div class="page-title-text">
+              <h1 class="page-title">Tổng quan</h1>
+              <p class="page-subtitle">Thống kê và phân tích hoạt động hệ thống</p>
+            </div>
+            <div class="dashboard-filter-compact">
+              <select id="dashboard-filter-type" class="filter-select filter-select-sm" title="Lọc theo">
+                <option value="month">Tháng</option>
+                <option value="year">Năm</option>
+              </select>
+              <select id="dashboard-filter-month" class="filter-select filter-select-sm" title="Chọn tháng"></select>
+              <select id="dashboard-filter-month-year" class="filter-select filter-select-sm" title="Chọn năm"></select>
+              <select id="dashboard-filter-year" class="filter-select filter-select-sm dashboard-filter-hidden" title="Chọn năm"></select>
+            </div>
           </div>
 
-          <div class="stats-grid">
+          <div class="stats-grid" id="dashboard-stats-grid">
             <div class="stat-card">
               <div class="stat-info">
                 <span class="stat-label">Tổng doanh thu</span>
-                <span class="stat-value">2.5M ₫</span>
-                <span class="stat-change positive">
+                <span class="stat-value" id="dash-stat-revenue">2.5M ₫</span>
+                <span class="stat-change positive" id="dash-change-revenue">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="18 15 12 9 6 15"></polyline>
@@ -248,9 +259,9 @@
 
             <div class="stat-card">
               <div class="stat-info">
-                <span class="stat-label">Booking hôm nay</span>
-                <span class="stat-value">45</span>
-                <span class="stat-change positive">
+                <span class="stat-label" id="dash-label-bookings">Booking hôm nay</span>
+                <span class="stat-value" id="dash-stat-bookings">45</span>
+                <span class="stat-change positive" id="dash-change-bookings">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="18 15 12 9 6 15"></polyline>
@@ -269,8 +280,8 @@
             <div class="stat-card">
               <div class="stat-info">
                 <span class="stat-label">Người dùng</span>
-                <span class="stat-value">12,450</span>
-                <span class="stat-change positive">
+                <span class="stat-value" id="dash-stat-users">12,450</span>
+                <span class="stat-change positive" id="dash-change-users">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="18 15 12 9 6 15"></polyline>
@@ -292,8 +303,8 @@
             <div class="stat-card">
               <div class="stat-info">
                 <span class="stat-label">Host hoạt động</span>
-                <span class="stat-value">856</span>
-                <span class="stat-change positive">
+                <span class="stat-value" id="dash-stat-hosts">856</span>
+                <span class="stat-change positive" id="dash-change-hosts">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="18 15 12 9 6 15"></polyline>
@@ -313,8 +324,8 @@
             <div class="stat-card">
               <div class="stat-info">
                 <span class="stat-label">Tranh chấp</span>
-                <span class="stat-value">12</span>
-                <span class="stat-change negative">
+                <span class="stat-value" id="dash-stat-disputes">12</span>
+                <span class="stat-change negative" id="dash-change-disputes">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -335,8 +346,8 @@
             <div class="stat-card">
               <div class="stat-info">
                 <span class="stat-label">Tỷ lệ hoàn thành</span>
-                <span class="stat-value">94.5%</span>
-                <span class="stat-change positive">
+                <span class="stat-value" id="dash-stat-completion">94.5%</span>
+                <span class="stat-change positive" id="dash-change-completion">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="18 15 12 9 6 15"></polyline>

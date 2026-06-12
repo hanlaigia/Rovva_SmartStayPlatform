@@ -492,6 +492,35 @@ button, input, select, textarea {
   color: var(--text-secondary);
 }
 
+/* Dashboard compact filter (top-right) */
+.page-title-area-with-filter {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page-title-text {
+  min-width: 0;
+}
+
+.dashboard-filter-compact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.filter-select-sm {
+  padding: 6px 10px;
+  font-size: 0.8125rem;
+  min-width: 0;
+}
+
+.dashboard-filter-hidden {
+  display: none !important;
+}
+
 /* Grid & Cards System */
 .stats-grid {
   display: grid;
@@ -1360,6 +1389,22 @@ input:checked + .slider:before {
 
   .page-subtitle {
     font-size: 0.8125rem;
+  }
+
+  .page-title-area-with-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-filter-compact {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .filter-select-sm {
+    flex: 1;
+    min-width: 90px;
+    max-width: 140px;
   }
 
   .stats-grid {

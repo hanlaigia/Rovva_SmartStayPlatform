@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initLogout();
   updateAdminProfile();
+  initDashboardFilter();
 
   // Show welcome toast if redirected from Login
   const showWelcome = localStorage.getItem('show_welcome_toast');
@@ -73,6 +74,134 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 800);
   }
 });
+
+/* DASHBOARD DATE FILTER */
+const DASHBOARD_MONTH_NAMES = [
+  'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+  'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+];
+
+function initDashboardFilter() {
+  const filterType = document.getElementById('dashboard-filter-type');
+  const filterMonth = document.getElementById('dashboard-filter-month');
+  const filterMonthYear = document.getElementById('dashboard-filter-month-year');
+  const filterYear = document.getElementById('dashboard-filter-year');
+
+  if (!filterType) return;
+
+  const now = new Date();
+  const currentYear = now.getFullYear();
+
+  for (let y = currentYear; y >= currentYear - 5; y--) {
+    filterMonthYear.innerHTML += `<option value="${y}">${y}</option>`;
+    filterYear.innerHTML += `<option value="${y}">${y}</option>`;
+  }
+
+  DASHBOARD_MONTH_NAMES.forEach((name, i) => {
+    filterMonth.innerHTML += `<option value="${i + 1}">${name}</option>`;
+  });
+
+  filterMonth.value = String(now.getMonth() + 1);
+  filterMonthYear.value = String(currentYear);
+  filterYear.value = String(currentYear);
+
+  function onTypeChange() {
+    const isMonth = filterType.value === 'month';
+    filterMonth.classList.toggle('dashboard-filter-hidden', !isMonth);
+    filterMonthYear.classList.toggle('dashboard-filter-hidden', !isMonth);
+    filterYear.classList.toggle('dashboard-filter-hidden', isMonth);
+    applyDashboardFilter();
+  }
+
+  filterType.addEventListener('change', onTypeChange);
+  [filterMonth, filterMonthYear, filterYear].forEach(el => {
+    el.addEventListener('change', applyDashboardFilter);
+  });
+
+  onTypeChange();
+}
+
+function dashboardSeed(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+function seededValue(seed, min, max) {
+  const x = Math.sin(seed) * 10000;
+  const frac = x - Math.floor(x);
+  return Math.floor(min + frac * (max - min + 1));
+}
+
+function formatRevenue(amount) {
+  if (amount >= 1_000_000_000) return `${(amount / 1_000_000_000).toFixed(1)}B ₫`;
+  if (amount >= 1_000_000) return `${(amount / 1_000_000).toFixed(1)}M ₫`;
+  if (amount >= 1_000) return `${(amount / 1_000).toFixed(0)}K ₫`;
+  return `${amount} ₫`;
+}
+
+function formatNumber(n) {
+  return n.toLocaleString('vi-VN');
+}
+
+function setStatChange(el, percent) {
+  if (!el) return;
+  const isPositive = percent >= 0;
+  el.classList.remove('positive', 'negative');
+  el.classList.add(isPositive ? 'positive' : 'negative');
+  const arrow = isPositive
+    ? '<polyline points="18 15 12 9 6 15"></polyline>'
+    : '<polyline points="6 9 12 15 18 9"></polyline>';
+  el.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${arrow}</svg>
+    ${isPositive ? '+' : ''}${percent.toFixed(1)}%
+  `;
+}
+
+function applyDashboardFilter() {
+  const type = document.getElementById('dashboard-filter-type').value;
+  const bookingsLabel = document.getElementById('dash-label-bookings');
+  let seedKey = '';
+
+  if (type === 'month') {
+    const month = document.getElementById('dashboard-filter-month').value;
+    const year = document.getElementById('dashboard-filter-month-year').value;
+    seedKey = `month-${year}-${month}`;
+    if (bookingsLabel) bookingsLabel.textContent = 'Booking trong tháng';
+  } else {
+    const year = document.getElementById('dashboard-filter-year').value;
+    seedKey = `year-${year}`;
+    if (bookingsLabel) bookingsLabel.textContent = 'Booking trong năm';
+  }
+
+  const base = dashboardSeed(seedKey);
+  const multiplier = type === 'month' ? 28 : 365;
+
+  const revenue = seededValue(base + 1, 800_000, 4_500_000) * multiplier;
+  const bookings = seededValue(base + 2, 12, 85) * (type === 'year' ? 12 : 1);
+  const users = seededValue(base + 3, 200, 1500) * (type === 'year' ? 8 : 3);
+  const hosts = seededValue(base + 4, 15, 120) * (type === 'year' ? 6 : 1);
+  const disputes = seededValue(base + 5, 1, 25) * (type === 'year' ? 4 : 1);
+  const completion = (seededValue(base + 6, 880, 990) / 10).toFixed(1);
+
+  document.getElementById('dash-stat-revenue').textContent = formatRevenue(revenue);
+  document.getElementById('dash-stat-bookings').textContent = formatNumber(bookings);
+  document.getElementById('dash-stat-users').textContent = formatNumber(users);
+  document.getElementById('dash-stat-hosts').textContent = formatNumber(hosts);
+  document.getElementById('dash-stat-disputes').textContent = formatNumber(disputes);
+  document.getElementById('dash-stat-completion').textContent = `${completion}%`;
+
+  setStatChange(document.getElementById('dash-change-revenue'), (seededValue(base + 10, -5, 20) / 10));
+  setStatChange(document.getElementById('dash-change-bookings'), (seededValue(base + 11, -3, 15) / 10));
+  setStatChange(document.getElementById('dash-change-users'), (seededValue(base + 12, 0, 12) / 10));
+  setStatChange(document.getElementById('dash-change-hosts'), (seededValue(base + 13, 0, 8) / 10));
+  setStatChange(document.getElementById('dash-change-disputes'), -(seededValue(base + 14, 0, 8) / 10));
+  setStatChange(document.getElementById('dash-change-completion'), (seededValue(base + 15, 0, 10) / 10));
+}
 
 function updateAdminProfile() {
   const adminName = localStorage.getItem('admin_name') || 'Admin';
