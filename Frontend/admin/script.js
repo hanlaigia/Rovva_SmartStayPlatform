@@ -91,29 +91,44 @@ function updateAdminProfile() {
 }
 
 /* 1. SIDEBAR TOGGLE & RESPONSIVENESS */
+const SIDEBAR_MOBILE_BREAKPOINT = 768;
+
+function isMobileSidebarLayout() {
+  return window.innerWidth <= SIDEBAR_MOBILE_BREAKPOINT;
+}
+
+function applySidebarLayout() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (!sidebar) return;
+
+  sidebar.classList.remove('mobile-open');
+  if (overlay) {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+  document.body.classList.remove('sidebar-open');
+
+  if (isMobileSidebarLayout()) {
+    sidebar.classList.add('collapsed');
+  }
+}
+
 function initSidebar() {
   const toggleBtn = document.getElementById('toggle-sidebar');
   const sidebar = document.getElementById('sidebar');
-  
+
+  applySidebarLayout();
+
   if (toggleBtn && sidebar) {
     toggleBtn.addEventListener('click', () => {
-      if (window.innerWidth <= 768) {
-        sidebar.classList.toggle('mobile-open');
-      } else {
+      if (!isMobileSidebarLayout()) {
         sidebar.classList.toggle('collapsed');
       }
     });
   }
 
-  // Handle resizing window: close sidebar on mobile by default
-  window.addEventListener('resize', () => {
-    if (window.innerWidth <= 768) {
-      sidebar.classList.remove('mobile-open');
-      sidebar.classList.add('collapsed');
-    } else {
-      sidebar.classList.remove('mobile-open');
-    }
-  });
+  window.addEventListener('resize', applySidebarLayout);
 }
 
 /* 2. TAB VIEW NAVIGATION */
@@ -137,9 +152,8 @@ function initTabs() {
         }
       });
 
-      // On mobile, automatically close the sidebar after selecting a tab
-      if (window.innerWidth <= 768) {
-        document.getElementById('sidebar').classList.remove('mobile-open');
+      if (isMobileSidebarLayout()) {
+        applySidebarLayout();
       }
     });
   });

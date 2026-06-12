@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>SmartStay Admin Portal - Hệ thống quản lý thông minh</title>
   <meta name="description"
     content="Trang quản trị hệ thống đặt phòng SmartStay Platform - Quản lý người dùng, phòng, khách sạn, booking, thanh toán và tranh chấp.">
@@ -20,6 +20,8 @@
 <body>
 
   <div class="app-container">
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
@@ -76,7 +78,7 @@
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
               </svg>
             </span>
-            <span class="nav-label">Quản lý phòng & KS</span>
+            <span class="nav-label">Quản lý phòng</span>
           </button>
 
           <button class="nav-item" data-target="bookings" id="nav-bookings">
@@ -226,7 +228,7 @@
             <div class="stat-card">
               <div class="stat-info">
                 <span class="stat-label">Tổng doanh thu</span>
-                <span class="stat-value">₫2.5M</span>
+                <span class="stat-value">2.5M ₫</span>
                 <span class="stat-change positive">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -1992,9 +1994,9 @@
             <p class="page-subtitle">Quản lý các tài khoản quản trị và phân quyền của nhân viên</p>
           </div>
 
-          <div class="dashboard-grid" style="grid-template-columns: 2fr 1fr;">
+          <div class="dashboard-grid admins-page-grid">
             <!-- Left Side: Admin List -->
-            <div class="card">
+            <div class="card admin-list-card">
               <div class="card-header">
                 <h3 class="card-title">Danh sách Admin</h3>
                 <button class="btn btn-primary" onclick="openAddModal('admin')"
@@ -2185,7 +2187,7 @@
             </div>
 
             <!-- Right Side: Activity Log -->
-            <div class="card"
+            <div class="card admin-activity-card"
               style="background: linear-gradient(to bottom right, rgba(52,116,255,0.06), rgba(75,189,255,0.06)); border-color: rgba(52,116,255,0.15);">
               <div class="card-header" style="background:transparent; border-bottom-color: rgba(52,116,255,0.15);">
                 <h3 class="card-title">Nhật ký hoạt động</h3>

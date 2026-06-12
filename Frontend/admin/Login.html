@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>SmartStay Admin Portal - Đăng nhập Hệ thống</title>
   <meta name="description" content="Trang đăng nhập bảo mật dành riêng cho Quản trị viên hệ thống SmartStay Platform (Rovva).">
 
@@ -22,7 +22,7 @@
   <header class="login-header">
     <div class="login-header-left">
       <a href="#" class="login-logo-svg-text">Rovva</a>
-      <span style="margin-left: 12px; padding-left: 12px; border-left: 1px solid var(--border-color); font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">Admin Portal</span>
+      <span class="login-portal-badge">Admin Portal</span>
     </div>
 
     <!-- Right Header Actions (Theme Toggle Only) -->
@@ -69,7 +69,7 @@
         <p class="login-card-subtitle">Đăng nhập bằng tài khoản quản trị viên được cấp quyền.</p>
 
         <!-- Error Alert Panel -->
-        <div id="error-alert" style="display: none; padding: 12px; background-color: var(--danger-bg); border: 1px solid var(--danger); border-radius: var(--radius-sm); color: var(--danger-text); font-size: 0.875rem; margin-bottom: 20px; font-weight: 500;">
+        <div id="error-alert" class="login-error-alert" role="alert">
           Email hoặc mật khẩu không hợp lệ.
         </div>
 
@@ -82,9 +82,7 @@
 
           <!-- Password Input -->
           <div class="form-group">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <label for="password" class="form-label">Mật khẩu</label>
-            </div>
+            <label for="password" class="form-label">Mật khẩu</label>
             <div class="password-input-wrapper">
               <input type="password" id="password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
               <button type="button" class="password-toggle-btn" id="password-toggle" aria-label="Toggle Password Visibility">
