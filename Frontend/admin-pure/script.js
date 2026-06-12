@@ -43,7 +43,7 @@ const mockDatabase = {
     tx5: { id: 'TXN005', booking: 'BK005', amount: '₫7M', type: 'Refund', date: '2024-06-06', status: 'completed', gateway: 'VNPay', code: 'REF12093847' }
   },
   admin: {
-    ad1: { id: 'ADM001', name: 'Nguyễn Admin', email: 'admin@platform.com', role: 'Super Admin', status: 'active', joined: '2023-01-01', lastLogin: '2024-06-12 15:30' },
+    ad1: { id: 'ADM001', name: 'Nguyễn Admin', email: 'admin@gmail.com', role: 'Super Admin', status: 'active', joined: '2023-01-01', lastLogin: '2024-06-12 15:30' },
     ad2: { id: 'ADM002', name: 'Trần User Manager', email: 'users@platform.com', role: 'User Manager', status: 'active', joined: '2023-06-15', lastLogin: '2024-06-11 09:15' },
     ad3: { id: 'ADM003', name: 'Lê Finance Officer', email: 'finance@platform.com', role: 'Finance Officer', status: 'active', joined: '2023-09-01', lastLogin: '2024-06-10 17:40' },
     ad4: { id: 'ADM004', name: 'Phạm Content Moderator', email: 'moderation@platform.com', role: 'Content Moderator', status: 'active', joined: '2024-01-10', lastLogin: '2024-06-09 14:20' },
@@ -52,11 +52,43 @@ const mockDatabase = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Auth Guard: Check if admin is logged in
+  if (localStorage.getItem('admin_logged_in') !== 'true') {
+    window.location.href = 'Login.html';
+    return;
+  }
+
   initSidebar();
   initTabs();
   initTheme();
   initLogout();
+  updateAdminProfile();
+
+  // Show welcome toast if redirected from Login
+  const showWelcome = localStorage.getItem('show_welcome_toast');
+  if (showWelcome) {
+    setTimeout(() => {
+      showToast(`Chào mừng ${localStorage.getItem('admin_name') || 'Quản trị viên'} quay trở lại!`, 'success');
+      localStorage.removeItem('show_welcome_toast');
+    }, 800);
+  }
 });
+
+function updateAdminProfile() {
+  const adminName = localStorage.getItem('admin_name') || 'Admin';
+  const avatarEl = document.querySelector('.user-profile .user-avatar');
+  if (avatarEl) {
+    const words = adminName.trim().split(/\s+/);
+    let initials = 'AD';
+    if (words.length >= 2) {
+      initials = (words[0][0] + words[words.length - 1][0]).toUpperCase();
+    } else if (words.length === 1) {
+      initials = words[0].substring(0, 2).toUpperCase();
+    }
+    avatarEl.textContent = initials;
+    avatarEl.title = `${adminName} (${localStorage.getItem('admin_role') || 'Admin'})`;
+  }
+}
 
 /* 1. SIDEBAR TOGGLE & RESPONSIVENESS */
 function initSidebar() {
@@ -1072,8 +1104,12 @@ function initLogout() {
       const confirmLogout = confirm('Bạn có chắc chắn muốn đăng xuất khỏi trang quản trị?');
       if (confirmLogout) {
         showToast('Đang đăng xuất...', 'warning');
+        localStorage.removeItem('admin_logged_in');
+        localStorage.removeItem('admin_email');
+        localStorage.removeItem('admin_name');
+        localStorage.removeItem('admin_role');
         setTimeout(() => {
-          alert('Đăng xuất thành công! (Mock)');
+          window.location.href = 'Login.html';
         }, 1000);
       }
     });
