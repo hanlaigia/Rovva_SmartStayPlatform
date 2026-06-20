@@ -31,7 +31,7 @@ const mockDatabase = {
   dispute: {
     ds1: { id: 'DS001', booking: 'BK001', complainant: 'Nguyễn Văn A', reason: 'Phòng không như mô tả', filed: '2024-06-10', status: 'pending', details: 'Khách hàng phản ánh phòng Deluxe thực tế bị hỏng máy lạnh và không có bồn tắm như trong phần mô tả dịch vụ của Host.', logs: [] },
     ds2: { id: 'DS002', booking: 'BK002', complainant: 'Trần Thị B', reason: 'Dịch vụ không đạt chất lượng', filed: '2024-06-08', status: 'under-review', details: 'Khách hàng phản ánh nhân viên resort có thái độ thô lỗ và từ chối hỗ trợ vận chuyển hành lý.', logs: [{ sender: 'Host', message: 'Chúng tôi đã xin lỗi khách hàng và đề xuất giảm giá 10% cho lần đặt tiếp theo.' }] },
-    ds3: { id: 'DS003', booking: 'BK003', complainant: 'Host', reason: 'Khách hủy không báo trước', filed: '2024-06-05', status: 'resolved', details: 'Host báo cáo khách đặt phòng nhưng không đến nhận phòng (No-Show) và yêu cầu phạt hủy phòng theo chính sách.', logs: [{ sender: 'Admin', message: 'Đã giải quyết: Khấu trừ 100% tiền cọc và chuyển khoản cho Host.' }] },
+    ds3: { id: 'DS003', booking: 'BK003', complainant: 'Host', reason: 'Khách hủy không báo trước', filed: '2024-06-05', status: 'resolved', details: 'Host báo cáo khách đặt phòng nhưng không đến nhận phòng (Không xuất hiện) và yêu cầu phạt hủy phòng theo chính sách.', logs: [{ sender: 'Admin', message: 'Đã giải quyết: Khấu trừ 100% tiền cọc và chuyển khoản cho Host.' }] },
     ds4: { id: 'DS004', booking: 'BK004', complainant: 'Lê Văn C', reason: 'Trang thiết bị phòng hư hỏng', filed: '2024-06-12', status: 'pending', details: 'Host báo cáo khách làm vỡ tivi thông minh trong phòng Suite và yêu cầu bồi thường 15 triệu đồng.', logs: [] },
     ds5: { id: 'DS005', booking: 'BK005', complainant: 'Phạm Thị D', reason: 'Không nhận được tiền hoàn trả', filed: '2024-06-01', status: 'resolved', details: 'Khách hàng thắc mắc yêu cầu hoàn tiền đã được duyệt từ 28/05 nhưng tới nay tài khoản ngân hàng vẫn chưa nhận được.', logs: [{ sender: 'Admin', message: 'Cổng thanh toán báo giao dịch thành công. Lỗi do ngân hàng xử lý chậm. Khách đã xác nhận nhận tiền.' }] }
   },
@@ -396,7 +396,7 @@ function viewDetails(entity, id) {
         <div class="detail-item"><span class="detail-label">Giới tính</span><span class="detail-value">${data.gender || '-'}</span></div>
         <div class="detail-item"><span class="detail-label">Ngày tham gia</span><span class="detail-value">${data.joinDate}</span></div>
         <div class="detail-item" style="grid-column: span 2;"><span class="detail-label">Địa chỉ</span><span class="detail-value">${data.address}</span></div>
-        <div class="detail-item"><span class="detail-label">Số booking đặt</span><span class="detail-value">${data.bookings} bookings</span></div>
+        <div class="detail-item"><span class="detail-label">Số booking đặt</span><span class="detail-value">${data.bookings} đơn đặt</span></div>
         <div class="detail-item"><span class="detail-label">Trạng thái</span><span class="detail-value">${getStatusBadge(data.status)}</span></div>
       </div>
     `;

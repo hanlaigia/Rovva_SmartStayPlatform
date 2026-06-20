@@ -22,7 +22,7 @@
   <header class="login-header">
     <div class="login-header-left">
       <a href="#" class="login-logo-svg-text">Rovva</a>
-      <span class="login-portal-badge">Admin Portal</span>
+      <span class="login-portal-badge">Cổng Quản Trị</span>
     </div>
 
 
@@ -54,7 +54,7 @@
             <label for="password" class="form-label">Mật khẩu</label>
             <div class="password-input-wrapper">
               <input type="password" id="password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
-              <button type="button" class="password-toggle-btn" id="password-toggle" aria-label="Toggle Password Visibility">
+              <button type="button" class="password-toggle-btn" id="password-toggle" aria-label="Hiển thị/ẩn mật khẩu">
                 <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -87,12 +87,12 @@
     <div class="login-footer-container login-footer-admin-inner">
       <div class="login-footer-admin-text">
         <div>Công ty TNHH Rovva Việt Nam — Cổng thông tin quản trị bảo mật SmartStay Platform</div>
-        <div>Copyright © 2026 Rovva. All rights reserved.</div>
+        <div>Copyright © 2026 Rovva. Bảo lưu mọi quyền.</div>
       </div>
     </div>
   </footer>
 
-  <!-- DYNAMIC LOGIN LOGIC AND THEME SWITCHER -->
+  <!-- DYNAMIC LOGIN LOGIC -->
   <script>
     // Redirect Guard: Check if already logged in
     if (localStorage.getItem('admin_logged_in') === 'true') {
