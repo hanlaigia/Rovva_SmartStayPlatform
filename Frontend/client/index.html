@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rovva - Đặt phòng lưu trú</title>
+  <script src="./js/auth.js"></script>
+  <script>
+    if (localStorage.getItem('rovva_logged_in') === 'true') {
+      window.location.replace('TrangChu_DaDangNhap.html');
+    } else {
+      window.location.replace('TrangKhach.html');
+    }
+  </script>
+</head>
+<body>
+  <p style="font-family: Inter, sans-serif; text-align: center; margin-top: 40vh; color: #0058BE;">
+    Đang chuyển hướng...
+  </p>
+</body>
+</html>

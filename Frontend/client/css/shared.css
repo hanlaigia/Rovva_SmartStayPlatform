@@ -1,0 +1,207 @@
+/* Rovva Client - Shared responsive & navigation styles */
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  min-width: 0;
+  background: #fff;
+}
+
+.page-scaler {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.page-scaler > [class*="page-"] {
+  transform-origin: top center;
+  flex-shrink: 0;
+}
+
+/* Clickable navigation elements */
+.rovva-link {
+  cursor: pointer !important;
+  transition: opacity 0.15s ease;
+}
+
+.rovva-link:hover {
+  opacity: 0.75;
+}
+
+/* Login form inputs (injected by JS) */
+.rovva-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #424754;
+  font-size: 16px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.rovva-input::placeholder {
+  color: rgba(66, 71, 84, 0.5);
+}
+
+.rovva-login-error {
+  display: none;
+  margin: 0 24px 12px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #b91c1c;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.rovva-demo-hint {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 9998;
+  max-width: 300px;
+  padding: 10px 14px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  color: #1e40af;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rovva-demo-hint strong {
+  font-weight: 600;
+}
+
+.rovva-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 12px 24px;
+  background: #0058BE;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: rovva-toast-in 0.3s ease;
+}
+
+@keyframes rovva-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Lucide Icon styles */
+.rovva-icon-svg {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.rovva-icon-svg svg {
+  width: 100% !important;
+  height: 100% !important;
+  stroke-width: 2px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.rovva-icon-svg.fill-svg svg {
+  fill: currentColor;
+}
+
+/* Custom modal overlays */
+.rovva-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 25, 43, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rovva-modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 1020px;
+  height: 85vh;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.rovva-modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.rovva-modal-close-btn:hover {
+  background: #e5e7eb;
+  transform: scale(1.05);
+}
+
+/* Custom Dropdown Overlays */
+.rovva-dropdown-overlay {
+  position: fixed;
+  width: 290px;
+  height: 480px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 25, 43, 0.15);
+  border: 1px solid rgba(194, 198, 214, 0.40);
+  z-index: 10002;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Custom header avatar element hover */
+.rovva-header-avatar {
+  transition: opacity 0.2s;
+}
+.rovva-header-avatar:hover {
+  opacity: 0.85;
+}
+
+
