@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="light">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8">
@@ -25,30 +25,7 @@
       <span class="login-portal-badge">Admin Portal</span>
     </div>
 
-    <!-- Right Header Actions (Theme Toggle Only) -->
-    <div class="login-header-right">
-      <!-- Light/Dark Mode Switch -->
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
-        <!-- Sun Icon (shown in dark mode) -->
-        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <!-- Moon Icon (shown in light mode) -->
-        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-    </div>
+
   </header>
 
   <!-- HERO SECTION -->
@@ -123,36 +100,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Theme Logic
-      const themeToggle = document.getElementById('theme-toggle');
-      const htmlEl = document.documentElement;
-      const sunIcon = themeToggle.querySelector('.sun-icon');
-      const moonIcon = themeToggle.querySelector('.moon-icon');
-
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      htmlEl.setAttribute('data-theme', savedTheme);
-      updateThemeIcons(savedTheme);
-
-      themeToggle.addEventListener('click', () => {
-        const currentTheme = htmlEl.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        htmlEl.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcons(newTheme);
-      });
-
-      function updateThemeIcons(theme) {
-        if (theme === 'dark') {
-          sunIcon.style.display = 'block';
-          moonIcon.style.display = 'none';
-        } else {
-          sunIcon.style.display = 'none';
-          moonIcon.style.display = 'block';
-        }
-      }
-
-      // 2. Password Visibility Toggle
+      // 1. Password Visibility Toggle
       const passwordInput = document.getElementById('password');
       const passwordToggleBtn = document.getElementById('password-toggle');
       const eyeIcon = document.getElementById('eye-icon');
@@ -175,7 +123,7 @@
         }
       });
 
-      // 3. Login Validation Logic
+      // 2. Login Validation Logic
       const loginForm = document.getElementById('login-form');
       const errorAlert = document.getElementById('error-alert');
       const emailInput = document.getElementById('email');

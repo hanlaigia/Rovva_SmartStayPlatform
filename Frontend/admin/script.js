@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initSidebar();
   initTabs();
-  initTheme();
   initLogout();
   updateAdminProfile();
   initDashboardFilter();
@@ -288,40 +287,7 @@ function initTabs() {
   });
 }
 
-/* 3. LIGHT / DARK THEME */
-function initTheme() {
-  const themeToggle = document.getElementById('theme-toggle');
-  const htmlEl = document.documentElement;
-  const sunIcon = themeToggle.querySelector('.sun-icon');
-  const moonIcon = themeToggle.querySelector('.moon-icon');
-
-  // Load saved theme
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  htmlEl.setAttribute('data-theme', savedTheme);
-  updateThemeIcons(savedTheme);
-
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlEl.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    htmlEl.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcons(newTheme);
-    showToast(`Đã chuyển sang chế độ ${newTheme === 'dark' ? 'Tối' : 'Sáng'}!`, 'info');
-  });
-
-  function updateThemeIcons(theme) {
-    if (theme === 'dark') {
-      sunIcon.style.display = 'block';
-      moonIcon.style.display = 'none';
-    } else {
-      sunIcon.style.display = 'none';
-      moonIcon.style.display = 'block';
-    }
-  }
-}
-
-/* 4. REAL-TIME SEARCH FILTER FOR ANY TABLE */
+/* 3. REAL-TIME SEARCH FILTER FOR ANY TABLE */
 function filterTable(tableId, query) {
   const table = document.getElementById(tableId);
   const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
@@ -346,7 +312,7 @@ function filterTable(tableId, query) {
   }
 }
 
-/* 5. FILTER TABLE BY SELECT OPTION (STATUS) */
+/* 4. FILTER TABLE BY SELECT OPTION (STATUS) */
 function filterTableByStatus(tableId, status) {
   const table = document.getElementById(tableId);
   const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
@@ -363,7 +329,7 @@ function filterTableByStatus(tableId, status) {
   }
 }
 
-/* 6. TOAST NOTIFICATIONS */
+/* 5. TOAST NOTIFICATIONS */
 function showToast(message, type = 'success') {
   const container = document.getElementById('toast-container');
   const toast = document.createElement('div');
@@ -396,7 +362,7 @@ function showToast(message, type = 'success') {
   }, 4000);
 }
 
-/* 7. MODAL HELPERS */
+/* 6. MODAL HELPERS */
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) modal.classList.add('open');
@@ -407,7 +373,7 @@ function closeModal(modalId) {
   if (modal) modal.classList.remove('open');
 }
 
-/* 8. DETAIL VIEW RENDERERS */
+/* 7. DETAIL VIEW RENDERERS */
 function viewDetails(entity, id) {
   const data = mockDatabase[entity]?.[id];
   if (!data) return;
@@ -547,7 +513,7 @@ function getStatusBadge(status) {
   }
 }
 
-/* 9. ACTIONS LOGIC (UPDATE STATUSES DYNAMICALLY) */
+/* 8. ACTIONS LOGIC (UPDATE STATUSES DYNAMICALLY) */
 function toggleUserStatus(id, newStatus) {
   const user = mockDatabase.user[id];
   if (!user) return;
@@ -771,7 +737,7 @@ function togglePromoSwitch(id, isChecked) {
   }
 }
 
-/* 10. TRIGGER MOCK REPORTS DOWNLOAD */
+/* 9. TRIGGER MOCK REPORTS DOWNLOAD */
 function triggerReportExport(type) {
   showToast(`Hệ thống đang trích xuất dữ liệu Báo cáo ${type}...`, 'info');
   setTimeout(() => {
@@ -779,7 +745,7 @@ function triggerReportExport(type) {
   }, 1500);
 }
 
-/* 11. DYNAMIC MODALS FOR ADDING ITEMS */
+/* 10. DYNAMIC MODALS FOR ADDING ITEMS */
 function openAddModal(entity) {
   const modalTitle = document.getElementById('modal-title');
   const modalBody = document.getElementById('modal-body');
@@ -1239,7 +1205,7 @@ function submitAddAdmin() {
   showToast(`Đã tạo tài khoản quản trị cho ${name}!`, 'success');
 }
 
-/* 12. LOGOUT SIMULATOR */
+/* 11. LOGOUT SIMULATOR */
 function initLogout() {
   const logoutBtn = document.getElementById('logout-button');
   if (logoutBtn) {
