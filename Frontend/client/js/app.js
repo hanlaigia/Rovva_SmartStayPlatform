@@ -3,6 +3,7 @@
  */
 (function () {
   const DESIGN_WIDTH = 1440;
+  const FIXED_LAYOUT_MIN = 1440;
 
   const AUTH_REQUIRED = [
     'TrangChu_DaDangNhap.html',
@@ -13,9 +14,18 @@
 
   /* ── Responsive scaling ── */
   function initResponsive() {
-    const page = document.querySelector('[class*="page-"]');
+    var page = document.querySelector('body > [class*="page-"]:not(.page-scaler):not(.page-enter)');
+    if (!page) page = document.querySelector('[class*="page-"]:not(.page-scaler):not(.page-enter):not(body)');
     if (!page || page.dataset.scaled) return;
+
+    // Skip automatic scaling for responsive pages to avoid layout shrinkage.
+    if (page.classList.contains('page-DangKy') || page.classList.contains('page-TrangChu_DaDangNhap') || page.classList.contains('page-home')) {
+      page.dataset.scaled = 'true';
+      return;
+    }
+
     page.dataset.scaled = 'true';
+    const isFluidHome = page.classList.contains('page-home');
 
     const wrapper = document.createElement('div');
     wrapper.className = 'page-scaler';
@@ -23,7 +33,15 @@
     wrapper.appendChild(page);
 
     function resize() {
-      const scale = window.innerWidth / DESIGN_WIDTH;
+      const vw = window.innerWidth;
+
+      if (isFluidHome || vw >= FIXED_LAYOUT_MIN) {
+        page.style.transform = 'none';
+        wrapper.style.height = 'auto';
+        return;
+      }
+
+      const scale = vw / DESIGN_WIDTH;
       page.style.transform = 'scale(' + scale + ')';
       page.style.transformOrigin = 'top center';
       wrapper.style.height = page.offsetHeight * scale + 'px';
@@ -33,6 +51,36 @@
     if (document.readyState === 'complete') resize();
     else window.addEventListener('load', resize);
     resize();
+  }
+
+  /* ── Page enter/leave transitions ── */
+  function initPageTransitions() {
+    if (!document.body) {
+      window.addEventListener('load', initPageTransitions);
+      return;
+    }
+
+    document.body.classList.add('page-enter');
+    requestAnimationFrame(function () {
+      if (document.body) {
+        document.body.classList.remove('page-enter');
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      var anchor = e.target.closest('a');
+      if (!anchor) return;
+      
+      var href = anchor.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('javascript:') || anchor.target === '_blank') {
+        return;
+      }
+      
+      if (anchor.origin === window.location.origin) {
+        e.preventDefault();
+        navigate(href);
+      }
+    });
   }
 
   /* ── Helpers ── */
@@ -64,11 +112,17 @@
     if (!el || el.dataset.rovvaLink) return;
     el.dataset.rovvaLink = '1';
     el.classList.add('rovva-link');
-    el.addEventListener('click', handler);
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      handler.call(el, e);
+    });
   }
 
   function navigate(file) {
-    window.location.href = path(file);
+    document.body.classList.add('page-leaving');
+    setTimeout(function () {
+      window.location.href = path(file);
+    }, 220);
   }
 
   function showToast(msg) {
@@ -96,40 +150,54 @@
   function initLoginPage() {
     if (!window.location.pathname.includes('DangNhap')) return;
 
-    var card = document.querySelector('.c-7');
+    var card = document.querySelector('.c-7') || document.querySelector('.c-6') || document.querySelector('body');
     if (!card) return;
 
     var hint = document.createElement('div');
     hint.className = 'rovva-demo-hint';
     hint.innerHTML = '<strong>Tài khoản demo:</strong><br>minh@gmail.com / 123 (Minh)<br>giahan@gmail.com / 123 (Lại Gia Hân)';
-    document.body.appendChild(hint);
+    var root = document.body || document.documentElement;
+    if (root) {
+      root.appendChild(hint);
+    } else {
+      window.addEventListener('load', function () {
+        (document.body || document.documentElement).appendChild(hint);
+      });
+    }
 
     var errorEl = document.createElement('div');
     errorEl.id = 'login-error';
     errorEl.className = 'rovva-login-error';
     errorEl.style.cssText = 'position:absolute;left:24px;top:12px;right:24px;z-index:10;';
-    card.appendChild(errorEl);
+    if (card) {
+      card.appendChild(errorEl);
+    }
 
     var placeholders = card.querySelectorAll('.c-19 .c-21');
-    var emailInput, passInput;
+    if (placeholders.length < 2) {
+      placeholders = document.querySelectorAll('.c-19 .c-21');
+    }
+
+    var emailInput = document.createElement('input');
+    emailInput.type = 'email';
+    emailInput.className = 'rovva-input';
+    emailInput.placeholder = 'minh@gmail.com';
+    emailInput.value = 'minh@gmail.com';
+    emailInput.autocomplete = 'email';
+
+    var passInput = document.createElement('input');
+    passInput.type = 'password';
+    passInput.className = 'rovva-input';
+    passInput.placeholder = '••••••••';
+    passInput.value = '123';
+    passInput.autocomplete = 'current-password';
 
     if (placeholders.length >= 2) {
-      emailInput = document.createElement('input');
-      emailInput.type = 'email';
-      emailInput.className = 'rovva-input';
-      emailInput.placeholder = 'minh@gmail.com';
-      emailInput.value = 'minh@gmail.com';
-      emailInput.autocomplete = 'email';
-
-      passInput = document.createElement('input');
-      passInput.type = 'password';
-      passInput.className = 'rovva-input';
-      passInput.placeholder = '••••••••';
-      passInput.value = '123';
-      passInput.autocomplete = 'current-password';
-
       placeholders[0].replaceWith(emailInput);
       placeholders[1].replaceWith(passInput);
+    } else {
+      card.appendChild(emailInput);
+      card.appendChild(passInput);
     }
 
     function doLogin() {
@@ -163,15 +231,76 @@
   function initRegisterPage() {
     if (!window.location.pathname.includes('DangKy')) return;
 
-    ['.c-114', '.c-136'].forEach(function (sel) {
-      document.querySelectorAll(sel).forEach(function (btn) {
-        var container = btn.closest('.c-36, .c-37, .c-38') || btn.parentElement;
-        makeClickable(container || btn, function () {
-          showToast('Đăng ký thành công! Vui lòng đăng nhập.');
-          navigate('DangNhap.html');
-        });
-      });
+    if (RovvaAuth.isLoggedIn()) {
+      RovvaAuth.redirectIfLoggedIn();
+      return;
+    }
+
+    var form = document.getElementById('registerForm');
+    var errorEl = document.getElementById('registerFormError');
+    if (!form) return;
+
+    function showError(message) {
+      if (!errorEl) return;
+      errorEl.textContent = message;
+      errorEl.style.display = 'block';
+    }
+
+    function clearError() {
+      if (!errorEl) return;
+      errorEl.textContent = '';
+      errorEl.style.display = 'none';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      clearError();
+
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var phone = form.phone.value.trim();
+      var password = form.password.value;
+      var confirmPassword = form.passwordConfirm.value;
+      var termsAccepted = form.terms.checked;
+
+      if (!name || !email || !password || !confirmPassword) {
+        showError('Vui lòng điền đầy đủ thông tin.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showError('Mật khẩu và xác nhận mật khẩu không khớp.');
+        return;
+      }
+
+      if (!termsAccepted) {
+        showError('Bạn cần chấp nhận Điều khoản & Chính sách để tiếp tục.');
+        return;
+      }
+
+      var result = RovvaAuth.register(name, email, password);
+      if (result.success) {
+        showToast('Đăng ký thành công! Bạn đã được đăng nhập.');
+        setTimeout(function () {
+          navigate('TrangChu_DaDangNhap.html');
+        }, 700);
+      } else {
+        showError(result.message);
+      }
     });
+
+    var googleBtn = document.getElementById('registerGoogle');
+    var appleBtn = document.getElementById('registerApple');
+    if (googleBtn) {
+      makeClickable(googleBtn, function () {
+        showToast('Đăng ký bằng Google chưa khả dụng.');
+      });
+    }
+    if (appleBtn) {
+      makeClickable(appleBtn, function () {
+        showToast('Đăng ký bằng Apple chưa khả dụng.');
+      });
+    }
   }
 
   /* ── Navigation wiring ── */
@@ -192,8 +321,8 @@
         } else if (window.location.pathname.includes('ChiTietCoSoLuuTru')) {
           navigate('DatPhong_ThanhToan_TrangThai1.html');
         } else {
-          var parentCard = el.closest('.c-43, .c-79, .c-141, .c-166');
-          var titleEl = parentCard ? parentCard.querySelector('.c-52, .c-87, .c-145') : null;
+          var parentCard = el.closest('.promo-card, .listing-card, .c-43, .c-79, .c-141, .c-166');
+          var titleEl = parentCard ? parentCard.querySelector('.promo-card__title, .listing-card__title, .c-52, .c-87, .c-145') : null;
           var titleText = titleEl ? titleEl.textContent : '';
           var dest = 'ChiTietCoSoLuuTru_Hotel.html';
           if (titleText.toLowerCase().includes('căn hộ') || titleText.toLowerCase().includes('loft') || titleText.toLowerCase().includes('cabin')) {
@@ -211,22 +340,25 @@
       'Vũng Tàu': function () { navigate('TongLuuTru.html'); },
       'Sapa': function () { navigate('TongLuuTru.html'); },
       'Ưu đãi': function () {
-        var promoSec = document.querySelector('.c-81, .c-84, .c-51');
+        var promoSec = document.querySelector('#promo-section, .promo-row, .c-81, .c-84, .c-51');
         if (promoSec) {
           promoSec.scrollIntoView({ behavior: 'smooth' });
         } else {
-          showToast('Không tìm thấy chương trình ưu đãi hiện tại.');
+          navigate('DacQuyen_KhuyenMai.html');
         }
       },
-      'Trở thành Host': function () {
-        showToast('Tính năng đăng ký Host đang được bảo trì. Vui lòng liên hệ Hotline: 1900 2005.');
-      },
+      'Khám phá ngay': function () { navigate('XuThuong.html'); },
+      'Nhận mã ngay': function () { navigate('DacQuyen_KhuyenMai.html'); },
+      'Truy cập Wishlist': function () { navigate('DanhSachYeuThich.html'); },
+      'Trở thành Host': function () { navigate('VeChungToi.html'); },
       'Hỗ trợ': function () {
-        showModal(RovvaAuth.resolvePath('components/popup_rovva_ai.html'));
+        if (document.querySelector('.page-home')) {
+          showModal(RovvaAuth.resolvePath('components/popup_rovva_ai.html'));
+        } else {
+          navigate('TroGiup_YeuCau.html');
+        }
       },
-      'Chính sách': function () {
-        showToast('Chính sách hoạt động của Rovva có hiệu lực từ ngày 01/01/2026.');
-      }
+      'Chính sách': function () { navigate('ChinhSach.html'); }
     };
 
     Object.keys(linkMap).forEach(function (text) {
@@ -345,11 +477,55 @@
       findAllByExactText('Chào mừng trở lại, Minh!').forEach(function (el) {
         el.textContent = 'Chào mừng trở lại, ' + user.name + '!';
       });
+      var heroTitle = document.querySelector('.hero__title');
+      if (heroTitle && heroTitle.textContent.indexOf('Minh') !== -1) {
+        heroTitle.textContent = 'Chào mừng trở lại, ' + user.name + '!';
+      }
     }
   }
 
-  /* ── Icon replacement logic using Lucide ── */
+  /* ── Carousel scroll for homepage ── */
+  function initCarousels() {
+    var map = {
+      'dest-prev': { el: '#destinations-grid', dir: -1 },
+      'dest-next': { el: '#destinations-grid', dir: 1 },
+      'trend-prev': { el: '#trending-row', dir: -1 },
+      'trend-next': { el: '#trending-row', dir: 1 },
+      'hcm-prev': { el: '#hcm-row', dir: -1 },
+      'hcm-next': { el: '#hcm-row', dir: 1 },
+      'dn-prev': { el: '#danang-row', dir: -1 },
+      'dn-next': { el: '#danang-row', dir: 1 },
+      'dl-prev': { el: '#dalat-row', dir: -1 },
+      'dl-next': { el: '#dalat-row', dir: 1 }
+    };
+
+    Object.keys(map).forEach(function (key) {
+      document.querySelectorAll('[data-carousel="' + key + '"]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = document.querySelector(map[key].el);
+          if (!target) return;
+          var amount = target.classList.contains('destinations-grid') ? 320 : 322;
+          target.scrollBy({ left: map[key].dir * amount, behavior: 'smooth' });
+        });
+      });
+    });
+  }
+
+  /* ── Favorite toggle ── */
+  function initFavoriteButtons() {
+    document.querySelectorAll('.listing-card__favorite').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        btn.classList.toggle('is-active');
+        showToast(btn.classList.contains('is-active') ? 'Đã thêm vào yêu thích!' : 'Đã xóa khỏi yêu thích.');
+      });
+    });
+  }
+
+  /* ── Icon replacement logic using Lucide (legacy Figma pages) ── */
   function initIcons() {
+    if (document.querySelector('.page-home')) return;
+
     if (typeof lucide === 'undefined') {
       var script = document.createElement('script');
       script.src = 'https://unpkg.com/lucide@latest';
@@ -548,9 +724,10 @@
       findAllByExactText(title).forEach(function (titleEl) {
         var dest = getListingDestination(title);
         makeClickable(titleEl, function () { navigate(dest); });
-        
-        var parentCard = titleEl.closest('.c-43, .c-79, .c-141, .c-166, .c-42') || titleEl.parentElement.parentElement.parentElement;
+
+        var parentCard = titleEl.closest('.listing-card, .c-43, .c-79, .c-141, .c-166, .c-42') || titleEl.parentElement.parentElement.parentElement;
         if (parentCard) {
+          makeClickable(parentCard, function () { navigate(dest); });
           var img = parentCard.querySelector('img');
           if (img) {
             makeClickable(img, function () { navigate(dest); });
@@ -951,13 +1128,13 @@
   window.closeModal = closeModal;
   window.showDropdown = showDropdown;
   window.showToast = showToast;
-  }
 
   /* ── Boot ── */
   document.addEventListener('DOMContentLoaded', function () {
     if (!window.location.pathname.includes('DangNhap')) {
       document.querySelectorAll('.rovva-demo-hint').forEach(function (el) { el.remove(); });
     }
+    initPageTransitions();
     initAuthGuards();
     initResponsive();
     initLoginPage();
@@ -970,5 +1147,7 @@
     initPaymentPage();
     initPopupActions();
     syncHeaderState();
+    initCarousels();
+    initFavoriteButtons();
   });
 })();

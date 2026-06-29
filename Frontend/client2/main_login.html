@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rovva - Smart Stay Platform</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #191C20;
+        }
+
+        /* Hero Typography */
+        .welcome-title {
+            color: #0F294D;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .welcome-subtitle {
+            color: #424754;
+            font-size: 16px;
+        }
+
+        /* Search Bar Custom Style */
+        .search-wrapper {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E2E4E9;
+            padding: 12px 20px;
+        }
+        .search-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 8px;
+        }
+        .search-item i {
+            color: #0058BE;
+            font-size: 18px;
+        }
+        .search-item label {
+            font-size: 12px;
+            color: #717680;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .search-item input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: #191C20;
+            width: 100%;
+            background: transparent;
+        }
+        .btn-search {
+            background-color: #0058BE;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-weight: 600;
+            border: none;
+            white-space: nowrap;
+        }
+        .btn-search:hover {
+            background-color: #004596;
+        }
+
+        /* Section Headings */
+        .section-title {
+            color: #0F294D;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .section-link {
+            color: #0058BE;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .section-subtitle {
+            color: #717680;
+            font-size: 14px;
+        }
+
+        /* Promo Card Style */
+        .gift-card {
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .gift-card--blue { background-color: #2170E4; }
+        .gift-card--green { background-color: #6CF8BB; }
+        .gift-card--orange { background-color: #B75B00; }
+
+        .gift-badge {
+            padding: 4px 8px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 600;
+            width: fit-content;
+            text-transform: uppercase;
+        }
+        .gift-badge--white { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
+        .gift-badge--green { background: rgba(0, 0, 0, 0.08); color: #00714D; }
+
+        .gift-title { font-size: 18px; font-weight: 700; line-height: 1.3; margin-top: 6px; }
+        .gift-text { font-size: 13px; opacity: 0.9; margin-bottom: 0; }
+
+        .gift-title--white, .gift-text--white { color: #ffffff; }
+        .gift-title--green, .gift-text--green { color: #00714D; }
+
+        .btn-gift-action {
+            padding: 6px 16px;
+            border-radius: 6px;
+            background: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            width: fit-content;
+        }
+        .btn-gift-action--blue { color: #2170E4; }
+        .btn-gift-action--green { color: #00714D; }
+        .btn-gift-action--orange { color: #B75B00; }
+
+        /* Trending Destinations */
+        .dest-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 200px;
+        }
+        .dest-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .dest-card:hover img {
+            transform: scale(1.05);
+        }
+        .dest-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            color: white;
+        }
+        .dest-title { font-size: 18px; font-weight: 700; margin: 0; }
+        .dest-count { font-size: 12px; opacity: 0.8; }
+
+        /* Stay Room Cards */
+        .stay-card {
+            background: #ffffff;
+            border: 1px solid #E2E4E9;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .stay-card__img-container {
+            height: 160px;
+            position: relative;
+        }
+        .stay-card__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .stay-card__heart-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #717680;
+        }
+        .stay-card__heart-btn:hover {
+            color: #dc3545;
+        }
+        .stay-card__body {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+        .stay-card__title {
+            color: #191B23;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .stay-card__rating {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .stay-card__rating i { color: #B75B00; }
+        
+        .tag-pill {
+            padding: 2px 8px;
+            background: #F3F4F6;
+            border-radius: 4px;
+            color: #424754;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .stay-card__price {
+            color: #0058BE;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .stay-card__price .note { color: #717680; font-weight: 400; font-size: 13px; }
+
+        /* Favorite Ribbon Banner */
+        .favorite-banner {
+            background-color: #EDF5FF;
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .fav-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: #FFECEB;
+            color: #E03131;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .btn-fav-nav {
+            background-color: #0058BE;
+            color: white;
+            border-radius: 8px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<main class="container my-5">
+    
+    <section class="text-center mb-4">
+        <h1 class="welcome-title mb-1">Chào mừng trở lại, Lại Gia Hân!</h1>
+        <p class="welcome-subtitle">Hôm nay bạn muốn đi đâu để tận hưởng kỳ nghỉ tiếp theo?</p>
+    </section>
+
+    <section class="mb-5">
+        <div class="search-wrapper">
+            <div class="row g-3 align-items-center">
+                <div class="col-12 col-md-4 border-end-md">
+                    <div class="search-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <div class="w-100">
+                            <label>Địa điểm</label>
+                            <input type="text" placeholder="Bạn muốn đi đâu?">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 border-end-md">
+                    <div class="search-item">
+                        <i class="bi bi-calendar3"></i>
+                        <div class="w-100">
+                            <label>Ngày đi - về</label>
+                            <input type="text" placeholder="Thêm ngày">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="search-item">
+                        <i class="bi bi-people"></i>
+                        <div class="w-100">
+                            <label>Số người</label>
+                            <input type="text" placeholder="Thêm khách">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-1 text-end">
+                    <button class="btn-search w-100"><i class="bi bi-search me-1"></i> Tìm</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <div class="mb-3">
+            <h2 class="section-title mb-1">Quà tặng dành riêng cho bạn</h2>
+            <p class="section-subtitle mb-0">Ưu đãi đặc biệt dành cho mọi thành viên của Smart Stay</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-12 col-md-4">
+                <div class="gift-card gift-card--blue">
+                    <div>
+                        <div class="gift-badge gift-badge--white">Ưu đãi thành viên mới</div>
+                        <div class="gift-title gift-title--white">Giảm 10% cho lần đặt phòng đầu tiên</div>
+                    </div>
+                    <div>
+                        <p class="gift-text gift-text--white mb-2">Áp dụng cho tất cả khách sạn trên hệ thống.</p>
+                        <button class="btn-gift-action btn-gift-action--blue">Nhận mã ngay</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="gift-card gift-card--green">
+                    <div>
+                        <div class="gift-badge gift-badge--green">Đặc quyền thành viên</div>
+                        <div class="gift-title gift-title--green">Miễn phí bữa sáng cho các kỳ nghỉ cuối tuần</div>
+                    </div>
+                    <div>
+                        <p class="gift-text gift-text--green mb-2">Áp dụng cho các booking đặt trước 7 ngày.</p>
+                        <button class="btn-gift-action btn-gift-action--green">Xem chi tiết</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="gift-card gift-card--orange">
+                    <div>
+                        <div class="gift-badge gift-badge--white">Tích lũy xu</div>
+                        <div class="gift-title gift-title--white">Nhận ngay xu thưởng khi hoàn thành đơn đặt phòng</div>
+                    </div>
+                    <div>
+                        <p class="gift-text gift-text--white mb-2">Sử dụng Xu cho đơn đặt phòng.</p>
+                        <button class="btn-gift-action btn-gift-action--orange">Khám phá ngay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="section-title mb-0">Điểm đến xu hướng</h2>
+        </div>
+        <div class="row g-3">
+            <div class="col-6 col-md-3">
+                <div class="dest-card">
+                    <img src="https://placehold.co/400x300" alt="Vũng Tàu">
+                    <div class="dest-overlay">
+                        <h4 class="dest-title">Vũng Tàu</h4>
+                        <span class="dest-count">Việt Nam • 1.500+ Stays</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="dest-card">
+                    <img src="https://placehold.co/400x300" alt="Sa Pa">
+                    <div class="dest-overlay">
+                        <h4 class="dest-title">Sa Pa</h4>
+                        <span class="dest-count">Việt Nam • 800+ Stays</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="dest-card">
+                    <img src="https://placehold.co/400x300" alt="Đà Lạt">
+                    <div class="dest-overlay">
+                        <h4 class="dest-title">Đà Lạt</h4>
+                        <span class="dest-count">Việt Nam • 2.100+ Stays</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="dest-card">
+                    <img src="https://placehold.co/400x300" alt="Đà Nẵng">
+                    <div class="dest-overlay">
+                        <h4 class="dest-title">Đà Nẵng</h4>
+                        <span class="dest-count">Việt Nam • 1.800+ Stays</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="section-title mb-0">Lưu trú nổi bật tại Thành phố Hồ Chí Minh <a href="#" class="section-link"><i class="bi bi-arrow-right-short"></i></a></h2>
+        </div>
+        <div class="row g-3">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stay-card">
+                    <div class="stay-card__img-container">
+                        <img class="stay-card__img" src="https://placehold.co/313x192" alt="Ocean View Luxury Suite">
+                        <button class="stay-card__heart-btn"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="stay-card__body">
+                        <div class="d-flex justify-content-between align-items-start gap-1">
+                            <h3 class="stay-card__title">Ocean View Luxury Suite</h3>
+                            <span class="stay-card__rating text-nowrap"><i class="bi bi-star-fill me-1"></i>4.9</span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="tag-pill">Free Wi-Fi</span>
+                            <span class="tag-pill">Pool</span>
+                        </div>
+                        <div class="stay-card__price mt-auto">
+                            <span>2.500.000đ</span><span class="note"> / đêm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stay-card">
+                    <div class="stay-card__img-container">
+                        <img class="stay-card__img" src="https://placehold.co/313x192" alt="Urban Chic Loft">
+                        <button class="stay-card__heart-btn"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="stay-card__body">
+                        <div class="d-flex justify-content-between align-items-start gap-1">
+                            <h3 class="stay-card__title">Urban Chic Loft</h3>
+                            <span class="stay-card__rating text-nowrap"><i class="bi bi-star-fill me-1"></i>4.8</span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="tag-pill">Gym</span>
+                            <span class="tag-pill">Balcony</span>
+                        </div>
+                        <div class="stay-card__price mt-auto">
+                            <span>1.850.000đ</span><span class="note"> / đêm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stay-card">
+                    <div class="stay-card__img-container">
+                        <img class="stay-card__img" src="https://placehold.co/313x192" alt="Forest Retreat Cabin">
+                        <button class="stay-card__heart-btn"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="stay-card__body">
+                        <div class="d-flex justify-content-between align-items-start gap-1">
+                            <h3 class="stay-card__title">Forest Retreat Cabin</h3>
+                            <span class="stay-card__rating text-nowrap"><i class="bi bi-star-fill me-1"></i>4.7</span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="tag-pill">Fireplace</span>
+                            <span class="tag-pill">Nature</span>
+                        </div>
+                        <div class="stay-card__price mt-auto">
+                            <span>3.200.000đ</span><span class="note"> / đêm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stay-card">
+                    <div class="stay-card__img-container">
+                        <img class="stay-card__img" src="https://placehold.co/313x192" alt="The Grand Boutique Hotel">
+                        <button class="stay-card__heart-btn"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="stay-card__body">
+                        <div class="d-flex justify-content-between align-items-start gap-1">
+                            <h3 class="stay-card__title">The Grand Boutique Hotel</h3>
+                            <span class="stay-card__rating text-nowrap"><i class="bi bi-star-fill me-1"></i>5.0</span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="tag-pill">Luxury</span>
+                            <span class="tag-pill">Breakfast</span>
+                        </div>
+                        <div class="stay-card__price mt-auto">
+                            <span>4.100.000đ</span><span class="note"> / đêm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <div class="favorite-banner">
+            <div class="d-flex align-items-center gap-3">
+                <div class="fav-icon-box">
+                    <i class="bi bi-heart-fill"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-1" style="color: #0F294D; font-size: 16px;">Danh sách yêu thích của bạn</h5>
+                    <p class="text-secondary mb-0" style="font-size: 14px;">Bạn có 12 nơi lưu trú yêu thích đang chờ được khám phá, hãy lên kế hoạch ngay!</p>
+                </div>
+            </div>
+            <a href="#" class="btn-fav-nav">Truy cập Wishlist</a>
+        </div>
+    </section>
+
+</main>
+
+<div id="footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Component Loader Logic
+    fetch('components/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+            const headerAvatar = document.querySelector('#header img.user-avatar');
+            if (headerAvatar) headerAvatar.src = 'Pictures/Hinh_avata.jpg';
+        }).catch(err => console.error('Error header:', err));
+
+    fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        }).catch(err => console.error('Error footer:', err));
+</script>
+
+</body>
+</html>

@@ -93,7 +93,10 @@ const RovvaAuth = (() => {
 
   function resolvePath(filename) {
     const inComponents = window.location.pathname.includes('/components/');
-    return inComponents ? '../' + filename : filename;
+    if (inComponents && !filename.startsWith('../') && !filename.startsWith('http')) {
+      return '../' + filename;
+    }
+    return filename;
   }
 
   return {
@@ -108,3 +111,7 @@ const RovvaAuth = (() => {
     DEFAULT_USERS
   };
 })();
+
+if (typeof window !== 'undefined') {
+  window.RovvaAuth = RovvaAuth;
+}

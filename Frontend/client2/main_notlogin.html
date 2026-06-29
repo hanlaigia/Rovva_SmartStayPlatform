@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rovva - Smart Stay Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #191B23;
+            background-color: #ffffff;
+            margin: 0;
+        }
+        
+        #header,
+        #footer {
+            width: 100%;
+        }
+
+        .text-brand-dark { color: #0F294D; }
+        .text-brand-blue { color: #0058BE; }
+        .text-brand-muted { color: #424754; }
+
+        /* Khung tìm kiếm nâng cao */
+        .search-wrapper {
+            max-width: 966px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            border: 1px solid rgba(194, 198, 214, 0.40);
+            padding: 12px;
+        }
+        .search-item {
+            padding: 8px 16px;
+            border-right: 1px solid rgba(194, 198, 214, 0.30);
+        }
+        .search-item:last-of-type { border-right: none; }
+        .search-item label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #424754;
+            letter-spacing: 0.60px;
+            margin-bottom: 2px;
+            display: block;
+        }
+        .search-item input {
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(66, 71, 84, 0.60);
+            width: 100%;
+        }
+        .search-item input:focus { outline: none; }
+        .btn-search-submit {
+            background: #0058BE;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 8px;
+            padding: 12px 32px;
+            border: none;
+        }
+
+        /* SECTION: Dành riêng cho người dùng mới */
+        .promo-card {
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #ffffff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .promo-ticket-style {
+            position: relative;
+            background: linear-gradient(90deg, #ffffff 70%, #F8FAFC 70%);
+        }
+        .promo-ticket-style::before, .promo-ticket-style::after {
+            content: '';
+            position: absolute;
+            right: 30%;
+            width: 16px;
+            height: 16px;
+            background: #ffffff;
+            border-radius: 50%;
+            border: 1px solid #E2E8F0;
+        }
+        .promo-ticket-style::before { top: -8px; }
+        .promo-ticket-style::after { bottom: -8px; }
+        
+        .btn-promo {
+            background-color: #0058BE;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            width: fit-content;
+        }
+
+        /* Điểm đến xu hướng */
+        .destination-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 220px;
+        }
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .destination-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(15, 41, 77, 0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        /* Lưu trú nổi bật */
+        .stay-card {
+            background: #ffffff;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            border: 1px solid #C2C6D6;
+            overflow: hidden;
+        }
+        .stay-img-container {
+            position: relative;
+            height: 192px;
+        }
+        .stay-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .wishlist-icon {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.20);
+            border-radius: 9999px;
+            backdrop-filter: blur(2px);
+            border: none;
+            color: #ffffff;
+        }
+        .stay-badge {
+            padding: 4px 12px;
+            background: #ECEDF7;
+            border-radius: 9999px;
+            color: #424754;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .stay-price {
+            color: #0058BE;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* SECTION: Tại sao chọn Rovva */
+        .why-rovva-section {
+            background-color: #F4F6FA;
+            padding: 60px 0;
+        }
+        .feature-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            height: 100%;
+        }
+        .feature-icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+            font-size: 22px;
+        }
+
+        /* Bubble Chat bot cố định ở góc dưới bên phải màn hình */
+        .sticky-bot-trigger {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #0058BE;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0px 8px 16px rgba(0,56,190,0.3);
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<main>
+    <section class="container text-center my-5 py-4">
+        <h1 class="text-brand-dark fw-bold mb-4 fs-1">Tìm kiếm kỳ nghỉ mơ ước của bạn</h1>
+        <div class="search-wrapper">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-4 text-start search-item">
+                    <label><i class="bi bi-geo-alt-fill text-brand-blue me-2"></i>Địa điểm</label>
+                    <input type="text" placeholder="Bạn muốn đi đâu?">
+                </div>
+                <div class="col-md-3 text-start search-item">
+                    <label><i class="bi bi-calendar-event-fill text-brand-blue me-2"></i>Ngày đi - về</label>
+                    <input type="text" placeholder="Thêm ngày" onfocus="(this.type='date')">
+                </div>
+                <div class="col-md-3 text-start search-item">
+                    <label><i class="bi bi-people-fill text-brand-blue me-2"></i>Số người</label>
+                    <input type="text" placeholder="Thêm khách">
+                </div>
+                <div class="col-md-2 p-1 text-end">
+                    <button class="btn-search-submit w-100">Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-brand-dark fw-semibold mb-0">Dành riêng cho người dùng mới</h3>
+            <div class="d-flex gap-2">
+                <button class="btn btn-light btn-sm rounded-circle border" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+                <button class="btn btn-light btn-sm rounded-circle border" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="promo-card p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div style="max-width: 65%;">
+                            <h5 class="fw-bold text-brand-dark lh-base fs-6">Nhiều ưu đãi giảm giá du lịch hơn dành cho người dùng mới!</h5>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=60" alt="avatar" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                    </div>
+                    <button class="btn-promo mt-2">Đăng Nhập Và Nhận Tất Cả</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="promo-card promo-ticket-style p-4">
+                    <div class="row w-100 h-100 align-items-between g-0">
+                        <div class="col-8 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="fw-bold text-brand-dark mb-1 fs-6">Giảm Giá Đến 10...</h5>
+                                <p class="text-muted small mb-0">Vé Máy bay | Chỉ dành cho ứng dụng</p>
+                            </div>
+                            <button class="btn-promo mt-3">Nhận Tất Cả</button>
+                        </div>
+                        <div class="col-4 d-flex align-items-center justify-content-center text-danger fs-1">
+                            <i class="bi bi-airplane-fill" style="transform: rotate(45deg);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="promo-card promo-ticket-style p-4">
+                    <div class="row w-100 h-100 align-items-between g-0">
+                        <div class="col-8 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="fw-bold text-brand-dark mb-1 fs-6">Giảm Giá 10%</h5>
+                                <p class="text-muted small mb-0">Khách Sạn</p>
+                            </div>
+                            <button class="btn-promo mt-3">Nhận Tất Cả</button>
+                        </div>
+                        <div class="col-4 d-flex align-items-center justify-content-center text-danger fs-1">
+                            <i class="bi bi-door-open-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="text-brand-dark fw-semibold mb-1">Điểm đến xu hướng</h3>
+                <p class="text-brand-muted mb-0">Các văn phòng lưu trú hàng đầu được đề xuất riêng cho bạn</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-light btn-sm rounded-circle border"><i class="bi bi-chevron-left"></i></button>
+                <button class="btn btn-light btn-sm rounded-circle border"><i class="bi bi-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-6 col-md-3">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1623090857341-4078aa2e323e?w=500&auto=format&fit=crop&q=80" alt="Vũng Tàu">
+                    <div class="destination-overlay">
+                        <h4 class="text-white fw-semibold mb-0 fs-5">Vũng Tàu</h4>
+                        <span class="text-white-50 small">Việt Nam • 1200+ Stays</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=500&auto=format&fit=crop&q=80" alt="Sapa">
+                    <div class="destination-overlay">
+                        <h4 class="text-white fw-semibold mb-0 fs-5">Sapa</h4>
+                        <span class="text-white-50 small">Việt Nam • 800+ Stays</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=500&auto=format&fit=crop&q=80" alt="Đà Lạt">
+                    <div class="destination-overlay">
+                        <h4 class="text-white fw-semibold mb-0 fs-5">Đà Lạt</h4>
+                        <span class="text-white-50 small">Việt Nam • 1500+ Stays</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&auto=format&fit=crop&q=80" alt="Đà Nẵng">
+                    <div class="destination-overlay">
+                        <h4 class="text-white fw-semibold mb-0 fs-5">Đà Nẵng</h4>
+                        <span class="text-white-50 small">Việt Nam • 1000+ Stays</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5">
+        <div class="mb-4">
+            <h3 class="text-brand-dark fw-semibold mb-1">Lưu trú nổi bật</h3>
+            <p class="text-brand-muted mb-0">Lựa chọn hàng đầu dựa trên đánh giá của người dùng</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="stay-card h-100">
+                    <div class="stay-img-container">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&auto=format&fit=crop&q=80" alt="Stay">
+                        <button class="wishlist-icon"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <h5 class="fs-6 fw-medium text-truncate mb-0 pe-2">Ocean View Luxury Suite</h5>
+                            <span class="small flex-shrink-0"><i class="bi bi-star-fill text-warning me-1"></i>4.9</span>
+                        </div>
+                        <p class="text-brand-muted small mb-3">Đà Nẵng, Việt Nam</p>
+                        <div class="d-flex gap-2 mb-3"><span class="stay-badge">Free Wi-Fi</span><span class="stay-badge">Pool</span></div>
+                        <div class="pt-2 border-top"><span class="stay-price fw-bold">2.500.000đ<span class="text-dark small fw-normal"> / đêm</span></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="stay-card h-100">
+                    <div class="stay-img-container">
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&auto=format&fit=crop&q=80" alt="Stay">
+                        <button class="wishlist-icon"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <h5 class="fs-6 fw-medium text-truncate mb-0 pe-2">Urban Glass Loft</h5>
+                            <span class="small flex-shrink-0"><i class="bi bi-star-fill text-warning me-1"></i>4.8</span>
+                        </div>
+                        <p class="text-brand-muted small mb-3">TP. Hồ Chí Minh</p>
+                        <div class="d-flex gap-2 mb-3"><span class="stay-badge">Loft</span><span class="stay-badge">Balcony</span></div>
+                        <div class="pt-2 border-top"><span class="stay-price fw-bold">1.850.000đ<span class="text-dark small fw-normal"> / đêm</span></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="stay-card h-100">
+                    <div class="stay-img-container">
+                        <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=500&auto=format&fit=crop&q=80" alt="Stay">
+                        <button class="wishlist-icon"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <h5 class="fs-6 fw-medium text-truncate mb-0 pe-2">Forest Retreat Cabin</h5>
+                            <span class="small flex-shrink-0"><i class="bi bi-star-fill text-warning me-1"></i>4.7</span>
+                        </div>
+                        <p class="text-brand-muted small mb-3">Sapa, Việt Nam</p>
+                        <div class="d-flex gap-2 mb-3"><span class="stay-badge">Fireplace</span><span class="stay-badge">Nature</span></div>
+                        <div class="pt-2 border-top"><span class="stay-price fw-bold">3.200.000đ<span class="text-dark small fw-normal"> / đêm</span></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="stay-card h-100">
+                    <div class="stay-img-container">
+                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&auto=format&fit=crop&q=80" alt="Stay">
+                        <button class="wishlist-icon"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <h5 class="fs-6 fw-medium text-truncate mb-0 pe-2">The Grand Boutique Hotel</h5>
+                            <span class="small flex-shrink-0"><i class="bi bi-star-fill text-warning me-1"></i>5.0</span>
+                        </div>
+                        <p class="text-brand-muted small mb-3">Hà Nội, Việt Nam</p>
+                        <div class="d-flex gap-2 mb-3"><span class="stay-badge">Luxury</span><span class="stay-badge">Breakfast</span></div>
+                        <div class="pt-2 border-top"><span class="stay-price fw-bold">4.100.000đ<span class="text-dark small fw-normal"> / đêm</span></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-rovva-section">
+        <div class="container text-center">
+            <h3 class="text-brand-dark fw-bold mb-2">Tại sao chọn Rovva?</h3>
+            <p class="text-brand-muted mb-5 max-width-600 mx-auto">Chúng tôi mang đến giải pháp lưu trú hiện đại, giúp kỳ nghỉ của bạn trở nên hoàn hảo và đáng nhớ hơn bao giờ hết.</p>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle bg-primary-subtle text-brand-blue">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+                        <h5 class="fw-bold text-brand-dark mb-3">Dễ dàng</h5>
+                        <p class="text-brand-muted small mb-0">Đặt phòng chỉ trong vài bước với giao diện trực quan và thanh toán nhanh chóng.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle bg-success-subtle text-success">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5 class="fw-bold text-brand-dark mb-3">An toàn</h5>
+                        <p class="text-brand-muted small mb-0">Hệ thống bảo mật cao và các đối tác lưu trú được kiểm duyệt nghiệm ngặt.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-circle bg-warning-subtle text-warning">
+                            <i class="bi bi-tags-fill"></i>
+                        </div>
+                        <h5 class="fw-bold text-brand-dark mb-3">Tiết kiệm</h5>
+                        <p class="text-brand-muted small mb-0">Cam kết giá tốt nhất cùng các chương trình ưu đãi độc quyền cho thành viên.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<button class="sticky-bot-trigger" aria-label="Chatbot hỗ trợ">
+    <i class="bi bi-robot"></i>
+</button>
+
+<div id="footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Đồng bộ cấu trúc nạp Header & Footer dựa theo file Login của bạn
+    fetch('./components/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(err => console.warn("Lỗi nạp header:", err));
+
+    fetch('./components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(err => console.warn("Lỗi nạp footer:", err));
+</script>
+
+</body>
+</html>

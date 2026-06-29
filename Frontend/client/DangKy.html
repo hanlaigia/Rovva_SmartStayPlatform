@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -67,190 +67,57 @@
       <div class="c-45">Trợ giúp & Yêu cầu</div>
     </div>
   </div>
-  <div class="c-46">
-    <div class="c-47">
-      <img class="c-48" src="../Pictures/P1_Header_Dang_Ky.jpg" />
-      <div class="c-49"></div>
-    </div>
-    <div class="c-50">
-      <div class="c-51">
-        <div class="c-52">Rovva</div>
-      </div>
-      <div class="c-53">
-        <div class="c-54">Bắt đầu hành trình nghỉ dưỡng thông minh của bạn</div>
-      </div>
-      <div class="c-55">
-        <div class="c-56">Tham gia cùng hàng nghìn khách hàng để trải nghiệm dịch<br/>vụ lưu trú đẳng cấp, cá nhân hóa và quản lý đặt phòng dễ<br/>dàng nhất.</div>
-      </div>
-      <div class="c-57">
-        <div class="c-58">
-          <div class="c-59">
-            <div class="c-60"></div>
-          </div>
-          <div class="c-61">
-            <div class="c-62">Bảo mật thông tin tuyệt đối</div>
-          </div>
-        </div>
-        <div class="c-58">
-          <div class="c-59">
-            <div class="c-63"></div>
-          </div>
-          <div class="c-64">
-            <div class="c-62">Nhận ưu đãi độc quyền ngay khi đăng ký</div>
-          </div>
-        </div>
+  <div class="c-46 register-layout">
+    <div class="register-side">
+      <img class="register-hero-img" src="../Pictures/P1_Header_Dang_Ky.jpg" alt="Đăng ký Rovva" />
+      <div class="register-side__content">
+        <span class="register-badge">Rovva</span>
+        <h1>Bắt đầu hành trình nghỉ dưỡng thông minh của bạn</h1>
+        <p>Tham gia cùng hàng nghìn khách hàng để trải nghiệm dịch vụ lưu trú đẳng cấp, cá nhân hóa và quản lý đặt phòng dễ dàng nhất.</p>
+        <ul class="register-benefits">
+          <li>Bảo mật thông tin tuyệt đối</li>
+          <li>Nhận ưu đãi độc quyền ngay khi đăng ký</li>
+        </ul>
       </div>
     </div>
-    <div class="c-65">
-      <div class="c-66"></div>
-      <div class="c-67">
-        <div class="c-51">
-          <div class="c-68">Đăng ký</div>
-        </div>
-        <div class="c-51">
-          <div class="c-69">Vui lòng điền thông tin bên dưới để đăng ký.</div>
-        </div>
+    <div class="register-card">
+      <div class="register-card__header">
+        <h2>Đăng ký</h2>
+        <p>Vui lòng điền thông tin bên dưới để đăng ký tài khoản Rovva.</p>
       </div>
-      <div class="c-70">
-        <div class="c-71">
-          <div class="c-72">Họ và tên</div>
-          <div class="c-73">
-            <div class="c-74">
-              <div class="c-75">
-                <div class="c-76">Ví dụ: Nguyễn Văn A</div>
-              </div>
-            </div>
-            <div class="c-77">
-              <div class="c-78">
-                <div class="c-79"></div>
-                <div class="c-80"></div>
-                <div class="c-81"></div>
-              </div>
-            </div>
-          </div>
+      <div class="form-message" id="registerFormError"></div>
+      <form id="registerForm" class="register-form">
+        <div class="form-row">
+          <label for="registerName">Họ và tên</label>
+          <input id="registerName" name="name" type="text" placeholder="Ví dụ: Nguyễn Văn A" required />
         </div>
-        <div class="c-71">
-          <div class="c-72">Email</div>
-          <div class="c-73">
-            <div class="c-74">
-              <div class="c-75">
-                <div class="c-76">email@example.com</div>
-              </div>
-            </div>
-            <div class="c-77">
-              <div class="c-82">
-                <div class="c-83"></div>
-                <div class="c-84"></div>
-              </div>
-            </div>
-          </div>
+        <div class="form-row">
+          <label for="registerEmail">Email</label>
+          <input id="registerEmail" name="email" type="email" placeholder="email@example.com" required />
         </div>
-        <div class="c-85">
-          <div class="c-72">Số điện thoại</div>
-          <div class="c-86">
-            <div class="c-74">
-              <div class="c-75">
-                <div class="c-76">Ví dụ: 0912 345 678</div>
-              </div>
-            </div>
-            <div class="c-77">
-              <div class="c-78">
-                <div class="c-87"></div>
-                <div class="c-81"></div>
-              </div>
-            </div>
-          </div>
+        <div class="form-row">
+          <label for="registerPhone">Số điện thoại</label>
+          <input id="registerPhone" name="phone" type="tel" placeholder="0912 345 678" />
         </div>
-        <div class="c-71">
-          <div class="c-72">Mật khẩu</div>
-          <div class="c-73">
-            <div class="c-74">
-              <div class="c-88">
-                <div class="c-89">••••••••</div>
-                <div class="c-90">
-                  <div class="c-91"></div>
-                  <div class="c-92"></div>
-                  <div class="c-93"></div>
-                  <div class="c-13"></div>
-                </div>
-              </div>
-            </div>
-            <div class="c-77">
-              <div class="c-94">
-                <div class="c-95"></div>
-                <div class="c-96"></div>
-                <div class="c-97"></div>
-              </div>
-            </div>
-          </div>
+        <div class="form-row">
+          <label for="registerPassword">Mật khẩu</label>
+          <input id="registerPassword" name="password" type="password" placeholder="••••••••" required />
         </div>
-        <div class="c-71">
-          <div class="c-72">Xác nhận mật khẩu</div>
-          <div class="c-73">
-            <div class="c-74">
-              <div class="c-88">
-                <div class="c-89">••••••••</div>
-                <div class="c-98">
-                  <div class="c-91"></div>
-                  <div class="c-92"></div>
-                  <div class="c-99"></div>
-                  <div class="c-13"></div>
-                </div>
-              </div>
-            </div>
-            <div class="c-77">
-              <div class="c-100"></div>
-            </div>
-          </div>
+        <div class="form-row">
+          <label for="registerPasswordConfirm">Xác nhận mật khẩu</label>
+          <input id="registerPasswordConfirm" name="passwordConfirm" type="password" placeholder="••••••••" required />
         </div>
-        <div class="c-101">
-          <div class="c-102">
-            <div class="c-103"></div>
-          </div>
-          <div class="c-104">
-            <div class="c-105"><span class="c-106">Tôi đồng ý với </span><span class="c-107">Điều khoản & Điều kiện</span><span class="c-106"> và </span></div>
-            <div class="c-108">
-              <div class="c-109">Chính sách</div>
-            </div>
-            <div class="c-110"> của Rovva.</div>
-            <div class="c-111">bảo mật</div>
-          </div>
+        <div class="form-checkbox">
+          <input type="checkbox" id="registerTerms" name="terms" required />
+          <label for="registerTerms">Tôi đồng ý với <a href="#">Điều khoản & Điều kiện</a> và <a href="#">Chính sách</a> của Rovva.</label>
         </div>
-        <div class="c-112">
-          <div class="c-113"></div>
-          <div class="c-114">Đăng ký</div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Đăng ký</button>
+          <button class="btn btn-secondary" type="button" id="registerGoogle">Google</button>
+          <button class="btn btn-secondary" type="button" id="registerApple">Apple</button>
         </div>
-      </div>
-      <div class="c-115">
-        <div class="c-116">
-          <div class="c-117"></div>
-        </div>
-        <div class="c-118">
-          <div class="c-119">
-            <div class="c-120">HOẶC ĐĂNG KÝ BẰNG</div>
-          </div>
-        </div>
-      </div>
-      <div class="c-121">
-        <div class="c-122">
-          <img class="c-123" src="../Pictures/P1_Dang_Ky.jpg" />
-          <div class="c-124">
-            <div class="c-125">Google</div>
-          </div>
-        </div>
-        <div class="c-126">
-          <div class="c-127">
-            <div class="c-128"></div>
-          </div>
-          <div class="c-129">
-            <div class="c-125">Apple</div>
-          </div>
-        </div>
-      </div>
-      <div class="c-130">
-        <div class="c-131">Đã có tài khoản? </div>
-        <div class="c-132">Đăng nhập ngay</div>
-      </div>
+        <div class="form-helper">Đã có tài khoản? <a href="DangNhap.html">Đăng nhập ngay</a></div>
+      </form>
     </div>
   </div>
   <div class="c-133">

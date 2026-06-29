@@ -1,0 +1,23 @@
+/* Rovva Client */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #fff; }
+.page-dropdown_vandecanhotro { margin: 0 auto; }
+img { max-width: 100%; display: block; }
+
+.c-1 { width: 376px; height: 338px; position: relative; overflow: hidden }
+
+.c-2 { width: 339px; height: 44px; left: 24px; top: 32px; position: absolute; background: white; overflow: hidden }
+
+.c-3 { width: 241px; left: 23px; top: 10px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #191B23; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word }
+
+.c-4 { width: 339px; height: 44px; left: 24px; top: 76px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden }
+
+.c-5 { width: 339px; height: 44px; left: 24px; top: 120px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden }
+
+.c-6 { width: 339px; height: 44px; left: 24px; top: 164px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden }
+
+.c-7 { width: 277px; left: 23px; top: 10px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #191B23; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word }
+
+.c-8 { width: 339px; height: 44px; left: 24px; top: 208px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden }
+
+.c-9 { width: 339px; height: 44px; left: 24px; top: 252px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden }

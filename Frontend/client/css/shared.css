@@ -1,4 +1,5 @@
-/* Rovva Client - Shared responsive & navigation styles */
+/* Rovva Client - Shared responsive, navigation & transitions */
+
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -8,8 +9,20 @@ body {
   overflow-x: hidden;
   min-width: 0;
   background: #fff;
+  opacity: 1;
+  transition: opacity 0.25s ease;
 }
 
+body.page-enter {
+  opacity: 0;
+}
+
+body.page-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Page scaler wrapper ── */
 .page-scaler {
   width: 100%;
   margin: 0 auto;
@@ -21,6 +34,26 @@ body {
 .page-scaler > [class*="page-"] {
   transform-origin: top center;
   flex-shrink: 0;
+}
+
+/* >= 1440px: fixed layout, centered, no scale */
+@media (min-width: 1440px) {
+  .page-scaler {
+    background: #f5f6fa;
+  }
+
+  .page-scaler > [class*="page-"]:not(.page-home) {
+    width: 1440px;
+    max-width: 1440px;
+    transform: none !important;
+  }
+
+  .page-scaler > .page-home,
+  .page-scaler > .page-TrangChu_DaDangNhap {
+    width: 100%;
+    max-width: 1440px;
+    transform: none !important;
+  }
 }
 
 /* Clickable navigation elements */
@@ -103,7 +136,7 @@ body {
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
-/* Lucide Icon styles */
+/* Lucide Icon styles (legacy Figma pages) */
 .rovva-icon-svg {
   display: inline-flex !important;
   align-items: center;
@@ -196,12 +229,34 @@ body {
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* Custom header avatar element hover */
 .rovva-header-avatar {
   transition: opacity 0.2s;
 }
+
 .rovva-header-avatar:hover {
   opacity: 0.85;
 }
 
+/* Interactive hover for cards on refactored pages */
+.listing-card,
+.dest-card,
+.promo-card,
+.nav-item,
+.search-widget__btn,
+.promo-card__btn,
+.wishlist-banner__btn {
+  cursor: pointer;
+}
 
+.listing-card__favorite.is-active .icon svg {
+  fill: #BA1A1A;
+  stroke: #BA1A1A;
+}
+
+.redirect-message {
+  font-family: 'Inter', system-ui, sans-serif;
+  text-align: center;
+  margin-top: 40vh;
+  color: #0058BE;
+  font-size: 16px;
+}

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Rovva</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Inter',sans-serif;
+            margin:0;
+            background:#fff;
+        }
+
+        #header,
+        #footer{
+            width:100%;
+        }
+
+        .login-section{
+            min-height:400px;
+            padding:80px 0;
+            background:
+                    linear-gradient(
+                            rgba(0,88,190,.75),
+                            rgba(0,88,190,.75)
+                    ),
+                    url('./Pictures/CanHo_VT_House.jpg')
+                    center/cover no-repeat;
+        }
+
+        .hero-content{
+            color:#fff;
+            padding-right:50px;
+        }
+
+        .hero-title{
+            font-size:48px;
+            font-weight:700;
+            line-height:1.3;
+            margin-bottom:40px;
+        }
+
+        .hero-desc{
+            font-size:18px;
+            line-height:1.8;
+            color:rgba(255,255,255,.9);
+            margin-bottom:60px;
+        }
+
+        .customer-box{
+            display:flex;
+            align-items:center;
+            gap:20px;
+        }
+
+        .customer-images img{
+            width:40px;
+            height:40px;
+            border-radius:50%;
+            border:2px solid #fff;
+            margin-right:-12px;
+            object-fit:cover;
+        }
+
+        .customer-text{
+            font-size:14px;
+            font-weight:600;
+        }
+
+        .login-card{
+            background:#fff;
+            border-radius:12px;
+            padding:32px 24px;
+            box-shadow:0 10px 30px rgba(0,0,0,.15);
+        }
+
+        .login-card h2{
+            font-size:32px;
+            font-weight:600;
+            color:#0F294D;
+        }
+
+        .login-card p{
+            color:#191C20;
+        }
+
+        .form-label{
+            color:#0F294D;
+            font-size:14px;
+            font-weight:500;
+        }
+
+        .form-control{
+            height:56px;
+            border:1px solid #C2C6D6;
+            border-radius:8px;
+        }
+
+        .form-control:focus{
+            box-shadow:none;
+            border-color:#0058BE;
+        }
+
+        .btn-login{
+            width:100%;
+            height:56px;
+            border:none;
+            border-radius:8px;
+            background:#0058BE;
+            color:#fff;
+            font-weight:600;
+            font-size:16px;
+        }
+
+        .btn-login:hover{
+            background:#0049a1;
+        }
+
+        .divider{
+            text-align:center;
+            position:relative;
+            margin:32px 0;
+        }
+
+        .divider::before{
+            content:"";
+            width:100%;
+            height:1px;
+            background:#ccc;
+            position:absolute;
+            left:0;
+            top:50%;
+        }
+
+        .divider span{
+            background:#fff;
+            padding:0 16px;
+            position:relative;
+            z-index:2;
+            font-size:12px;
+            font-weight:600;
+        }
+
+        .social-btn{
+            width:100%;
+            height:56px;
+            border-radius:8px;
+            border:1px solid #C2C6D6;
+            background:#fff;
+        }
+
+        .social-btn:hover{
+            background:#f8f9fa;
+        }
+
+        @media(max-width:991px){
+
+            .hero-content{
+                text-align:center;
+                padding-right:0;
+                margin-bottom:40px;
+            }
+
+            .hero-title{
+                font-size:36px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div id="header"></div>
+
+<section class="login-section">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <!-- LEFT -->
+            <div class="col-lg-6 hero-content">
+
+                <h1 class="hero-title">
+                    Trải nghiệm kỳ nghỉ hoàn hảo
+                    bắt đầu từ đây.
+                </h1>
+
+                <p class="hero-desc">
+                    Chào mừng bạn quay trở lại với Rovva.
+                    Đăng nhập để tiếp tục hành trình khám phá
+                    và đặt chỗ tại những địa điểm tuyệt vời nhất thế giới.
+                </p>
+
+                <div class="customer-box">
+
+                    <div class="customer-images">
+                        <img src="./Pictures/Hinh_avata.jpg">
+                        <img src="./Pictures/Hinh_avata.jpg">
+                        <img src="./Pictures/Hinh_avata.jpg">
+                    </div>
+
+                    <div class="customer-text">
+                        Hơn 50,000 khách hàng đã tin dùng
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div class="col-lg-6">
+
+                <div class="login-card">
+
+                    <h2>Đăng nhập</h2>
+
+                    <p>Chào mừng bạn trở lại!</p>
+
+                    <form>
+
+                        <div class="mb-4">
+                            <label class="form-label">
+                                Địa chỉ Email
+                            </label>
+
+                            <input type="email"
+                                   class="form-control"
+                                   placeholder="example@smartstay.com">
+                        </div>
+
+                        <div class="mb-3">
+
+                            <div class="d-flex justify-content-between mb-2">
+
+                                <label class="form-label">
+                                    Mật khẩu
+                                </label>
+
+                                <a href="#"
+                                   class="text-decoration-none fw-semibold">
+                                    Quên mật khẩu?
+                                </a>
+
+                            </div>
+
+                            <input type="password"
+                                   class="form-control"
+                                   placeholder="••••••••">
+
+                        </div>
+
+                        <div class="form-check mb-4">
+
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   id="remember">
+
+                            <label class="form-check-label"
+                                   for="remember">
+                                Ghi nhớ đăng nhập
+                            </label>
+
+                        </div>
+
+                        <button class="btn-login">
+                            Đăng nhập
+                        </button>
+
+                    </form>
+
+                    <div class="divider">
+                        <span>HOẶC</span>
+                    </div>
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <button class="social-btn">
+                                <i class="bi bi-google"></i>
+                                Google
+                            </button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button class="social-btn">
+                                <i class="bi bi-apple"></i>
+                                Apple
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="text-center mt-4">
+                        Chưa có tài khoản?
+                        <a href="register.html"
+                           class="fw-bold text-decoration-none">
+                            Đăng ký ngay
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+<div id="footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    fetch('./components/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+
+    fetch('./components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+/* Rovva Client */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #fff; }
+.page-TroLyAI_2 { margin: 0 auto; }
+img { max-width: 100%; display: block; }
+
+.c-1 { width: 1440px; height: 1555px; position: relative; background: white; overflow: hidden }
+
+.c-2 { width: 1440px; height: 781px; left: 0px; top: 774px; position: absolute; background: #FAFAFA; overflow: hidden }
+
+.c-3 { width: 1440px; height: 352px; left: 0px; top: 0px; position: absolute; background: #5F6487; overflow: hidden }
+
+.c-4 { width: 1478px; height: 771px; left: 0px; top: -64px; position: absolute }
+
+.c-5 { width: 1440px; height: 368px; left: 0px; top: 0px; position: absolute; opacity: 0.90; background: #2784F0; overflow: hidden }
+
+.c-6 { width: 1172px; height: 259px; left: 268px; top: 45px; position: absolute; background: white; overflow: hidden }
+
+.c-7 { width: 350px; height: 112px; left: 254px; top: 22px; position: absolute }
+
+.c-8 { width: 224px; height: 32px; left: 676px; top: 99px; position: absolute; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 800; line-height: 28px; word-wrap: break-word }
+
+.c-9 { width: 446px; left: 708px; top: 197px; position: absolute; color: #060505; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word }
+
+.c-10 { width: 18px; height: 18px; left: 680px; top: 197px; position: absolute }
+
+.c-11 { width: 5.73px; height: 5.73px; left: 6.13px; top: 3.36px; position: absolute; background: #0F294D }
+
+.c-12 { width: 11.79px; height: 16.28px; left: 3.11px; top: 1px; position: absolute; background: #0F294D }
+
+.c-13 { width: 18px; height: 18px; left: 0px; top: 0px; position: absolute }
+
+.c-14 { width: 166px; height: 32px; left: 708px; top: 139px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-15 { width: 15px; height: 15px; left: 681px; top: 145px; position: absolute }
+
+.c-16 { width: 14.40px; height: 14.08px; left: 0.42px; top: 0.69px; position: absolute; background: #0F294D }
+
+.c-17 { width: 15px; height: 15px; left: 0px; top: 0px; position: absolute }
+
+.c-18 { width: 188px; height: 32px; left: 708px; top: 165px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-19 { width: 18px; height: 18px; left: 680px; top: 170px; position: absolute }
+
+.c-20 { width: 16px; height: 12px; left: 1px; top: 3px; position: absolute; background: #0F294D }
+
+.c-21 { width: 100px; height: 100px; left: 159px; top: 149px; position: absolute }
+
+.c-22 { width: 644px; height: 259px; left: -122px; top: 45px; position: absolute; border-radius: 129px }
+
+.c-23 { width: 1306px; height: 350px; left: 67px; top: 425px; position: absolute }
+
+.c-24 { width: 780px; height: 32px; left: 283px; top: 256px; position: absolute; text-align: center; color: #060505; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word }
+
+.c-25 { width: 780px; left: 283px; top: 275px; position: absolute; text-align: center; color: #060505; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 28px; word-wrap: break-word }
+
+.c-26 { width: 1269px; height: 0px; left: 24px; top: 232px; position: absolute; outline: 1px #CBCCD2 solid; outline-offset: -0.50px }
+
+.c-27 { width: 248px; height: 32px; left: 1123px; top: -1px; position: absolute; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 800; line-height: 28px; word-wrap: break-word }
+
+.c-28 { width: 248px; height: 32px; left: 1123px; top: 42px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-29 { width: 248px; height: 32px; left: 1123px; top: 74px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-30 { width: 248px; height: 32px; left: 848px; top: -1px; position: absolute; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 800; line-height: 28px; word-wrap: break-word }
+
+.c-31 { width: 248px; height: 32px; left: 848px; top: 42px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-32 { width: 248px; height: 32px; left: 848px; top: 74px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-33 { width: 248px; height: 32px; left: 848px; top: 106px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-34 { width: 248px; height: 32px; left: 848px; top: 138px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-35 { width: 248px; height: 32px; left: 573px; top: 0px; position: absolute; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 800; line-height: 28px; word-wrap: break-word }
+
+.c-36 { width: 248px; height: 32px; left: 573px; top: 43px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-37 { width: 248px; height: 32px; left: 573px; top: 75px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-38 { width: 248px; height: 32px; left: 298px; top: 0px; position: absolute; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 800; line-height: 28px; word-wrap: break-word }
+
+.c-39 { width: 248px; height: 32px; left: 298px; top: 43px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-40 { width: 248px; height: 32px; left: 298px; top: 75px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-41 { width: 224px; height: 32px; left: 23px; top: -1px; position: absolute; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 800; line-height: 28px; word-wrap: break-word }
+
+.c-42 { width: 117px; height: 32px; left: 23px; top: 42px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-43 { width: 180px; height: 32px; left: 23px; top: 74px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-44 { width: 248px; height: 32px; left: 23px; top: 106px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-45 { width: 139px; height: 32px; left: 23px; top: 138px; position: absolute; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 28px; word-wrap: break-word }
+
+.c-46 { width: 774px; height: 683px; left: 306px; top: 90px; position: absolute; background: rgba(242, 243, 253, 0.30); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 9px; display: inline-flex }
+
+.c-47 { align-self: stretch; padding-left: 32px; padding-right: 32px; padding-top: 16px; padding-bottom: 16px; background: rgba(255, 255, 255, 0.80); border-bottom: 1px rgba(194, 198, 214, 0.30) solid; backdrop-filter: blur(6px); justify-content: space-between; align-items: center; display: inline-flex }
+
+.c-48 { justify-content: flex-start; align-items: center; gap: 8px; display: flex }
+
+.c-49 { flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-50 { width: 22px; height: 22px; background: #0058BE }
+
+.c-51 { justify-content: center; display: flex; flex-direction: column; color: #0058BE; font-size: 20px; font-family: Inter; font-weight: 900; line-height: 28px; word-wrap: break-word }
+
+.c-52 { align-self: stretch; height: 481px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: center; display: flex }
+
+.c-53 { width: 100%; height: 486px; max-width: 800px; position: relative }
+
+.c-54 { width: 100px; height: 112px; padding-bottom: 32px; left: 337px; top: 47px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-55 { width: 100px; height: 100px; position: relative; background: linear-gradient(180deg, #0058BE 0%, #3189EE 100%); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 9999px }
+
+.c-56 { left: 30.34px; top: 32.33px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex }
+
+.c-57 { width: 39.33px; height: 35.33px; background: white }
+
+.c-58 { padding-bottom: 16px; left: 267px; top: 159px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-59 { flex-direction: column; justify-content: flex-start; align-items: center; display: flex }
+
+.c-60 { text-align: center; justify-content: center; display: flex; flex-direction: column; color: #0F294D; font-size: 24px; font-family: Inter; font-weight: 700; line-height: 40px; word-wrap: break-word }
+
+.c-61 { width: 663px; left: 56px; top: 209px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #424754; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word }
+
+.c-62 { width: 658px; height: 104px; left: 59px; top: 279px; position: absolute }
+
+.c-63 { padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px; left: 50px; top: 0px; position: absolute; background: #F3F3F9; border-radius: 9999px; outline: 1px rgba(194, 198, 214, 0.50) solid; outline-offset: -1px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex }
+
+.c-64 { flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex }
+
+.c-65 { width: 15px; height: 15px; background: #0058BE }
+
+.c-66 { text-align: center; justify-content: center; display: flex; flex-direction: column; color: #0058BE; font-size: 16px; font-family: Inter; font-weight: 500; line-height: 24px; word-wrap: break-word }
+
+.c-67 { padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px; left: 314.04px; top: 58px; position: absolute; background: #F3F3F9; border-radius: 9999px; outline: 1px rgba(194, 198, 214, 0.50) solid; outline-offset: -1px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex }
+
+.c-68 { width: 15px; height: 13.50px; background: #0058BE }
+
+.c-69 { padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px; left: 358px; top: 0px; position: absolute; background: #F3F3F9; border-radius: 9999px; outline: 1px rgba(194, 198, 214, 0.50) solid; outline-offset: -1px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex }
+
+.c-70 { width: 13.50px; height: 15px; background: #0058BE }
+
+.c-71 { padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px; left: 97px; top: 58px; position: absolute; background: #F3F3F9; border-radius: 9999px; outline: 1px rgba(194, 198, 214, 0.50) solid; outline-offset: -1px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex }
+
+.c-72 { width: 14.98px; height: 15px; background: #0058BE }
+
+.c-73 { align-self: stretch; padding: 24px; background: linear-gradient(0deg, #F9F9FF 0%, #F9F9FF 50%, rgba(249, 249, 255, 0) 100%); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex }
+
+.c-74 { width: 100%; height: 63px; max-width: 800px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex }
+
+.c-75 { width: 726px; height: 63px; left: 0px; top: 0px; position: absolute; background: rgba(0, 88, 190, 0.05); box-shadow: 24px 24px 24px; border-radius: 16px; filter: blur(12px) }
+
+.c-76 { align-self: stretch; height: 63px; padding: 8px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 16px; outline: 1px #C2C6D6 solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex }
+
+.c-77 { align-self: stretch; padding: 12px; overflow: hidden; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-78 { flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-79 { align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: #6B7280; font-size: 15px; font-family: Inter; font-weight: 400; line-height: 22px; word-wrap: break-word }
+
+.c-80 { width: 23px; height: 20px; background: #0058BE }
+
+.c-81 { width: 360px; height: 684px; padding: 24px; left: 1080px; top: 90px; position: absolute; background: rgba(243, 243, 249, 0.50); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-left: 1px #C2C6D6 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex }
+
+.c-82 { align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex }
+
+.c-83 { align-self: stretch; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex }
+
+.c-84 { justify-content: center; display: flex; flex-direction: column; color: #0F294D; font-size: 14px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word }
+
+.c-85 { align-self: stretch; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); overflow: hidden; border-radius: 16px; outline: 1px #C2C6D6 solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex }
+
+.c-86 { align-self: stretch; height: 128px; position: relative; flex-direction: column; justify-content: center; align-items: flex-start; display: flex }
+
+.c-87 { align-self: stretch; flex: 1 1 0; position: relative }
+
+.c-88 { width: 309px; height: 128px; left: 407px; top: -10.50px; position: absolute; background: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0) 100%) }
+
+.c-89 { align-self: stretch; padding: 16px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: flex }
+
+.c-90 { align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex }
+
+.c-91 { align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: #191C20; font-size: 16px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word }
+
+.c-92 { align-self: stretch; padding-top: 12px; justify-content: center; align-items: flex-start; gap: 8px; display: inline-flex }
+
+.c-93 { width: 258px; height: 36px; position: relative; background: rgba(33, 112, 228, 0.10); border-radius: 8px }
+
+.c-94 { width: 14.67px; height: 12.67px; left: 100.39px; top: 11.42px; position: absolute }
+
+.c-95 { width: 14.67px; height: 12.67px; left: 63px; top: 11px; position: absolute; background: #0058BE }
+
+.c-96 { width: 144px; left: 73px; top: 8px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #0058BE; font-size: 13px; font-family: Inter; font-weight: 500; line-height: 19.50px; word-wrap: break-word }
+
+.c-97 { width: 309px; height: 2px; left: 0px; top: 0px; position: absolute; background: linear-gradient(90deg, #0058BE 0%, rgba(0, 88, 190, 0) 100%); border-top-left-radius: 16px; border-top-right-radius: 16px }
+
+.c-98 { width: 305px; padding: 20px; left: 0px; top: 90px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-99 { align-self: stretch; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: #0058BE; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: inline-flex }
+
+.c-100 { width: 11.67px; height: 11.67px; background: white }
+
+.c-101 { text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 16px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word }
+
+.c-102 { width: 305px; height: 478px; padding-left: 12px; padding-right: 12px; left: 0px; top: 178px; position: absolute; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex }
+
+.c-103 { align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex }
+
+.c-104 { align-self: stretch; padding-left: 12px; padding-right: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex }
+
+.c-105 { overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex }
+
+.c-106 { justify-content: center; display: flex; flex-direction: column; color: rgba(66, 71, 84, 0.70); font-size: 15px; font-family: Inter; font-weight: 600; line-height: 20px; word-wrap: break-word }
+
+.c-107 { align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: flex }
+
+.c-108 { align-self: stretch; padding: 12px; border-radius: 8px; justify-content: flex-start; align-items: center; gap: 12px; display: inline-flex }
+
+.c-109 { width: 15px; height: 15px; background: #424754 }
+
+.c-110 { padding-right: 7.50px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-111 { justify-content: center; display: flex; flex-direction: column; color: #424754; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word }
+
+.c-112 { width: 269px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex }
+
+.c-113 { align-self: stretch; padding-right: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex }
+
+.c-114 { width: 269px; padding: 12px; border-radius: 8px; justify-content: flex-start; align-items: center; gap: 12px; display: inline-flex }
+
+.c-115 { width: 13.50px; height: 15px; background: #424754 }
+
+.c-116 { width: 231px; padding-right: 8.67px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-117 { width: 305px; height: 118px; padding: 16px; left: 0px; top: 656px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px rgba(0, 0, 0, 0.20) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-118 { align-self: stretch; padding: 8px; border-radius: 12px; justify-content: flex-start; align-items: center; gap: 12px; display: inline-flex }
+
+.c-119 { flex: 1 1 0; height: 63px; position: relative; border-radius: 12px }
+
+.c-120 { width: 47px; height: 47px; left: 0px; top: 8px; position: absolute; border-radius: 50px }
+
+.c-121 { width: 225px; left: 65px; top: 5px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 33.60px; word-wrap: break-word }
+
+.c-122 { width: 79px; height: 16px; left: 65px; top: 35px; position: absolute; background: #FFDCC6; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 9999px; outline: 1px rgba(146, 71, 0, 0.20) solid; outline-offset: -1px }
+
+.c-123 { width: 10px; height: 10px; left: 12px; top: 3px; position: absolute }
+
+.c-124 { width: 10px; height: 10px; left: 0px; top: 0px; position: absolute; background: #B75B00 }
+
+.c-125 { width: 38px; height: 15px; left: 26px; top: 0px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #0F294D; font-size: 7px; font-family: Inter; font-weight: 500; line-height: 16.80px; letter-spacing: 0.14px; word-wrap: break-word }
+
+.c-126 { width: 4px; height: 16px; background: #727785 }
+
+.c-127 { width: 1440px; height: 84px; left: 0px; top: 0px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) }
+
+.c-128 { width: 1440px; height: 84px; left: 0px; top: 0px; position: absolute; background: white }
+
+.c-129 { width: 176px; height: 83px; padding: 10px; left: 903px; top: 1px; position: absolute; background: white; justify-content: center; align-items: center; gap: 10px; display: inline-flex }
+
+.c-130 { text-align: center; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 700; line-height: 28px; word-wrap: break-word }
+
+.c-131 { width: 16px; height: 16px; position: relative }
+
+.c-132 { width: 13px; height: 4px; left: 1.50px; top: 6.50px; position: absolute; background: #0F294D }
+
+.c-133 { width: 151px; height: 83px; padding: 10px; left: 555px; top: 0px; position: absolute; background: white; justify-content: center; align-items: center; gap: 10px; display: inline-flex }
+
+.c-134 { width: 13px; height: 4px; left: 1.50px; top: 6.50px; position: absolute; background: black }
+
+.c-135 { width: 151px; height: 83px; padding: 10px; left: 720px; top: 0px; position: absolute; background: white; justify-content: center; align-items: center; gap: 10px; display: inline-flex }
+
+.c-136 { width: 144px; height: 46px; left: 21px; top: 17px; position: absolute }
+
+.c-137 { width: 151px; height: 83px; padding: 10px; left: 225px; top: 0px; position: absolute; background: white; justify-content: center; align-items: center; gap: 10px; display: inline-flex }
+
+.c-138 { width: 151px; height: 83px; padding: 10px; left: 390px; top: 1px; position: absolute; background: white; justify-content: center; align-items: center; gap: 10px; display: inline-flex }
+
+.c-139 { width: 255px; height: 62px; left: 1141px; top: 11px; position: absolute }
+
+.c-140 { padding: 8px; left: 0px; top: 11px; position: absolute; justify-content: flex-start; align-items: center; gap: 3.99px; display: inline-flex }
+
+.c-141 { width: 20px; height: 18.35px; background: #0F294D }
+
+.c-142 { text-align: center; justify-content: center; display: flex; flex-direction: column; color: #0F294D; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word }
+
+.c-143 { padding: 8px; left: 126.08px; top: 13px; position: absolute; flex-direction: column; justify-content: center; align-items: center; display: inline-flex }
+
+.c-144 { justify-content: center; align-items: flex-start; display: inline-flex }
+
+.c-145 { width: 16px; height: 20px; background: #0F294D }
+
+.c-146 { width: 8px; height: 8px; left: 16.02px; top: 8px; position: absolute; background: #BA1A1A; border-radius: 9999px }
+
+.c-147 { left: 174.08px; top: 11px; position: absolute; flex-direction: column; justify-content: center; align-items: center; display: inline-flex }
+
+.c-148 { padding: 4px; background: #ECEDF7; border-radius: 9999px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex }
+
+.c-149 { width: 32px; height: 32px; position: relative; border-radius: 9999px }
+
+.c-150 { padding-right: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex }
+
+.c-151 { width: 13.50px; height: 9px; background: #424754 }

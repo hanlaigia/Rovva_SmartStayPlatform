@@ -7,734 +7,605 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/TrangKhach.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/home.css">
   <link rel="stylesheet" href="./css/shared.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="./js/auth.js"></script>
   <script src="./js/app.js"></script>
 </head>
 <body>
-<div class="page-TrangKhach c-1">
-  <div class="c-2">
-    <div class="c-3">
-      <div class="c-4">Đà Nẵng</div>
+<div class="page-TrangKhach page-home">
+
+  <!-- Header -->
+  <header class="site-header">
+    <img class="site-header__logo" src="../Pictures/Logo.jpg" alt="Rovva" />
+    <nav class="site-header__nav">
+      <a class="nav-item nav-item--active" href="TrangKhach.html">Trang chủ</a>
+      <a class="nav-item" href="DacQuyen_KhuyenMai.html">Ưu đãi</a>
+      <a class="nav-item" href="ChinhSach.html">Chính sách</a>
+      <a class="nav-item" href="TroGiup_YeuCau.html">Hỗ trợ</a>
+      <a class="nav-item" href="VeChungToi.html">Trở thành Host</a>
+    </nav>
+    <div class="header-actions">
+      <a class="nav-item" href="DangNhap.html">Đăng nhập</a>
+      <a class="nav-item nav-item--btn" href="DangKy.html">Đăng ký</a>
     </div>
-    <div class="c-3">
-      <div class="c-5">Việt Nam • 1000+ Stays</div>
-    </div>
-  </div>
-  <div class="c-6">
-    <div class="c-7">
-      <div class="c-8">
-        <div class="c-9">
-          <div class="c-10">Tìm kiếm kỳ nghỉ mơ ước của bạn</div>
+  </header>
+
+  <main class="page-home__main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__content">
+        <h1 class="hero__title">Tìm kiếm kỳ nghỉ mơ ước của bạn</h1>
+        <p class="hero__subtitle">Hôm nay bạn muốn đi đâu để tận hưởng kỳ nghỉ tiếp theo?</p>
+      </div>
+      <div class="search-widget hero__search">
+        <div class="search-widget__field">
+          <span class="icon icon--md"><i data-lucide="map-pin"></i></span>
+          <div>
+            <div class="search-widget__label">Địa điểm</div>
+            <div class="search-widget__placeholder">Bạn muốn đi đâu?</div>
+          </div>
         </div>
-        <div class="c-11">
-          <div class="c-12"></div>
-          <div class="c-13">
-            <div class="c-14">
-              <div class="c-15"></div>
-            </div>
-            <div class="c-16">
-              <div class="c-17">
-                <div class="c-18">Địa điểm</div>
-              </div>
-              <div class="c-19">
-                <div class="c-20">
-                  <div class="c-21">Bạn muốn đi đâu?</div>
-                </div>
-              </div>
-            </div>
+        <div class="search-widget__field">
+          <span class="icon icon--md"><i data-lucide="calendar"></i></span>
+          <div>
+            <div class="search-widget__label">Ngày đi - về</div>
+            <div class="search-widget__placeholder">Thêm ngày</div>
           </div>
-          <div class="c-22">
-            <div class="c-14">
-              <div class="c-23"></div>
-            </div>
-            <div class="c-16">
-              <div class="c-24">
-                <div class="c-18">Ngày đi - về</div>
-              </div>
-              <div class="c-25">
-                <div class="c-20">
-                  <div class="c-21">Thêm ngày</div>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div class="search-widget__field">
+          <span class="icon icon--md"><i data-lucide="users"></i></span>
+          <div>
+            <div class="search-widget__label">Số người</div>
+            <div class="search-widget__placeholder">Thêm khách</div>
           </div>
-          <div class="c-26">
-            <div class="c-14">
-              <div class="c-27"></div>
-            </div>
-            <div class="c-28">
-              <div class="c-29">
-                <div class="c-18">Số người</div>
-              </div>
-              <div class="c-30">
-                <div class="c-20">
-                  <div class="c-21">Thêm khách</div>
-                </div>
-              </div>
-            </div>
+        </div>
+        <button class="search-widget__btn" type="button">
+          <span class="icon icon--md"><i data-lucide="search"></i></span>
+          Tìm kiếm
+        </button>
+      </div>
+    </section>
+
+    <!-- Promo cards -->
+    <section class="promo-row" id="promo-section">
+      <article class="promo-card promo-card--blue">
+        <img class="promo-card__bg" src="../Pictures/P2_Dac_quyen&Khuyen_mai.jpg" alt="" aria-hidden="true" />
+        <div class="promo-card__overlay"></div>
+        <div class="promo-card__content">
+          <span class="promo-card__badge">Ưu đãi thành viên mới</span>
+          <h2 class="promo-card__title">Giảm 10% cho lần đặt phòng<br>đầu tiên</h2>
+          <p class="promo-card__desc">Áp dụng cho tất cả khách sạn trên hệ thống.</p>
+          <button class="promo-card__btn" type="button">Nhận mã ngay</button>
+        </div>
+      </article>
+      <article class="promo-card promo-card--green">
+        <img class="promo-card__bg" src="../Pictures/P1_Dac_quyen&Khuyen_mai.jpg" alt="" aria-hidden="true" />
+        <div class="promo-card__overlay"></div>
+        <div class="promo-card__content">
+          <span class="promo-card__badge">Đặc quyền thành viên</span>
+          <h2 class="promo-card__title">Miễn phí bữa sáng cho các<br>kỳ nghỉ cuối tuần</h2>
+          <p class="promo-card__desc">Áp dụng cho các booking đặt trước 7 ngày.</p>
+          <button class="promo-card__btn" type="button">Xem chi tiết</button>
+        </div>
+      </article>
+      <article class="promo-card promo-card--orange">
+        <img class="promo-card__bg" src="../Pictures/P_Xu_thuong.jpg" alt="" aria-hidden="true" />
+        <div class="promo-card__overlay"></div>
+        <div class="promo-card__content">
+          <span class="promo-card__badge">Tích lũy xu</span>
+          <h2 class="promo-card__title">Nhận ngay 20 xu thưởng khi mời bạn bè tham gia</h2>
+          <p class="promo-card__desc">Sử dụng Xu cho đơn đặt phòng.</p>
+          <button class="promo-card__btn" type="button">Khám phá ngay</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Destinations -->
+    <section class="destinations-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Quà tặng dành riêng cho bạn</h2>
+          <p class="section-subtitle">Ưu đãi đặc biệt dành cho mọi thành viên của Smart Stay</p>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-btn" type="button" data-carousel="dest-prev" aria-label="Trước">
+            <span class="icon icon--sm"><i data-lucide="chevron-left"></i></span>
+          </button>
+          <button class="carousel-btn carousel-btn--active" type="button" data-carousel="dest-next" aria-label="Sau">
+            <span class="icon icon--sm"><i data-lucide="chevron-right"></i></span>
+          </button>
+        </div>
+      </div>
+      <div class="destinations-grid" id="destinations-grid">
+        <a class="dest-card" href="TongLuuTru.html">
+          <img src="../Pictures/Hinh_khachsanpullman.jpg" alt="Vũng Tàu" />
+          <div class="dest-card__label">
+            <span class="dest-card__name">Vũng Tàu</span>
+            <span class="dest-card__meta">Việt Nam • 550+ Stays</span>
           </div>
-          <div class="c-31">
-            <div class="c-14">
-              <div class="c-32"></div>
-            </div>
-            <div class="c-33">Tìm kiếm</div>
+        </a>
+        <a class="dest-card" href="TongLuuTru.html">
+          <img src="../Pictures/P1_Dac_quyen&Khuyen_mai.jpg" alt="Sapa" />
+          <div class="dest-card__label">
+            <span class="dest-card__name">Sapa</span>
+            <span class="dest-card__meta">Việt Nam • 450+ Stays</span>
           </div>
+        </a>
+        <a class="dest-card" href="TongLuuTru.html">
+          <img src="../Pictures/P2_Dac_quyen&Khuyen_mai.jpg" alt="Đà Lạt" />
+          <div class="dest-card__label">
+            <span class="dest-card__name">Đà Lạt</span>
+            <span class="dest-card__meta">Việt Nam • 890+ Stays</span>
+          </div>
+        </a>
+        <a class="dest-card" href="TongLuuTru.html">
+          <img src="../Pictures/KS_code_DaNang.jpg" alt="Đà Nẵng" />
+          <div class="dest-card__label">
+            <span class="dest-card__name">Đà Nẵng</span>
+            <span class="dest-card__meta">Việt Nam • 1000+ Stays</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Trending listings -->
+    <section class="listings-section">
+      <div class="section-header">
+        <h2 class="section-title">Điểm đến xu hướng</h2>
+        <div class="carousel-nav">
+          <button class="carousel-btn" type="button" data-carousel="trend-prev" aria-label="Trước">
+            <span class="icon icon--sm"><i data-lucide="chevron-left"></i></span>
+          </button>
+          <button class="carousel-btn carousel-btn--active" type="button" data-carousel="trend-next" aria-label="Sau">
+            <span class="icon icon--sm"><i data-lucide="chevron-right"></i></span>
+          </button>
+        </div>
+      </div>
+      <div class="listings-row" id="trending-row">
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/KS_code_DaNang.jpg" alt="Ocean View Luxury Suite" />
+            <button class="listing-card__favorite" type="button" aria-label="Yêu thích">
+              <span class="icon icon--sm"><i data-lucide="heart"></i></span>
+            </button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Ocean View Luxury Suite</h3>
+              <div class="listing-card__rating">
+                <span class="icon"><i data-lucide="star"></i></span> 4.9
+              </div>
+            </div>
+            <p class="listing-card__location">Đà Nẵng, Việt Nam</p>
+            <div class="listing-card__tags">
+              <span class="tag">Free Wi-Fi</span>
+              <span class="tag">Pool</span>
+            </div>
+            <p class="listing-card__price"><strong>2.500.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/CanHo_VT_House.jpg" alt="Urban Chic Loft" />
+            <button class="listing-card__favorite" type="button" aria-label="Yêu thích">
+              <span class="icon icon--sm"><i data-lucide="heart"></i></span>
+            </button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Urban Chic Loft</h3>
+              <div class="listing-card__rating">
+                <span class="icon"><i data-lucide="star"></i></span> 4.8
+              </div>
+            </div>
+            <p class="listing-card__location">TP. Hồ Chí Minh</p>
+            <div class="listing-card__tags">
+              <span class="tag">Gym</span>
+              <span class="tag">Balcony</span>
+            </div>
+            <p class="listing-card__price"><strong>1.850.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/P1_Dac_quyen&Khuyen_mai.jpg" alt="Forest Retreat Cabin" />
+            <button class="listing-card__favorite" type="button" aria-label="Yêu thích">
+              <span class="icon icon--sm"><i data-lucide="heart"></i></span>
+            </button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Forest Retreat Cabin</h3>
+              <div class="listing-card__rating">
+                <span class="icon"><i data-lucide="star"></i></span> 4.7
+              </div>
+            </div>
+            <p class="listing-card__location">Sapa, Việt Nam</p>
+            <div class="listing-card__tags">
+              <span class="tag">Fireplace</span>
+              <span class="tag">Nature</span>
+            </div>
+            <p class="listing-card__price"><strong>3.200.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/Hinh_khachsanpullman.jpg" alt="The Grand Boutique Hotel" />
+            <button class="listing-card__favorite" type="button" aria-label="Yêu thích">
+              <span class="icon icon--sm"><i data-lucide="heart"></i></span>
+            </button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">The Grand Boutique Hotel</h3>
+              <div class="listing-card__rating">
+                <span class="icon"><i data-lucide="star"></i></span> 5.0
+              </div>
+            </div>
+            <p class="listing-card__location">Hà Nội, Việt Nam</p>
+            <div class="listing-card__tags">
+              <span class="tag">Luxury</span>
+              <span class="tag">Breakfast</span>
+            </div>
+            <p class="listing-card__price"><strong>4.100.000đ</strong> / đêm</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HCM listings -->
+    <section class="listings-section">
+      <div class="section-header">
+        <h2 class="section-title">Lưu trú nổi bật tại Thành phố Hồ Chí Minh</h2>
+        <div class="carousel-nav">
+          <button class="carousel-btn" type="button" data-carousel="hcm-prev" aria-label="Trước">
+            <span class="icon icon--sm"><i data-lucide="chevron-left"></i></span>
+          </button>
+          <button class="carousel-btn carousel-btn--active" type="button" data-carousel="hcm-next" aria-label="Sau">
+            <span class="icon icon--sm"><i data-lucide="chevron-right"></i></span>
+          </button>
+        </div>
+      </div>
+      <div class="listings-row" id="hcm-row">
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/CanHo_VT_House.jpg" alt="Urban Chic Loft" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Urban Chic Loft</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.8</div>
+            </div>
+            <p class="listing-card__location">TP. Hồ Chí Minh</p>
+            <div class="listing-card__tags"><span class="tag">Gym</span><span class="tag">Balcony</span></div>
+            <p class="listing-card__price"><strong>1.850.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/KS_code_DaNang.jpg" alt="Ocean View Luxury Suite" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Ocean View Luxury Suite</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.9</div>
+            </div>
+            <p class="listing-card__location">Đà Nẵng, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Free Wi-Fi</span><span class="tag">Pool</span></div>
+            <p class="listing-card__price"><strong>2.500.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/P_Xu_thuong.jpg" alt="Forest Retreat Cabin" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Forest Retreat Cabin</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.7</div>
+            </div>
+            <p class="listing-card__location">Sapa, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Fireplace</span><span class="tag">Nature</span></div>
+            <p class="listing-card__price"><strong>3.200.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/Hinh_khachsanpullman.jpg" alt="The Grand Boutique Hotel" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">The Grand Boutique Hotel</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 5.0</div>
+            </div>
+            <p class="listing-card__location">Hà Nội, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Luxury</span><span class="tag">Breakfast</span></div>
+            <p class="listing-card__price"><strong>4.100.000đ</strong> / đêm</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Da Nang listings -->
+    <section class="listings-section">
+      <div class="section-header">
+        <h2 class="section-title">Nơi lưu trú được ưa chuộng tại Đà Nẵng</h2>
+        <div class="carousel-nav">
+          <button class="carousel-btn" type="button" data-carousel="dn-prev" aria-label="Trước">
+            <span class="icon icon--sm"><i data-lucide="chevron-left"></i></span>
+          </button>
+          <button class="carousel-btn carousel-btn--active" type="button" data-carousel="dn-next" aria-label="Sau">
+            <span class="icon icon--sm"><i data-lucide="chevron-right"></i></span>
+          </button>
+        </div>
+      </div>
+      <div class="listings-row" id="danang-row">
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/KS_code_DaNang.jpg" alt="Ocean View Luxury Suite" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Ocean View Luxury Suite</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.9</div>
+            </div>
+            <p class="listing-card__location">Đà Nẵng, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Free Wi-Fi</span><span class="tag">Pool</span></div>
+            <p class="listing-card__price"><strong>2.500.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/CanHo_VT_House.jpg" alt="Urban Chic Loft" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Urban Chic Loft</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.8</div>
+            </div>
+            <p class="listing-card__location">TP. Hồ Chí Minh</p>
+            <div class="listing-card__tags"><span class="tag">Gym</span><span class="tag">Balcony</span></div>
+            <p class="listing-card__price"><strong>1.850.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/P1_Dac_quyen&Khuyen_mai.jpg" alt="Forest Retreat Cabin" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Forest Retreat Cabin</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.7</div>
+            </div>
+            <p class="listing-card__location">Sapa, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Fireplace</span><span class="tag">Nature</span></div>
+            <p class="listing-card__price"><strong>3.200.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/Hinh_khachsanpullman.jpg" alt="The Grand Boutique Hotel" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">The Grand Boutique Hotel</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 5.0</div>
+            </div>
+            <p class="listing-card__location">Hà Nội, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Luxury</span><span class="tag">Breakfast</span></div>
+            <p class="listing-card__price"><strong>4.100.000đ</strong> / đêm</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Da Lat listings -->
+    <section class="listings-section">
+      <div class="section-header">
+        <h2 class="section-title">Nơi lưu trú được ưa chuộng tại Đà Lạt</h2>
+        <div class="carousel-nav">
+          <button class="carousel-btn" type="button" data-carousel="dl-prev" aria-label="Trước">
+            <span class="icon icon--sm"><i data-lucide="chevron-left"></i></span>
+          </button>
+          <button class="carousel-btn carousel-btn--active" type="button" data-carousel="dl-next" aria-label="Sau">
+            <span class="icon icon--sm"><i data-lucide="chevron-right"></i></span>
+          </button>
+        </div>
+      </div>
+      <div class="listings-row" id="dalat-row">
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/P2_Dac_quyen&Khuyen_mai.jpg" alt="Forest Retreat Cabin" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Forest Retreat Cabin</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.7</div>
+            </div>
+            <p class="listing-card__location">Đà Lạt, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Fireplace</span><span class="tag">Nature</span></div>
+            <p class="listing-card__price"><strong>3.200.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/KS_code_DaNang.jpg" alt="Ocean View Luxury Suite" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Ocean View Luxury Suite</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.9</div>
+            </div>
+            <p class="listing-card__location">Đà Nẵng, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Free Wi-Fi</span><span class="tag">Pool</span></div>
+            <p class="listing-card__price"><strong>2.500.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/CanHo_VT_House.jpg" alt="Urban Chic Loft" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">Urban Chic Loft</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 4.8</div>
+            </div>
+            <p class="listing-card__location">TP. Hồ Chí Minh</p>
+            <div class="listing-card__tags"><span class="tag">Gym</span><span class="tag">Balcony</span></div>
+            <p class="listing-card__price"><strong>1.850.000đ</strong> / đêm</p>
+          </div>
+        </article>
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img src="../Pictures/Hinh_khachsanpullman.jpg" alt="The Grand Boutique Hotel" />
+            <button class="listing-card__favorite" type="button"><span class="icon icon--sm"><i data-lucide="heart"></i></span></button>
+          </div>
+          <div class="listing-card__body">
+            <div class="listing-card__header">
+              <h3 class="listing-card__title">The Grand Boutique Hotel</h3>
+              <div class="listing-card__rating"><span class="icon"><i data-lucide="star"></i></span> 5.0</div>
+            </div>
+            <p class="listing-card__location">Hà Nội, Việt Nam</p>
+            <div class="listing-card__tags"><span class="tag">Luxury</span><span class="tag">Breakfast</span></div>
+            <p class="listing-card__price"><strong>4.100.000đ</strong> / đêm</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Why Choose Rovva -->
+    <section class="why-rovva">
+      <div class="why-rovva__header">
+        <h2 class="why-rovva__title">Tại sao chọn Rovva?</h2>
+        <p class="why-rovva__subtitle">Chúng tôi mang đến giải pháp lưu trú hiện đại, giúp kỳ nghỉ của bạn trở nên hoàn hảo và đáng nhớ hơn bao giờ hết.</p>
+      </div>
+      <div class="why-rovva__grid">
+        <div class="why-rovva__card">
+          <div class="why-rovva__icon-wrap why-rovva__icon-wrap--blue">
+            <span class="icon icon--lg"><i data-lucide="zap"></i></span>
+          </div>
+          <h3 class="why-rovva__card-title">Dễ dàng</h3>
+          <p class="why-rovva__card-desc">Đặt phòng chỉ trong vài bước với giao diện trực quan và thanh toán nhanh chóng.</p>
+        </div>
+        <div class="why-rovva__card">
+          <div class="why-rovva__icon-wrap why-rovva__icon-wrap--green">
+            <span class="icon icon--lg"><i data-lucide="shield-check"></i></span>
+          </div>
+          <h3 class="why-rovva__card-title">An toàn</h3>
+          <p class="why-rovva__card-desc">Hệ thống bảo mật đa lớp và các đối tác lưu trú được kiểm duyệt nghiêm ngặt.</p>
+        </div>
+        <div class="why-rovva__card">
+          <div class="why-rovva__icon-wrap why-rovva__icon-wrap--orange">
+            <span class="icon icon--lg"><i data-lucide="percent"></i></span>
+          </div>
+          <h3 class="why-rovva__card-title">Tiết kiệm</h3>
+          <p class="why-rovva__card-desc">Cam kết giá tốt nhất cùng các chương trình ưu đãi độc quyền cho thành viên.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wishlist CTA (for guest) -->
+    <section class="wishlist-banner">
+      <div class="wishlist-banner__inner">
+        <div class="wishlist-banner__icon">
+          <span class="icon icon--lg"><i data-lucide="heart"></i></span>
+        </div>
+        <div class="wishlist-banner__content">
+          <h3>Bắt đầu chuyến đi của bạn</h3>
+          <p>Đăng nhập hoặc đăng ký tài khoản để lưu lại những nơi lưu trú yêu thích và nhận nhiều ưu đãi hơn!</p>
+        </div>
+      </div>
+      <button class="wishlist-banner__btn" type="button">Đăng nhập ngay</button>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-footer__hero">
+      <img src="../Pictures/footer.jpg" alt="" aria-hidden="true" />
+      <div class="site-footer__hero-overlay"></div>
+      <img class="site-footer__side-img" src="../Pictures/footer2.jpg" alt="" aria-hidden="true" />
+      <div class="site-footer__contact-card">
+        <img class="site-footer__logo" src="../Pictures/Logo.jpg" alt="Rovva" />
+        <h4 class="site-footer__contact-title">Liên hệ</h4>
+        <div class="footer-contact-row">
+          <span class="icon icon--sm"><i data-lucide="map-pin"></i></span>
+          <span>The Sarus Building, 67 Nguyễn Thị Minh Khai, Bến Thành, Hồ Chí Minh 700000</span>
+        </div>
+        <div class="footer-contact-row">
+          <span class="icon icon--sm"><i data-lucide="phone"></i></span>
+          <span>Hotline: 1900 2005</span>
+        </div>
+        <div class="footer-contact-row">
+          <span class="icon icon--sm"><i data-lucide="mail"></i></span>
+          <span>Email: hello@rovva.vn</span>
         </div>
       </div>
     </div>
-    <div class="c-34">
-      <div class="c-35">
-        <div class="c-36"></div>
+    <div class="site-footer__links">
+      <div class="footer-col">
+        <h4>Hỗ trợ</h4>
+        <a href="ChuyenDiSapToi.html">Chuyến đi của tôi</a>
+        <a href="CauHoi.html">Câu hỏi thường gặp (FAQ)</a>
+        <a href="HuongDan_Dat_Huy_TrangThai1.html">Hướng dẫn Đặt phòng / Hủy đặt phòng</a>
+        <a href="TroGiup_YeuCau.html">Trợ giúp & Yêu cầu</a>
       </div>
-      <div class="c-37"></div>
-    </div>
-    <div class="c-38">
-      <div class="c-39">
-        <div class="c-3">
-          <div class="c-40">Lưu trú nổi bật</div>
-        </div>
-        <div class="c-3">
-          <div class="c-41">Lựa chọn hàng đầu dựa trên đánh giá của người dùng</div>
-        </div>
+      <div class="footer-col">
+        <h4>Ưu đãi</h4>
+        <a href="DacQuyen_KhuyenMai.html">Đặc quyền & Khuyến mãi</a>
+        <a href="XuThuong.html">Chương trình Xu thưởng</a>
       </div>
-      <div class="c-42">
-        <div class="c-43">
-          <div class="c-44">
-            <img class="c-45" src="../Pictures/KS_code_DaNang.jpg" />
-            <div class="c-46">
-              <div class="c-47">
-                <div class="c-48"></div>
-              </div>
-            </div>
-          </div>
-          <div class="c-49">
-            <div class="c-50">
-              <div class="c-51">
-                <div class="c-52">Ocean View Luxury Suite</div>
-              </div>
-              <div class="c-53">
-                <div class="c-54">
-                  <div class="c-55"></div>
-                </div>
-                <div class="c-54">
-                  <div class="c-52">4.9</div>
-                </div>
-              </div>
-            </div>
-            <div class="c-3">
-              <div class="c-56">Đà Nẵng, Việt Nam</div>
-            </div>
-            <div class="c-57">
-              <div class="c-58">
-                <div class="c-18">Free Wi-Fi</div>
-              </div>
-              <div class="c-58">
-                <div class="c-18">Pool</div>
-              </div>
-            </div>
-            <div class="c-59">
-              <div class="c-60">
-                <div class="c-61"><span class="c-62">2.500.000đ</span><span class="c-63"> / đêm</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="c-43">
-          <div class="c-44">
-            <img class="c-45" src="../Pictures/CanHo_VT_House.jpg" />
-            <div class="c-46">
-              <div class="c-47">
-                <div class="c-48"></div>
-              </div>
-            </div>
-          </div>
-          <div class="c-49">
-            <div class="c-50">
-              <div class="c-51">
-                <div class="c-52">Urban Chic Loft</div>
-              </div>
-              <div class="c-53">
-                <div class="c-54">
-                  <div class="c-55"></div>
-                </div>
-                <div class="c-54">
-                  <div class="c-52">4.8</div>
-                </div>
-              </div>
-            </div>
-            <div class="c-3">
-              <div class="c-56">TP. Hồ Chí Minh</div>
-            </div>
-            <div class="c-57">
-              <div class="c-58">
-                <div class="c-18">Gym</div>
-              </div>
-              <div class="c-58">
-                <div class="c-18">Balcony</div>
-              </div>
-            </div>
-            <div class="c-59">
-              <div class="c-60">
-                <div class="c-61"><span class="c-62">1.850.000đ</span><span class="c-63"> / đêm</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="c-43">
-          <div class="c-44">
-            <img class="c-45" src="../Pictures/P3_Trang_Khach.jpg" />
-            <div class="c-46">
-              <div class="c-47">
-                <div class="c-48"></div>
-              </div>
-            </div>
-          </div>
-          <div class="c-49">
-            <div class="c-50">
-              <div class="c-51">
-                <div class="c-52">Forest Retreat Cabin</div>
-              </div>
-              <div class="c-53">
-                <div class="c-54">
-                  <div class="c-55"></div>
-                </div>
-                <div class="c-54">
-                  <div class="c-52">4.7</div>
-                </div>
-              </div>
-            </div>
-            <div class="c-3">
-              <div class="c-56">Sapa, Việt Nam</div>
-            </div>
-            <div class="c-57">
-              <div class="c-58">
-                <div class="c-18">Fireplace</div>
-              </div>
-              <div class="c-58">
-                <div class="c-18">Nature</div>
-              </div>
-            </div>
-            <div class="c-59">
-              <div class="c-60">
-                <div class="c-61"><span class="c-62">3.200.000đ</span><span class="c-63"> / đêm</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="c-43">
-          <div class="c-44">
-            <img class="c-45" src="../Pictures/P4_Trang_Khach.jpg" />
-            <div class="c-46">
-              <div class="c-47">
-                <div class="c-48"></div>
-              </div>
-            </div>
-          </div>
-          <div class="c-49">
-            <div class="c-50">
-              <div class="c-51">
-                <div class="c-52">The Grand Boutique Hotel</div>
-              </div>
-              <div class="c-53">
-                <div class="c-54">
-                  <div class="c-55"></div>
-                </div>
-                <div class="c-54">
-                  <div class="c-52">5.0</div>
-                </div>
-              </div>
-            </div>
-            <div class="c-3">
-              <div class="c-56">Hà Nội, Việt Nam</div>
-            </div>
-            <div class="c-57">
-              <div class="c-58">
-                <div class="c-18">Luxury</div>
-              </div>
-              <div class="c-58">
-                <div class="c-18">Breakfast</div>
-              </div>
-            </div>
-            <div class="c-59">
-              <div class="c-60">
-                <div class="c-61"><span class="c-62">4.100.000đ</span><span class="c-63"> / đêm</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="c-43">
-          <div class="c-44">
-            <div class="c-45"></div>
-            <div class="c-46">
-              <div class="c-47">
-                <div class="c-48"></div>
-              </div>
-            </div>
-          </div>
-          <div class="c-49">
-            <div class="c-50">
-              <div class="c-51">
-                <div class="c-52">Sunset Beach Villa</div>
-              </div>
-              <div class="c-53">
-                <div class="c-54">
-                  <div class="c-55"></div>
-                </div>
-                <div class="c-54">
-                  <div class="c-52">4.9</div>
-                </div>
-              </div>
-            </div>
-            <div class="c-3">
-              <div class="c-56">Phu Quoc, Việt Nam</div>
-            </div>
-            <div class="c-57">
-              <div class="c-58">
-                <div class="c-18">Villa</div>
-              </div>
-              <div class="c-58">
-                <div class="c-18">Private Pool</div>
-              </div>
-            </div>
-            <div class="c-59">
-              <div class="c-60">
-                <div class="c-61"><span class="c-62">3.500.000đ</span><span class="c-63"> / đêm</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="c-43">
-          <div class="c-44">
-            <div class="c-45"></div>
-            <div class="c-46">
-              <div class="c-47">
-                <div class="c-48"></div>
-              </div>
-            </div>
-          </div>
-          <div class="c-49">
-            <div class="c-50">
-              <div class="c-51">
-                <div class="c-52">Heritage Colonial House</div>
-              </div>
-              <div class="c-53">
-                <div class="c-54">
-                  <div class="c-55"></div>
-                </div>
-                <div class="c-54">
-                  <div class="c-52">4.7</div>
-                </div>
-              </div>
-            </div>
-            <div class="c-3">
-              <div class="c-56">Hội An, Việt Nam</div>
-            </div>
-            <div class="c-57">
-              <div class="c-58">
-                <div class="c-18">Heritage</div>
-              </div>
-              <div class="c-58">
-                <div class="c-18">AC</div>
-              </div>
-            </div>
-            <div class="c-59">
-              <div class="c-60">
-                <div class="c-61"><span class="c-62">1.200.000đ</span><span class="c-63"> / đêm</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="c-43">
-          <div class="c-44">
-            <div class="c-45"></div>
-            <div class="c-46">
-              <div class="c-47">
-                <div class="c-48"></div>
-              </div>
-            </div>
-          </div>
-          <div class="c-49">
-            <div class="c-50">
-              <div class="c-51">
-                <div class="c-52">Mountain Peak Studio</div>
-              </div>
-              <div class="c-53">
-                <div class="c-54">
-                  <div class="c-55"></div>
-                </div>
-                <div class="c-54">
-                  <div class="c-52">4.8</div>
-                </div>
-              </div>
-            </div>
-            <div class="c-3">
-              <div class="c-56">Hà Giang, Việt Nam</div>
-            </div>
-            <div class="c-57">
-              <div class="c-58">
-                <div class="c-18">View</div>
-              </div>
-              <div class="c-58">
-                <div class="c-18">Heater</div>
-              </div>
-            </div>
-            <div class="c-59">
-              <div class="c-60">
-                <div class="c-61"><span class="c-62">950.000đ</span><span class="c-63"> / đêm</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="c-43">
-          <div class="c-44">
-            <div class="c-45"></div>
-            <div class="c-46">
-              <div class="c-47">
-                <div class="c-48"></div>
-              </div>
-            </div>
-          </div>
-          <div class="c-49">
-            <div class="c-50">
-              <div class="c-51">
-                <div class="c-52">Serene Lakefront Cabin</div>
-              </div>
-              <div class="c-53">
-                <div class="c-54">
-                  <div class="c-55"></div>
-                </div>
-                <div class="c-54">
-                  <div class="c-52">5.0</div>
-                </div>
-              </div>
-            </div>
-            <div class="c-3">
-              <div class="c-56">Tuyen Lam Lake, Đà Lạt</div>
-            </div>
-            <div class="c-57">
-              <div class="c-58">
-                <div class="c-18">Quiet</div>
-              </div>
-              <div class="c-58">
-                <div class="c-18">Kitchen</div>
-              </div>
-            </div>
-            <div class="c-59">
-              <div class="c-60">
-                <div class="c-61"><span class="c-62">2.100.000đ</span><span class="c-63"> / đêm</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="footer-col">
+        <h4>Chính sách & Điều khoản</h4>
+        <a href="ChinhSach.html">Chính sách hoạt động</a>
+        <a href="DieuKhoan.html">Điều khoản & Điều kiện sử dụng</a>
+      </div>
+      <div class="footer-col">
+        <h4>Dành cho đối tác</h4>
+        <a href="VeChungToi.html">Đăng ký Host</a>
+        <a href="DieuKhoan.html">Điều khoản & Chính sách Host</a>
+        <a href="TroGiup_YeuCau.html">Trợ giúp đối tác</a>
+        <a href="VeChungToi.html">Quản lý phòng & giá</a>
+      </div>
+      <div class="footer-col">
+        <h4>Về chúng tôi</h4>
+        <a href="VeChungToi.html">Giới thiệu Rovva</a>
+        <a href="VeChungToi.html">Tin tức và Blog</a>
       </div>
     </div>
-    <div class="c-64">
-      <div class="c-65">
-        <img class="c-45" src="../Pictures/P5_Trang_Khach.jpg" />
-        <div class="c-66">
-          <div class="c-67">
-            <div class="c-3">
-              <div class="c-4">Sapa</div>
-            </div>
-            <div class="c-3">
-              <div class="c-5">Việt Nam • 450+ Stays</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img class="c-68" src="../Pictures/Hinh_khachsanpullman.jpg" />
-      <div class="c-69">
-        <div class="c-3">
-          <div class="c-4">Vũng Tàu</div>
-        </div>
-        <div class="c-3">
-          <div class="c-5">Việt Nam • 550+ Stays</div>
-        </div>
-      </div>
-      <img class="c-70" src="../Pictures/P7_Trang_Khach.jpg" />
-      <div class="c-71">
-        <div class="c-67">
-          <div class="c-3">
-            <div class="c-4">Đà Lạt</div>
-          </div>
-          <div class="c-3">
-            <div class="c-5">Việt Nam • 890+ Stays</div>
-          </div>
-        </div>
-      </div>
-      <img class="c-72" src="../Pictures/KS_code_DaNang.jpg" />
-      <div class="c-73">
-        <div class="c-3">
-          <div class="c-4">Đà Nẵng</div>
-        </div>
-        <div class="c-3">
-          <div class="c-5">Việt Nam • 1000+ Stays</div>
-        </div>
-      </div>
+    <div class="site-footer__bottom">
+      <p>Công ty TNHH Rovva Việt Nam - The Sarus Building, 67 Nguyễn Thị Minh Khai, Bến Thành, Hồ Chí Minh 700000</p>
+      <p>Copyright 2025 Rovva. All rights reserved</p>
     </div>
-    <div class="c-74">
-      <div class="c-75">Điểm đến xu hướng</div>
-    </div>
-    <div class="c-76">
-      <div class="c-77">
-        <div class="c-78">
-          <div class="c-14">
-            <div class="c-79"></div>
-          </div>
-        </div>
-        <div class="c-78">
-          <div class="c-14">
-            <div class="c-80"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="c-81">
-      <div class="c-82">Dành riêng cho người dùng mới</div>
-      <div class="c-83">
-        <div class="c-78">
-          <div class="c-14">
-            <div class="c-79"></div>
-          </div>
-        </div>
-        <div class="c-78">
-          <div class="c-14">
-            <div class="c-80"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="c-84">
-      <div class="c-85">
-        <div class="c-86">
-          <div class="c-87">
-            <div class="c-88">
-              <div class="c-89">Nhiều ưu đãi giảm giá du<br/>lịch hơn dành cho người<br/>dùng mới!</div>
-            </div>
-            <div class="c-90">
-              <img class="c-91" src="../Pictures/P1_Dac_quyen&Khuyen_mai.jpg" />
-            </div>
-          </div>
-        </div>
-        <div class="c-92">
-          <div class="c-93">Đăng Nhập Và Nhận Tất Cả</div>
-        </div>
-      </div>
-      <div class="c-94">
-        <div class="c-95">
-          <div class="c-96">
-            <div class="c-3">
-              <div class="c-97">Giảm Giá Đến 10...</div>
-            </div>
-            <div class="c-98">
-              <div class="c-99">Vé Máy bay | Chỉ dành cho ứng<br/>dụng</div>
-            </div>
-          </div>
-          <div class="c-100">
-            <div class="c-101">
-              <div class="c-33">Nhận Tất Cả</div>
-            </div>
-          </div>
-        </div>
-        <div class="c-102">
-          <div class="c-103">
-            <div class="c-104"></div>
-          </div>
-        </div>
-        <div class="c-105"></div>
-        <div class="c-106"></div>
-      </div>
-      <div class="c-94">
-        <div class="c-107">
-          <div class="c-108">
-            <div class="c-3">
-              <div class="c-97">Giảm Giá 10%</div>
-            </div>
-            <div class="c-109">
-              <div class="c-99">Khách Sạn</div>
-            </div>
-          </div>
-          <div class="c-100">
-            <div class="c-101">
-              <div class="c-33">Nhận Tất Cả</div>
-            </div>
-          </div>
-        </div>
-        <div class="c-102">
-          <div class="c-54">
-            <div class="c-110"></div>
-          </div>
-        </div>
-        <div class="c-105"></div>
-        <div class="c-106"></div>
-      </div>
-    </div>
-    <div class="c-111">
-      <div class="c-112">
-        <div class="c-113">
-          <div class="c-114">
-            <div class="c-115">Tại sao chọn Rovva?</div>
-          </div>
-          <div class="c-116">
-            <div class="c-117">Chúng tôi mang đến giải pháp lưu trú hiện đại, giúp kỳ nghỉ của bạn trở nên hoàn hảo và<br/>đáng nhớ hơn bao giờ hết.</div>
-          </div>
-        </div>
-        <div class="c-118">
-          <div class="c-119">
-            <div class="c-120">
-              <div class="c-121">
-                <div class="c-14">
-                  <div class="c-122"></div>
-                </div>
-              </div>
-            </div>
-            <div class="c-123">
-              <div class="c-124">
-                <div class="c-125">Dễ dàng</div>
-              </div>
-            </div>
-            <div class="c-126">
-              <div class="c-117">Đặt phòng chỉ trong vài bước với giao diện<br/>trực quan và thanh toán nhanh chóng.</div>
-            </div>
-          </div>
-          <div class="c-127">
-            <div class="c-120">
-              <div class="c-128">
-                <div class="c-14">
-                  <div class="c-129"></div>
-                </div>
-              </div>
-            </div>
-            <div class="c-123">
-              <div class="c-124">
-                <div class="c-130">An toàn</div>
-              </div>
-            </div>
-            <div class="c-131">
-              <div class="c-117">Hệ thống bảo mật đa lớp và các đối tác lưu<br/>trú được kiểm duyệt nghiêm ngặt.</div>
-            </div>
-          </div>
-          <div class="c-132">
-            <div class="c-120">
-              <div class="c-133">
-                <div class="c-14">
-                  <div class="c-134"></div>
-                </div>
-              </div>
-            </div>
-            <div class="c-123">
-              <div class="c-124">
-                <div class="c-130">Tiết kiệm</div>
-              </div>
-            </div>
-            <div class="c-135">
-              <div class="c-117">Cam kết giá tốt nhất cùng các chương trình<br/>ưu đãi độc quyền cho thành viên.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="c-136">
-    <div class="c-137">
-      <img class="c-138" src="../Pictures/footer.jpg" />
-      <div class="c-139">
-        <div class="c-140">
-          <img class="c-141" src="../Pictures/Logo.jpg" />
-          <div class="c-142">Liên hệ</div>
-          <div class="c-143">The Sarus Building, 67 Nguyễn Thị Minh Khai, Bến Thành, Hồ Chí Minh 700000</div>
-          <div class="c-144">
-            <div class="c-145"></div>
-            <div class="c-146"></div>
-            <div class="c-147"></div>
-          </div>
-          <div class="c-148">Hotline: 1900 2005</div>
-          <div class="c-149">
-            <div class="c-150"></div>
-            <div class="c-151"></div>
-          </div>
-          <div class="c-152">Email: hellloanacea.vn</div>
-          <div class="c-153">
-            <div class="c-154"></div>
-            <div class="c-147"></div>
-          </div>
-          <div class="c-155"></div>
-        </div>
-      </div>
-    </div>
-    <img class="c-156" src="../Pictures/footer2.jpg" />
-    <div class="c-157">
-      <div class="c-158">Công ty TNHH Rovva Việt Nam - The Sarus Building, 67 Nguyễn Thị Minh Khai, Bến Thành, Hồ Chí Minh 700000</div>
-      <div class="c-159">Coppyright 2025 Rovva. All right reserved</div>
-      <div class="c-160"></div>
-      <div class="c-161">Về chúng tôi</div>
-      <div class="c-162">Giới thiệu Rovva</div>
-      <div class="c-163">Tin tức và Blog</div>
-      <div class="c-164">Dành cho đối tác</div>
-      <div class="c-165">Đăng ký Host</div>
-      <div class="c-166">Điều khoản & Chính sách Host</div>
-      <div class="c-167">Trợ giúp đối tác</div>
-      <div class="c-168">Quản lý phòng & giá</div>
-      <div class="c-169">Chính sách & Điều khoản</div>
-      <div class="c-170">Chính sách Hoạt động</div>
-      <div class="c-171">Điều khoản & Điều kiện sử dụng</div>
-      <div class="c-172">Ưu đãi</div>
-      <div class="c-173">Đặc quyền & Khuyến mãi</div>
-      <div class="c-174">Chương trình Xu thưởng</div>
-      <div class="c-175">Hỗ trợ <br/></div>
-      <div class="c-176">Chuyến đi của tôi</div>
-      <div class="c-177">Câu hỏi thường gặp (FAQ) </div>
-      <div class="c-178">Hướng dẫn Đặt phòng / Hủy đặt phòng</div>
-      <div class="c-179">Trợ giúp & Yêu cầu</div>
-    </div>
-  </div>
-  <div class="c-180">
-    <div class="c-181"></div>
-    <div class="c-181"></div>
-    <div data-state="close" class="c-182">
-      <div class="c-183">Trở thành Host</div>
-      <div class="c-184">
-        <div class="c-185"></div>
-      </div>
-    </div>
-    <div data-state="close" class="c-186">
-      <div class="c-183">Hỗ trợ</div>
-      <div class="c-184">
-        <div class="c-187"></div>
-      </div>
-    </div>
-    <div data-state="close" class="c-188">
-      <div class="c-183">Chính sách</div>
-      <div class="c-184">
-        <div class="c-187"></div>
-      </div>
-    </div>
-    <img class="c-189" src="../Pictures/Logo.jpg" />
-    <div class="c-190">
-      <div class="c-183">Trang chủ</div>
-    </div>
-    <div data-state="close" class="c-191">
-      <div class="c-183">Ưu đãi</div>
-      <div class="c-184">
-        <div class="c-185"></div>
-      </div>
-    </div>
-    <div class="c-192">
-      <div class="c-183">Đăng nhập</div>
-    </div>
-    <div class="c-193">
-      <div class="c-183">Đăng ký</div>
-    </div>
-  </div>
-  <div class="c-194">
-    <div class="c-195">
-      <div class="c-196">
-        <div class="c-197"></div>
-      </div>
-    </div>
-  </div>
+  </footer>
+
+  <!-- Chatbot FAB -->
+  <button class="chatbot-fab" type="button" aria-label="Trợ lý Rovva AI">
+    <span class="icon"><i data-lucide="bot"></i></span>
+  </button>
+
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
 </body>
 </html>
