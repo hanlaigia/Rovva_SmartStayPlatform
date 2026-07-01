@@ -1,0 +1,20 @@
+:root {
+    --primary-color: #0057FF;
+    --secondary-color: #6c757d;
+
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+
+    --bg-light: #F8F9FA;
+    --border-color: #E5E7EB;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --shadow:
+        0 2px 10px rgba(0,0,0,.08);
+
+    --font-family:
+        "Inter", sans-serif;
+}
