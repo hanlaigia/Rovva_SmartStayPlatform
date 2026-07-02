@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SmartStay Admin Portal - Hệ thống quản lý thông minh</title>
+  <meta name="description"
+    content="Trang quản trị hệ thống đặt phòng SmartStay Platform - Quản lý người dùng, phòng, khách sạn, booking, thanh toán và tranh chấp.">
+
+  <!-- Preload fonts to avoid layout shift -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app-container">
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo" id="sidebar-logo">QUẢN TRỊ</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <button class="nav-item active" data-target="dashboard" id="nav-dashboard">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </span>
+            <span class="nav-label">Tổng quan</span>
+          </button>
+
+          <button class="nav-item" data-target="users" id="nav-users">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Quản lý khách hàng</span>
+          </button>
+
+          <button class="nav-item" data-target="hosts" id="nav-hosts">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+                <path d="M9 22V12h6v10"></path>
+                <path d="M8 6h.01"></path>
+                <path d="M16 6h.01"></path>
+                <path d="M8 10h.01"></path>
+                <path d="M16 10h.01"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Quản lý đơn vị lưu trú</span>
+          </button>
+
+          <button class="nav-item" data-target="rooms" id="nav-rooms">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Quản lý phòng</span>
+          </button>
+
+          <button class="nav-item" data-target="bookings" id="nav-bookings">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Quản lý booking</span>
+          </button>
+
+          <button class="nav-item" data-target="disputes" id="nav-disputes">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </span>
+            <span class="nav-label">Quản lý tranh chấp</span>
+          </button>
+
+          <button class="nav-item" data-target="payments" id="nav-payments">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
+              </svg>
+            </span>
+            <span class="nav-label">Quản lý thanh toán</span>
+          </button>
+
+          <button class="nav-item" data-target="promotions" id="nav-promotions">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                <rect x="2" y="7" width="20" height="5"></rect>
+                <line x1="12" y1="22" x2="12" y2="7"></line>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Quản lý khuyến mãi</span>
+          </button>
+
+          <button class="nav-item" data-target="admins" id="nav-admins">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span class="nav-label">Quản lý quản trị viên</span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn" id="logout-button">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </span>
+          <span class="nav-label">Đăng xuất</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN VIEW LAYOUT -->
+    <div class="main-layout">
+      <!-- HEADER -->
+      <header class="header">
+        <div class="header-left">
+          <button class="toggle-sidebar-btn" id="toggle-sidebar" aria-label="Mở/đóng thanh công cụ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="header-right">
+          <!-- Notifications -->
+          <button class="notification-btn" aria-label="Xem thông báo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="notification-badge"></span>
+          </button>
+
+          <div class="divider"></div>
+
+          <!-- Profile info -->
+          <div class="user-profile">
+            <div class="user-avatar">AD</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEWPORT FOR DYNAMIC PAGES -->
+      <main class="content-viewport">
+
+        <!-- 1. DASHBOARD VIEW -->
+        <section class="view-container active" id="view-dashboard">
+          <div class="page-title-area page-title-area-with-filter">
+            <div class="page-title-text">
+              <h1 class="page-title">Tổng quan</h1>
+              <p class="page-subtitle">Thống kê và phân tích hoạt động hệ thống theo thời gian thực</p>
+            </div>
+            <div class="dashboard-filter-compact">
+              <select id="dashboard-filter-type" class="filter-select filter-select-sm" title="Lọc theo">
+                <option value="month" selected>Theo Tháng</option>
+                <option value="year">Cả Năm</option>
+              </select>
+              
+              <select id="dashboard-filter-month" class="filter-select filter-select-sm" title="Chọn tháng">
+                <option value="1">Tháng 1</option>
+                <option value="2">Tháng 2</option>
+                <option value="3">Tháng 3</option>
+                <option value="4">Tháng 4</option>
+                <option value="5">Tháng 5</option>
+                <option value="6">Tháng 6</option>
+                <option value="7" selected>Tháng 7</option>
+                <option value="8">Tháng 8</option>
+                <option value="9">Tháng 9</option>
+                <option value="10">Tháng 10</option>
+                <option value="11">Tháng 11</option>
+                <option value="12">Tháng 12</option>
+              </select>
+              
+              <select id="dashboard-filter-year" class="filter-select filter-select-sm" title="Chọn năm">
+                <option value="2026" selected>2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="stats-grid" id="dashboard-stats-grid">
+            <div class="stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Tổng doanh thu</span>
+                <span class="stat-value" id="dash-stat-revenue">124.1M ₫</span>
+                <span class="stat-change positive" id="dash-change-revenue">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                  +1.8%
+                </span>
+              </div>
+              <div class="stat-icon-wrapper bg-grad-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <span class="stat-label" id="dash-label-bookings">Booking trong tháng</span>
+                <span class="stat-value" id="dash-stat-bookings">62</span>
+                <span class="stat-change negative" id="dash-change-bookings">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  -0.1%
+                </span>
+              </div>
+              <div class="stat-icon-wrapper bg-grad-cyan">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Người dùng</span>
+                <span class="stat-value" id="dash-stat-users">2,832</span>
+                <span class="stat-change positive" id="dash-change-users">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                  +1.2%
+                </span>
+              </div>
+              <div class="stat-icon-wrapper bg-grad-teal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Chủ cơ sở lưu trú hoạt động</span>
+                <span class="stat-value" id="dash-stat-hosts">43</span>
+                <span class="stat-change positive" id="dash-change-hosts">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                  +0.0%
+                </span>
+              </div>
+              <div class="stat-icon-wrapper bg-grad-indigo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><path d="M9 22V12h6v10"></path></svg>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Tranh chấp</span>
+                <span class="stat-value" id="dash-stat-disputes">10</span>
+                <span class="stat-change negative" id="dash-change-disputes">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  -0.1%
+                </span>
+              </div>
+              <div class="stat-icon-wrapper bg-grad-red">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <span class="stat-label">Tỷ lệ hoàn thành</span>
+                <span class="stat-value" id="dash-stat-completion">88.6%</span>
+                <span class="stat-change positive" id="dash-change-completion">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                  +0.2%
+                </span>
+              </div>
+              <div class="stat-icon-wrapper bg-grad-emerald">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid" style="margin-bottom: 24px;">
+            <div class="card" style="grid-column: span 2;">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="card-title">Phân tích chuỗi thời gian: Lượt đặt phòng & Doanh thu</h2>
+              </div>
+              <div class="card-body" style="position: relative; height: 300px;">
+                <canvas id="revenueBookingChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); margin-bottom: 24px;">
+            <div class="card">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="card-title">Tỷ lệ trạng thái booking</h2>
+              </div>
+              <div class="card-body" style="position: relative; height: 280px; display: flex; justify-content: center;">
+                <canvas id="bookingStatusChart"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="card-title">Top 5 Đối tác doanh thu cao nhất</h2>
+              </div>
+              <div class="card-body" style="position: relative; height: 280px;">
+                <canvas id="topHotelsChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Chi tiết Top khách sạn</h2>
+              </div>
+              <div class="card-body">
+                <div class="list-container" id="dashboard-hotels-list">
+                  <div class="list-item">
+                    <div class="list-item-content">
+                      <div class="list-item-text">Resort Mekong Delta</div>
+                      <div class="list-item-subtext">342 đơn đặt</div>
+                    </div>
+                    <div class="list-item-right cell-highlight">85.0M ₫</div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-item-content">
+                      <div class="list-item-text">Luxury Beach Hotel</div>
+                      <div class="list-item-subtext">298 đơn đặt</div>
+                    </div>
+                    <div class="list-item-right cell-highlight">72.0M ₫</div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-item-content">
+                      <div class="list-item-text">Downtown Business Inn</div>
+                      <div class="list-item-subtext">267 đơn đặt</div>
+                    </div>
+                    <div class="list-item-right cell-highlight">64.5M ₫</div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-item-content">
+                      <div class="list-item-text">Mountain View Lodge</div>
+                      <div class="list-item-subtext">245 đơn đặt</div>
+                    </div>
+                    <div class="list-item-right cell-highlight">58.2M ₫</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Hoạt động gần đây</h2>
+              </div>
+              <div class="card-body">
+                <div class="list-container">
+                  <div class="list-item">
+                    <div class="list-item-content">
+                      <span class="status-indicator success"></span>
+                      <div>
+                        <div class="list-item-text">Đơn đặt phòng #12456 được xác nhận</div>
+                        <div class="list-item-subtext">5 phút trước</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-item-content">
+                      <span class="status-indicator warning"></span>
+                      <div>
+                        <div class="list-item-text">Tranh chấp mới được báo cáo</div>
+                        <div class="list-item-subtext">28 phút trước</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-item-content">
+                      <span class="status-indicator success"></span>
+                      <div>
+                        <div class="list-item-text">Thanh toán đã được xử lý</div>
+                        <div class="list-item-subtext">1 giờ trước</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-item">
+                    <div class="list-item-content">
+                      <span class="status-indicator info"></span>
+                      <div>
+                        <div class="list-item-text">Tài khoản chủ nhà được kích hoạt</div>
+                        <div class="list-item-subtext">2 giờ trước</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Xuất báo cáo</h2>
+            </div>
+            <div class="card-body">
+              <div class="report-grid">
+                <div class="report-item" onclick="triggerReportExport('Doanh thu')">
+                  <div class="report-item-info">
+                    <p>Báo cáo doanh thu</p>
+                    <span>PDF, Excel</span>
+                  </div>
+                  <span class="download-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  </span>
+                </div>
+                <div class="report-item" onclick="triggerReportExport('Tranh chấp')">
+                  <div class="report-item-info">
+                    <p>Báo cáo tranh chấp</p>
+                    <span>PDF, Excel</span>
+                  </div>
+                  <span class="download-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  </span>
+                </div>
+                <div class="report-item" onclick="triggerReportExport('Đặt phòng')">
+                  <div class="report-item-info">
+                    <p>Báo cáo đặt phòng</p>
+                    <span>PDF, Excel, CSV</span>
+                  </div>
+                  <span class="download-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  </span>
+                </div>
+                <div class="report-item" onclick="triggerReportExport('Vận hành')">
+                  <div class="report-item-info">
+                    <p>Báo cáo vận hành hệ thống</p>
+                    <span>PDF, Excel, CSV</span>
+                  </div>
+                  <span class="download-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. USER MANAGEMENT VIEW -->
+        <section class="view-container" id="view-users">
+          <div class="page-title-area">
+            <h1 class="page-title">Quản lý khách hàng</h1>
+            <p class="page-subtitle">Danh sách và quản lý tài khoản khách hàng</p>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="table-filter-bar">
+                <div class="search-box-wrapper">
+                  <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </span>
+                  <input type="text" class="search-input" id="search-users" placeholder="Tìm kiếm khách hàng..."
+                    onkeyup="filterTable('users-table', this.value)">
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table" id="users-table">
+                  <thead>
+                    <tr>
+                      <th>Tên</th>
+                      <th>Email</th>
+                      <th>SĐT</th>
+                      <th>Bookings</th>
+                      <th>Trạng thái</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Mock Row 1 -->
+                    <tr data-id="u1">
+                      <td class="cell-bold">Nguyễn Văn A</td>
+                      <td>nguyena@email.com</td>
+                      <td>0901234567</td>
+                      <td class="cell-bold">12</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('user', 'u1')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Khóa" onclick="toggleUserStatus('u1', 'blocked')">
+                            <svg class="lock-icon text-danger" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Mock Row 2 -->
+                    <tr data-id="u2">
+                      <td class="cell-bold">Trần Thị B</td>
+                      <td>tranb@email.com</td>
+                      <td>0902345678</td>
+                      <td class="cell-bold">8</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('user', 'u2')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Khóa" onclick="toggleUserStatus('u2', 'blocked')">
+                            <svg class="lock-icon text-danger" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Mock Row 3 -->
+                    <tr data-id="u3">
+                      <td class="cell-bold">Lê Văn C</td>
+                      <td>levc@email.com</td>
+                      <td>0903456789</td>
+                      <td class="cell-bold">0</td>
+                      <td><span class="badge badge-warning">Không hoạt động</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('user', 'u3')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Khóa" onclick="toggleUserStatus('u3', 'blocked')">
+                            <svg class="lock-icon text-danger" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Mock Row 4 -->
+                    <tr data-id="u4">
+                      <td class="cell-bold">Phạm Thị D</td>
+                      <td>phamd@email.com</td>
+                      <td>0904567890</td>
+                      <td class="cell-bold">23</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('user', 'u4')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Khóa" onclick="toggleUserStatus('u4', 'blocked')">
+                            <svg class="lock-icon text-danger" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Mock Row 5 -->
+                    <tr data-id="u5">
+                      <td class="cell-bold">Hoàng Văn E</td>
+                      <td>hoange@email.com</td>
+                      <td>0905678901</td>
+                      <td class="cell-bold">5</td>
+                      <td><span class="badge badge-danger">Bị khóa</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('user', 'u5')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Mở khóa" onclick="toggleUserStatus('u5', 'active')">
+                            <svg class="unlock-icon text-success" xmlns="http://www.w3.org/2000/svg" width="16"
+                              height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                              <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Pagination -->
+              <div class="pagination-area">
+                <p class="pagination-info">Hiển thị 5 trong 12,450 khách hàng</p>
+                <div class="pagination-buttons">
+                  <button class="page-btn" disabled>Trước</button>
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">Tiếp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. HOST MANAGEMENT VIEW -->
+        <section class="view-container" id="view-hosts">
+          <div class="page-title-area">
+            <h1 class="page-title">Quản lý đơn vị lưu trú</h1>
+            <p class="page-subtitle">Quản lý đơn đăng ký và duyệt các chủ nhà</p>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="table-filter-bar">
+                <div class="search-box-wrapper">
+                  <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </span>
+                  <input type="text" class="search-input" id="search-hosts" placeholder="Tìm kiếm host..."
+                    onkeyup="filterTable('hosts-table', this.value)">
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table" id="hosts-table">
+                  <thead>
+                    <tr>
+                      <th>Tên khách sạn</th>
+                      <th>Chủ sở hữu</th>
+                      <th>Phòng</th>
+                      <th>Doanh thu</th>
+                      <th>Đánh giá</th>
+                      <th>Trạng thái</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-id="h1">
+                      <td class="cell-bold flex-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="text-primary">
+                          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+                          <path d="M9 22V12h6v10"></path>
+                        </svg>
+                        Minh Resort
+                      </td>
+                      <td>Trần Minh Quân</td>
+                      <td class="cell-bold">45</td>
+                      <td class="cell-highlight">₫2.3M</td>
+                      <td class="cell-bold">4.8 ⭐</td>
+                      <td><span class="badge badge-success">Duyệt</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn btn-secondary btn-icon" title="Từ chối"
+                            onclick="changeHostStatus('h1', 'rejected')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="text-danger">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <line x1="15" y1="9" x2="9" y2="15"></line>
+                              <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="h2">
+                      <td class="cell-bold flex-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="text-primary">
+                          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+                          <path d="M9 22V12h6v10"></path>
+                        </svg>
+                        Beach Paradise
+                      </td>
+                      <td>Ngô Thị Lan</td>
+                      <td class="cell-bold">32</td>
+                      <td class="cell-highlight">₫1.8M</td>
+                      <td class="cell-bold">4.6 ⭐</td>
+                      <td><span class="badge badge-success">Duyệt</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn btn-secondary btn-icon" title="Từ chối"
+                            onclick="changeHostStatus('h2', 'rejected')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="text-danger">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <line x1="15" y1="9" x2="9" y2="15"></line>
+                              <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="h3">
+                      <td class="cell-bold flex-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="text-primary">
+                          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+                          <path d="M9 22V12h6v10"></path>
+                        </svg>
+                        City Hotel
+                      </td>
+                      <td>Võ Văn Tuấn</td>
+                      <td class="cell-bold">28</td>
+                      <td class="cell-highlight">₫1.2M</td>
+                      <td class="cell-bold">-</td>
+                      <td><span class="badge badge-warning">Chờ duyệt</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn btn-secondary btn-icon" title="Duyệt"
+                            onclick="changeHostStatus('h3', 'approved')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="text-success">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <polyline points="12 8 8 12 12 16"></polyline>
+                              <line x1="16" y1="12" x2="8" y2="12"></line>
+                            </svg>
+                          </button>
+                          <button class="btn btn-secondary btn-icon" title="Từ chối"
+                            onclick="changeHostStatus('h3', 'rejected')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="text-danger">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <line x1="15" y1="9" x2="9" y2="15"></line>
+                              <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="h4">
+                      <td class="cell-bold flex-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="text-primary">
+                          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+                          <path d="M9 22V12h6v10"></path>
+                        </svg>
+                        Mountain Stay
+                      </td>
+                      <td>Bùi Thanh Hương</td>
+                      <td class="cell-bold">15</td>
+                      <td class="cell-highlight">₫850K</td>
+                      <td class="cell-bold">4.9 ⭐</td>
+                      <td><span class="badge badge-success">Duyệt</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn btn-secondary btn-icon" title="Từ chối"
+                            onclick="changeHostStatus('h4', 'rejected')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="text-danger">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <line x1="15" y1="9" x2="9" y2="15"></line>
+                              <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="h5">
+                      <td class="cell-bold flex-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="text-primary">
+                          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+                          <path d="M9 22V12h6v10"></path>
+                        </svg>
+                        Luxury Suites
+                      </td>
+                      <td>Trường Thái Nguyên</td>
+                      <td class="cell-bold">60</td>
+                      <td class="cell-highlight">₫3.5M</td>
+                      <td class="cell-bold">-</td>
+                      <td><span class="badge badge-danger">Từ chối</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn btn-secondary btn-icon" title="Duyệt lại"
+                            onclick="changeHostStatus('h5', 'approved')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="text-success">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <polyline points="12 8 8 12 12 16"></polyline>
+                              <line x1="16" y1="12" x2="8" y2="12"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="pagination-area">
+                <p class="pagination-info">Hiển thị 5 trong 856 cơ sở lưu trú</p>
+                <div class="pagination-buttons">
+                  <button class="page-btn" disabled>Trước</button>
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">Tiếp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. ROOM MANAGEMENT VIEW -->
+        <section class="view-container" id="view-rooms">
+          <div class="page-title-area">
+            <h1 class="page-title">Quản lý phòng & khách sạn</h1>
+            <p class="page-subtitle">Quản lý danh sách phòng và thông tin chi tiết</p>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="table-filter-bar" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
+                <div class="search-box-wrapper" style="flex: 1; max-width: 300px; margin-bottom: 0;">
+                  <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </span>
+                  <input type="text" class="search-input" id="search-rooms" placeholder="Tìm kiếm phòng..."
+                    onkeyup="filterTable('rooms-table', this.value)">
+                </div>
+
+                <div class="filter-controls" style="display: flex; gap: 12px;">
+                  <select class="filter-select" id="filter-room-capacity">
+                    <option value="">Sức chứa (Tất cả)</option>
+                    <option value="1-2">1 - 2 người</option>
+                    <option value="3-4">3 - 4 người</option>
+                    <option value="5+">Từ 5 người</option>
+                  </select>
+
+                  <select class="filter-select" id="filter-room-price">
+                    <option value="">Mức giá (Tất cả)</option>
+                    <option value="2m">Dưới 2.000.000 ₫</option>
+                    <option value="2m-5m">2.000.000 ₫ - 5.000.000 ₫</option>
+                    <option value="5m-10m">5.000.000 ₫ - 10.000.000 ₫</option>
+                    <option value="10m">Trên 10.000.000 ₫</option>
+                  </select>
+                  <select class="filter-select" id="filter-room-status">
+                    <option value="">Trạng thái (Tất cả)</option>
+                    <option value="Hoạt động">Hoạt động</option>
+                    <option value="Chờ duyệt">Chờ duyệt</option>
+                    <option value="Không hoạt động">Không hoạt động</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table" id="rooms-table">
+                  <thead>
+                    <tr>
+                      <th>Tên phòng</th>
+                      <th>Khách sạn</th>
+                      <th>Sức chứa</th>
+                      <th>Giá/đêm</th>
+                      <th>Còn trống</th>
+                      <th>Trạng thái</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-id="r1">
+                      <td class="cell-bold">Phòng Deluxe</td>
+                      <td>Minh Resort</td>
+                      <td>2 người</td>
+                      <td class="cell-highlight">₫1.5M</td>
+                      <td class="cell-bold text-success" style="color:var(--success);">8 phòng</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('room', 'r1')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Chỉnh sửa" onclick="editDetails('room', 'r1')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="r2">
+                      <td class="cell-bold">Phòng Suite</td>
+                      <td>Beach Paradise</td>
+                      <td>4 người</td>
+                      <td class="cell-highlight">₫2.8M</td>
+                      <td class="cell-bold text-success" style="color:var(--success);">3 phòng</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('room', 'r2')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Chỉnh sửa" onclick="editDetails('room', 'r2')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="r3">
+                      <td class="cell-bold">Phòng Tiêu chuẩn</td>
+                      <td>City Hotel</td>
+                      <td>2 người</td>
+                      <td class="cell-highlight">₫800K</td>
+                      <td class="cell-bold text-success" style="color:var(--success);">12 phòng</td>
+                      <td><span class="badge badge-warning">Chờ duyệt</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('room', 'r3')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Chỉnh sửa" onclick="editDetails('room', 'r3')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="r4">
+                      <td class="cell-bold">Phòng VIP</td>
+                      <td>Mountain Stay</td>
+                      <td>6 người</td>
+                      <td class="cell-highlight">₫4.2M</td>
+                      <td class="cell-bold text-success" style="color:var(--success);">1 phòng</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('room', 'r4')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Chỉnh sửa" onclick="editDetails('room', 'r4')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="r5">
+                      <td class="cell-bold">Phòng Luxury</td>
+                      <td>Luxury Suites</td>
+                      <td>3 người</td>
+                      <td class="cell-highlight">₫3.5M</td>
+                      <td class="cell-bold text-danger" style="color:var(--danger);">Hết phòng</td>
+                      <td><span class="badge badge-danger">Không hoạt động</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('room', 'r5')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon" title="Chỉnh sửa" onclick="editDetails('room', 'r5')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="pagination-area">
+                <p class="pagination-info">Hiển thị 5 trong 2,450 phòng</p>
+                <div class="pagination-buttons">
+                  <button class="page-btn" disabled>Trước</button>
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">Tiếp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. BOOKING MANAGEMENT VIEW -->
+        <section class="view-container" id="view-bookings">
+          <div class="page-title-area">
+            <h1 class="page-title">Quản lý booking</h1>
+            <p class="page-subtitle">Theo dõi và quản lý các đơn đặt phòng</p>
+          </div>
+
+          <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="stat-card" style="padding: 16px;">
+              <div class="stat-info">
+                <span class="stat-label">Tổng booking</span>
+                <span class="stat-value">1,234</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--warning);">
+              <div class="stat-info">
+                <span class="stat-label">Chờ xác nhận</span>
+                <span class="stat-value">45</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--success);">
+              <div class="stat-info">
+                <span class="stat-label">Đã hoàn thành</span>
+                <span class="stat-value">892</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--danger);">
+              <div class="stat-info">
+                <span class="stat-label">Đã hủy</span>
+                <span class="stat-value">67</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="table-filter-bar">
+                <div class="search-box-wrapper">
+                  <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </span>
+                  <input type="text" class="search-input" id="search-bookings" placeholder="Tìm kiếm booking..."
+                    onkeyup="filterTable('bookings-table', this.value)">
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table" id="bookings-table">
+                  <thead>
+                    <tr>
+                      <th>ID Booking</th>
+                      <th>Khách hàng</th>
+                      <th>Khách sạn</th>
+                      <th>Check-in</th>
+                      <th>Check-out</th>
+                      <th>Giá trị</th>
+                      <th>Trạng thái</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-id="bk1">
+                      <td class="cell-highlight">BK001</td>
+                      <td class="cell-bold">Nguyễn Văn A</td>
+                      <td>Minh Resort</td>
+                      <td>2024-06-15</td>
+                      <td>2024-06-17</td>
+                      <td class="cell-bold">₫3M</td>
+                      <td><span class="badge badge-success">Xác nhận</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('booking', 'bk1')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon text-danger" title="Hủy"
+                            onclick="changeBookingStatus('bk1', 'cancelled')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <line x1="15" y1="9" x2="9" y2="15"></line>
+                              <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="bk2">
+                      <td class="cell-highlight">BK002</td>
+                      <td class="cell-bold">Trần Thị B</td>
+                      <td>Beach Paradise</td>
+                      <td>2024-06-16</td>
+                      <td>2024-06-18</td>
+                      <td class="cell-bold">₫5.6M</td>
+                      <td><span class="badge badge-success">Xác nhận</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('booking', 'bk2')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon text-danger" title="Hủy"
+                            onclick="changeBookingStatus('bk2', 'cancelled')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <line x1="15" y1="9" x2="9" y2="15"></line>
+                              <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="bk3">
+                      <td class="cell-highlight">BK003</td>
+                      <td class="cell-bold">Lê Văn C</td>
+                      <td>City Hotel</td>
+                      <td>2024-06-20</td>
+                      <td>2024-06-22</td>
+                      <td class="cell-bold">₫1.6M</td>
+                      <td><span class="badge badge-warning">Chờ xác nhận</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('booking', 'bk3')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon text-success" title="Xác nhận"
+                            onclick="changeBookingStatus('bk3', 'confirmed')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <polyline points="12 8 8 12 12 16"></polyline>
+                              <line x1="16" y1="12" x2="8" y2="12"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="bk4">
+                      <td class="cell-highlight">BK004</td>
+                      <td class="cell-bold">Phạm Thị D</td>
+                      <td>Mountain Stay</td>
+                      <td>2024-06-14</td>
+                      <td>2024-06-16</td>
+                      <td class="cell-bold">₫8.4M</td>
+                      <td><span class="badge badge-info">Hoàn thành</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('booking', 'bk4')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="bk5">
+                      <td class="cell-highlight">BK005</td>
+                      <td class="cell-bold">Hoàng Văn E</td>
+                      <td>Luxury Suites</td>
+                      <td>2024-06-10</td>
+                      <td>2024-06-12</td>
+                      <td class="cell-bold">₫7M</td>
+                      <td><span class="badge badge-danger">Đã hủy</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('booking', 'bk5')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="pagination-area">
+                <p class="pagination-info">Hiển thị 5 trong 1,234 booking</p>
+                <div class="pagination-buttons">
+                  <button class="page-btn" disabled>Trước</button>
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">Tiếp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. DISPUTE MANAGEMENT VIEW -->
+        <section class="view-container" id="view-disputes">
+          <div class="page-title-area">
+            <h1 class="page-title">Quản lý tranh chấp</h1>
+            <p class="page-subtitle">Xử lý và giải quyết các tranh chấp phát sinh giữa người dùng</p>
+          </div>
+
+          <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--info);">
+              <div class="stat-info">
+                <span class="stat-label">Tổng tranh chấp</span>
+                <span class="stat-value">24</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--danger);">
+              <div class="stat-info">
+                <span class="stat-label">Chưa xử lý</span>
+                <span class="stat-value">8</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--success);">
+              <div class="stat-info">
+                <span class="stat-label">Đã giải quyết</span>
+                <span class="stat-value">16</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="table-filter-bar">
+                <div class="search-box-wrapper">
+                  <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </span>
+                  <input type="text" class="search-input" id="search-disputes" placeholder="Tìm kiếm tranh chấp..."
+                    onkeyup="filterTable('disputes-table', this.value)">
+                </div>
+                <div class="filter-controls">
+                  <select class="filter-select" id="filter-dispute-status"
+                    onchange="filterTableByStatus('disputes-table', this.value)">
+                    <option value="">Tất cả trạng thái</option>
+                    <option value="Chưa xử lý">Chưa xử lý</option>
+                    <option value="Đang xem xét">Đang xem xét</option>
+                    <option value="Đã giải quyết">Đã giải quyết</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+              <table class="data-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 1px solid #e2e8f0; color: #64748b; font-size: 12px; font-weight: 600;">
+                    <th style="padding: 16px 8px; white-space: nowrap;">ID TRANH CHẤP</th>
+                    <th style="padding: 16px 8px; white-space: nowrap;">BOOKING</th>
+                    <th style="padding: 16px 8px; white-space: nowrap;">NGƯỜI KHIẾU NẠI</th>
+                    <th style="padding: 16px 8px; white-space: nowrap;">BÊN LIÊN QUAN</th>
+                    <th style="padding: 16px 8px; white-space: nowrap;">LÝ DO</th>
+                    <th style="padding: 16px 8px; white-space: nowrap;">NGÀY TẠO</th>
+                    <th style="padding: 16px 8px; white-space: nowrap;">TRẠNG THÁI</th>
+                    <th style="padding: 16px 8px; white-space: nowrap;">HÀNH ĐỘNG</th>
+                  </tr>
+                </thead>
+                <tbody style="font-size: 14px; color: #475569;">
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 16px 8px; color: #ef4444; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                      DS001
+                    </td>
+                    <td style="padding: 16px 8px; font-weight: 600;">BK001</td>
+                    <td style="padding: 16px 8px;">Nguyễn Văn A</td>
+                    <td style="padding: 16px 8px;">Resort Mekong Delta</td>
+                    <td style="padding: 16px 8px;">Phòng không như mô tả</td>
+                    <td style="padding: 16px 8px;">2024-06-10</td>
+                    <td style="padding: 16px 8px;"><span style="background-color: #fee2e2; color: #dc2626; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500;">Chưa xử lý</span></td>
+                    <td style="padding: 16px 8px;">
+                      <div style="display: flex; gap: 12px; color: #64748b;">
+                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 16px 8px; color: #ef4444; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                      DS002
+                    </td>
+                    <td style="padding: 16px 8px; font-weight: 600;">BK002</td>
+                    <td style="padding: 16px 8px;">Trần Thị B</td>
+                    <td style="padding: 16px 8px;">Luxury Beach Hotel</td>
+                    <td style="padding: 16px 8px;">Dịch vụ không đạt chất lượng</td>
+                    <td style="padding: 16px 8px;">2024-06-08</td>
+                    <td style="padding: 16px 8px;"><span style="background-color: #fef3c7; color: #d97706; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500;">Đang xem xét</span></td>
+                    <td style="padding: 16px 8px;">
+                      <div style="display: flex; gap: 12px; color: #64748b;">
+                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 16px 8px; color: #ef4444; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                      DS003
+                    </td>
+                    <td style="padding: 16px 8px; font-weight: 600;">BK003</td>
+                    <td style="padding: 16px 8px;">Host</td>
+                    <td style="padding: 16px 8px;">Lê Văn C (Khách)</td>
+                    <td style="padding: 16px 8px;">Khách hủy không báo trước</td>
+                    <td style="padding: 16px 8px;">2024-06-05</td>
+                    <td style="padding: 16px 8px;"><span style="background-color: #d1fae5; color: #059669; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500;">Đã giải quyết</span></td>
+                    <td style="padding: 16px 8px;">
+                      <div style="display: flex; gap: 12px; color: #64748b;">
+                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 16px 8px; color: #ef4444; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                      DS004
+                    </td>
+                    <td style="padding: 16px 8px; font-weight: 600;">BK004</td>
+                    <td style="padding: 16px 8px;">Lê Văn C</td>
+                    <td style="padding: 16px 8px;">Downtown Business Inn</td>
+                    <td style="padding: 16px 8px;">Trang thiết bị phòng hư hỏng</td>
+                    <td style="padding: 16px 8px;">2024-06-12</td>
+                    <td style="padding: 16px 8px;"><span style="background-color: #fee2e2; color: #dc2626; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500;">Chưa xử lý</span></td>
+                    <td style="padding: 16px 8px;">
+                      <div style="display: flex; gap: 12px; color: #64748b;">
+                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 16px 8px; color: #ef4444; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                      DS005
+                    </td>
+                    <td style="padding: 16px 8px; font-weight: 600;">BK005</td>
+                    <td style="padding: 16px 8px;">Phạm Thị D</td>
+                    <td style="padding: 16px 8px;">Ocean Villa</td>
+                    <td style="padding: 16px 8px;">Không nhận được tiền hoàn trả</td>
+                    <td style="padding: 16px 8px;">2024-06-01</td>
+                    <td style="padding: 16px 8px;"><span style="background-color: #d1fae5; color: #059669; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500;">Đã giải quyết</span></td>
+                    <td style="padding: 16px 8px;">
+                      <div style="display: flex; gap: 12px; color: #64748b;">
+                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+              <div class="pagination-area">
+                <p class="pagination-info">Hiển thị 5 trong 24 tranh chấp</p>
+                <div class="pagination-buttons">
+                  <button class="page-btn" disabled>Trước</button>
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">Tiếp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. PAYMENT MANAGEMENT VIEW -->
+        <section class="view-container" id="view-payments">
+          <div class="page-title-area">
+            <h1 class="page-title">Quản lý thanh toán</h1>
+            <p class="page-subtitle">Theo dõi giao dịch và quản lý thanh toán hệ thống</p>
+          </div>
+
+          <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="stat-card" style="padding: 16px;">
+              <div class="stat-info">
+                <span class="stat-label">Tổng giao dịch</span>
+                <span class="stat-value">₫125.3M</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--success);">
+              <div class="stat-info">
+                <span class="stat-label">Đã xử lý</span>
+                <span class="stat-value">₫118.5M</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--warning);">
+              <div class="stat-info">
+                <span class="stat-label">Đang chờ xử lý</span>
+                <span class="stat-value">₫6.8M</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--danger);">
+              <div class="stat-info">
+                <span class="stat-label">Hoàn tiền</span>
+                <span class="stat-value">₫45.2M</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="table-filter-bar">
+                <div class="search-box-wrapper">
+                  <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </span>
+                  <input type="text" class="search-input" id="search-payments" placeholder="Tìm kiếm giao dịch..."
+                    onkeyup="filterTable('payments-table', this.value)">
+                </div>
+                <div class="filter-controls">
+                  <button class="btn btn-secondary" onclick="triggerReportExport('Thanh toán')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Xuất báo cáo</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table" id="payments-table">
+                  <thead>
+                    <tr>
+                      <th>ID Giao dịch</th>
+                      <th>Booking</th>
+                      <th>Số tiền</th>
+                      <th>Loại</th>
+                      <th>Ngày</th>
+                      <th>Trạng thái</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-id="tx1">
+                      <td class="cell-highlight">TXN001</td>
+                      <td class="cell-bold">BK001</td>
+                      <td class="cell-bold">₫3M</td>
+                      <td>Booking Payment</td>
+                      <td>2024-06-10</td>
+                      <td><span class="badge badge-success">Hoàn thành</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('payment', 'tx1')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="tx2">
+                      <td class="cell-highlight">TXN002</td>
+                      <td class="cell-bold">BK002</td>
+                      <td class="cell-bold">₫5.6M</td>
+                      <td>Booking Payment</td>
+                      <td>2024-06-09</td>
+                      <td><span class="badge badge-success">Hoàn thành</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('payment', 'tx2')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="tx3">
+                      <td class="cell-highlight">TXN003</td>
+                      <td class="cell-bold">BK003</td>
+                      <td class="cell-bold">₫1.6M</td>
+                      <td>Refund</td>
+                      <td>2024-06-08</td>
+                      <td><span class="badge badge-warning">Chờ xử lý</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('payment', 'tx3')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button class="btn-icon text-primary" title="Xử lý lại" onclick="reprocessPayment('tx3')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="tx4">
+                      <td class="cell-highlight">TXN004</td>
+                      <td class="cell-bold">BK004</td>
+                      <td class="cell-bold">₫8.4M</td>
+                      <td>Host Payout</td>
+                      <td>2024-06-07</td>
+                      <td><span class="badge badge-success">Hoàn thành</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('payment', 'tx4')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-id="tx5">
+                      <td class="cell-highlight">TXN005</td>
+                      <td class="cell-bold">BK005</td>
+                      <td class="cell-bold">₫7M</td>
+                      <td>Refund</td>
+                      <td>2024-06-06</td>
+                      <td><span class="badge badge-success">Hoàn thành</span></td>
+                      <td>
+                        <div class="flex-align-center">
+                          <button class="btn-icon" title="Chi tiết" onclick="viewDetails('payment', 'tx5')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="pagination-area">
+                <p class="pagination-info">Hiển thị 5 trong 8,234 giao dịch</p>
+                <div class="pagination-buttons">
+                  <button class="page-btn" disabled>Trước</button>
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">Tiếp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-container" id="view-promotions">
+          <div class="page-title-area">
+            <h1 class="page-title">Quản lý khuyến mãi</h1>
+            <p class="page-subtitle">Tạo và quản lý các chương trình khuyến mãi, sự kiện giảm giá và phếiếu giảm giá</p>
+          </div>
+
+          <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="stat-card" style="padding: 16px;">
+              <div class="stat-info">
+                <span class="stat-label">Tổng khuyến mãi</span>
+                <span class="stat-value">12</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--success);">
+              <div class="stat-info">
+                <span class="stat-label">Đang hoạt động</span>
+                <span class="stat-value">8</span>
+              </div>
+            </div>
+            <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--accent);">
+              <div class="stat-info">
+                <span class="stat-label">Tổng phếiếu giảm giá sử dụng</span>
+                <span class="stat-value">2,201</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              
+              <div class="table-filter-bar" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
+                
+                <div class="promotion-filter-bar" style="display: flex; gap: 12px; align-items: center; flex: 1; flex-wrap: wrap;">
+                  <div class="search-box" style="flex: 1; min-width: 250px;">
+                    <input type="text" placeholder="Tìm kiếm khuyến mãi..." style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                  </div>
+
+                  <select class="filter-select" style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff;">
+                    <option value="">Loại (Tất cả)</option>
+                    <option value="voucher">Phiếu giảm giá</option>
+                    <option value="flashsale">Flash Sale</option>
+                    <option value="promo">Promo</option>
+                  </select>
+
+                  <select class="filter-select" style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff;">
+                    <option value="">Trạng thái (Tất cả)</option>
+                    <option value="active">Hoạt động</option>
+                    <option value="pending">Chờ duyệt</option>
+                    <option value="inactive">Không hoạt động</option>
+                  </select>
+                </div>
+                
+                <div class="filter-controls">
+                  <button class="btn btn-primary" onclick="openAddModal('promotion')" style="display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Tạo khuyến mãi</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="data-table" id="promotions-table">
+                  <thead>
+                    <tr>
+                      <th>Tên khuyến mãi</th>
+                      <th>Loại</th>
+                      <th>Giảm giá</th>
+                      <th>Từ ngày</th>
+                      <th>Đến ngày</th>
+                      <th>Sử dụng</th>
+                      <th>Trạng thái</th>
+                      <th>Bật / Tắt</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-id="p1">
+                      <td class="cell-bold">Giảm giá Hè 2024</td>
+                      <td><span class="badge"
+                          style="background-color:var(--bg-muted); color:var(--text-primary)">Phiếu giảm giá</span></td>
+                      <td class="cell-highlight">15%</td>
+                      <td>2024-06-01</td>
+                      <td>2024-06-30</td>
+                      <td class="cell-bold">342</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <label class="switch">
+                          <input type="checkbox" checked onchange="togglePromoSwitch('p1', this.checked)">
+                          <span class="slider"></span>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr data-id="p2">
+                      <td class="cell-bold">Flash Sale - Weekend</td>
+                      <td><span class="badge" style="background-color:var(--bg-muted); color:var(--text-primary)">Flash
+                          Sale</span></td>
+                      <td class="cell-highlight">20%</td>
+                      <td>2024-06-14</td>
+                      <td>2024-06-16</td>
+                      <td class="cell-bold">89</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <label class="switch">
+                          <input type="checkbox" checked onchange="togglePromoSwitch('p2', this.checked)">
+                          <span class="slider"></span>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr data-id="p3">
+                      <td class="cell-bold">Mã khuyến mãi Đặt phòng lần đầu</td>
+                      <td><span class="badge"
+                          style="background-color:var(--bg-muted); color:var(--text-primary)">Phiếu giảm giá</span></td>
+                      <td class="cell-highlight">10%</td>
+                      <td>2024-05-01</td>
+                      <td>2024-12-31</td>
+                      <td class="cell-bold">1203</td>
+                      <td><span class="badge badge-success">Hoạt động</span></td>
+                      <td>
+                        <label class="switch">
+                          <input type="checkbox" checked onchange="togglePromoSwitch('p3', this.checked)">
+                          <span class="slider"></span>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr data-id="p4">
+                      <td class="cell-bold">Group Booking Deal</td>
+                      <td><span class="badge"
+                          style="background-color:var(--bg-muted); color:var(--text-primary)">Promo</span></td>
+                      <td class="cell-highlight">25%</td>
+                      <td>2024-06-15</td>
+                      <td>2024-07-15</td>
+                      <td class="cell-bold">0</td>
+                      <td><span class="badge badge-warning">Chờ duyệt</span></td>
+                      <td>
+                        <label class="switch">
+                          <input type="checkbox" onchange="togglePromoSwitch('p4', this.checked)">
+                          <span class="slider"></span>
+                        </label>
+                      </td>
+                    </tr>
+                    <tr data-id="p5">
+                      <td class="cell-bold">Spring Special</td>
+                      <td><span class="badge" style="background-color:var(--bg-muted); color:var(--text-primary)">Flash
+                          Sale</span></td>
+                      <td class="cell-highlight">30%</td>
+                      <td>2024-03-01</td>
+                      <td>2024-05-31</td>
+                      <td class="cell-bold">567</td>
+                      <td><span class="badge badge-danger">Không hoạt động</span></td>
+                      <td>
+                        <label class="switch">
+                          <input type="checkbox" onchange="togglePromoSwitch('p5', this.checked)">
+                          <span class="slider"></span>
+                        </label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="pagination-area">
+                <p class="pagination-info">Hiển thị 5 trong 12 khuyến mãi</p>
+                <div class="pagination-buttons">
+                  <button class="page-btn" disabled>Trước</button>
+                  <button class="page-btn active">1</button>
+                  <button class="page-btn">2</button>
+                  <button class="page-btn">Tiếp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. ADMIN ACCOUNT MANAGEMENT VIEW -->
+        <section class="view-container" id="view-admins">
+          <div class="page-title-area">
+            <h1 class="page-title">Quản lý quản trị viên</h1>
+            <p class="page-subtitle">Quản lý các tài khoản quản trị và phân quyền của nhân viên</p>
+          </div>
+
+          <div class="dashboard-grid admins-page-grid">
+            <!-- Left Side: Admin List -->
+            <div class="card admin-list-card">
+              <div class="card-header">
+                <h3 class="card-title">Danh sách Quản trị viên</h3>
+                <button class="btn btn-primary" onclick="openAddModal('admin')"
+                  style="padding: 6px 12px; font-size: 0.8rem;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  Tạo tài khoản
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="table-filter-bar">
+                  <div class="search-box-wrapper" style="max-width: 100%;">
+                    <span class="search-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      </svg>
+                    </span>
+                    <input type="text" class="search-input" id="search-admins" placeholder="Tìm kiếm quản trị viên..."
+                      onkeyup="filterTable('admins-table', this.value)">
+                  </div>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="data-table" id="admins-table">
+                    <thead>
+                      <tr>
+                        <th>Tên</th>
+                        <th>Vai trò</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-id="ad1">
+                        <td class="cell-bold">Nguyễn Admin</td>
+                        <td>
+                          <span class="badge"
+                            style="background-color:var(--bg-muted); color:var(--primary); font-size:0.7rem; display:inline-flex; align-items:center; gap:3px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            Super Quản trị
+                          </span>
+                        </td>
+                        <td><span class="badge badge-success">Hoạt động</span></td>
+                        <td>
+                          <div class="flex-align-center">
+                            <button class="btn-icon" title="Chi tiết" onclick="viewDetails('admin', 'ad1')">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-id="ad2">
+                        <td class="cell-bold">Trần Quản lý</td>
+                        <td>
+                          <span class="badge"
+                            style="background-color:var(--bg-muted); color:var(--primary); font-size:0.7rem; display:inline-flex; align-items:center; gap:3px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            Quản lý người dùng
+                          </span>
+                        </td>
+                        <td><span class="badge badge-success">Hoạt động</span></td>
+                        <td>
+                          <div class="flex-align-center">
+                            <button class="btn-icon" title="Chi tiết" onclick="viewDetails('admin', 'ad2')">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-id="ad3">
+                        <td class="cell-bold">Lê Nhân viên tài chính</td>
+                        <td>
+                          <span class="badge"
+                            style="background-color:var(--bg-muted); color:var(--primary); font-size:0.7rem; display:inline-flex; align-items:center; gap:3px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            Nhân viên tài chính
+                          </span>
+                        </td>
+                        <td><span class="badge badge-success">Hoạt động</span></td>
+                        <td>
+                          <div class="flex-align-center">
+                            <button class="btn-icon" title="Chi tiết" onclick="viewDetails('admin', 'ad3')">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-id="ad4">
+                        <td class="cell-bold">Phạm Quản lý nội dung</td>
+                        <td>
+                          <span class="badge"
+                            style="background-color:var(--bg-muted); color:var(--primary); font-size:0.7rem; display:inline-flex; align-items:center; gap:3px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            Quản lý nội dung
+                          </span>
+                        </td>
+                        <td><span class="badge badge-success">Hoạt động</span></td>
+                        <td>
+                          <div class="flex-align-center">
+                            <button class="btn-icon" title="Chi tiết" onclick="viewDetails('admin', 'ad4')">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-id="ad5">
+                        <td class="cell-bold">Hoàng Nhân viên hỗ trợ</td>
+                        <td>
+                          <span class="badge"
+                            style="background-color:var(--bg-muted); color:var(--primary); font-size:0.7rem; display:inline-flex; align-items:center; gap:3px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            Nhân viên hỗ trợ
+                          </span>
+                        </td>
+                        <td><span class="badge badge-warning">Không hoạt động</span></td>
+                        <td>
+                          <div class="flex-align-center">
+                            <button class="btn-icon" title="Chi tiết" onclick="viewDetails('admin', 'ad5')">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="pagination-area" style="font-size: 0.8rem;">
+                  <p class="pagination-info">Hiển thị 5 trong 12 admin</p>
+                  <div class="pagination-buttons">
+                    <button class="page-btn" disabled>Trước</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">Tiếp</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Activity Log -->
+            <div class="card admin-activity-card"
+              style="background: linear-gradient(to bottom right, rgba(52,116,255,0.06), rgba(75,189,255,0.06)); border-color: rgba(52,116,255,0.15);">
+              <div class="card-header" style="background:transparent; border-bottom-color: rgba(52,116,255,0.15);">
+                <h3 class="card-title">Nhật ký hoạt động</h3>
+              </div>
+              <div class="card-body">
+                <div class="list-container" style="gap:16px;">
+                  <div class="list-item"
+                    style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
+                    <div class="list-item-text">Nguyễn Admin đăng nhập vào hệ thống</div>
+                    <div class="list-item-subtext">5 phút trước</div>
+                  </div>
+                  <div class="list-item"
+                    style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
+                    <div class="list-item-text">Trần Quản lý tạo admin mới</div>
+                    <div class="list-item-subtext">1 giờ trước</div>
+                  </div>
+                  <div class="list-item"
+                    style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
+                    <div class="list-item-text">Lê Nhân viên tài chính xuất báo cáo tài chính</div>
+                    <div class="list-item-subtext">2 giờ trước</div>
+                  </div>
+                  <div class="list-item"
+                    style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
+                    <div class="list-item-text">Phạm Quản lý nội dung duyệt phòng Deluxe</div>
+                    <div class="list-item-subtext">3 giờ trước</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- GENERIC DETAIL MODAL -->
+  <div class="modal-backdrop" id="detail-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Chi tiết thông tin</h3>
+        <button class="modal-close" onclick="closeModal('detail-modal')" aria-label="Close Modal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Dynamic Content Injected by JavaScript -->
+      </div>
+      <div class="modal-footer" id="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('detail-modal')">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const mockDatabase = {};
+      const years = [2022, 2023, 2024, 2025, 2026];
+      
+      years.forEach(year => {
+        mockDatabase[year] = { months: {}, yearly: {} };
+        
+        let yearlyRevData = [];
+        let yearlyBookData = [];
+        for(let i=1; i<=12; i++) {
+          yearlyRevData.push((Math.random() * 80 + 50).toFixed(1));
+          yearlyBookData.push(Math.floor(Math.random() * 40 + 30));
+        }
+
+        mockDatabase[year].yearly = {
+          kpis: {
+            revenue: (Math.random() * 500 + 800).toFixed(1) + 'M ₫',
+            bookings: Math.floor(Math.random() * 300 + 400),
+            users: Math.floor(Math.random() * 8000 + 15000).toLocaleString(),
+            hosts: Math.floor(Math.random() * 20 + 80),
+            disputes: Math.floor(Math.random() * 50 + 20),
+            completion: (Math.random() * 5 + 90).toFixed(1) + '%'
+          },
+          chartLabels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+          chartRevenue: yearlyRevData,
+          chartBookings: yearlyBookData,
+          status: [Math.floor(Math.random()*600+500), Math.floor(Math.random()*100+50), Math.floor(Math.random()*50+20)],
+          topHotels: [(Math.random()*100+800).toFixed(1), (Math.random()*100+700).toFixed(1), (Math.random()*100+600).toFixed(1), (Math.random()*100+500).toFixed(1), (Math.random()*100+400).toFixed(1)]
+        };
+
+        for(let month = 1; month <= 12; month++) {
+          const randomRevenue = () => (Math.random() * 20 + 20).toFixed(1);
+          const randomBooking = () => Math.floor(Math.random() * 15 + 10);
+          
+          mockDatabase[year].months[month] = {
+            kpis: {
+              revenue: (Math.random() * 50 + 80).toFixed(1) + 'M ₫',
+              bookings: Math.floor(Math.random() * 40 + 40),
+              users: Math.floor(Math.random() * 500 + 2000).toLocaleString(),
+              hosts: Math.floor(Math.random() * 15 + 30),
+              disputes: Math.floor(Math.random() * 10 + 2),
+              completion: (Math.random() * 10 + 85).toFixed(1) + '%'
+            },
+            chartLabels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+            chartRevenue: [randomRevenue(), randomRevenue(), randomRevenue(), randomRevenue()],
+            chartBookings: [randomBooking(), randomBooking(), randomBooking(), randomBooking()],
+            status: [Math.floor(Math.random()*50+50), Math.floor(Math.random()*20+10), Math.floor(Math.random()*10+5)],
+            topHotels: [(Math.random()*10+80).toFixed(1), (Math.random()*10+70).toFixed(1), (Math.random()*10+60).toFixed(1), (Math.random()*10+50).toFixed(1), (Math.random()*10+40).toFixed(1)]
+          };
+        }
+      });
+
+      let currentYear = document.getElementById('dashboard-filter-year').value;
+      let currentMonth = document.getElementById('dashboard-filter-month').value;
+      let currentData = mockDatabase[currentYear].months[currentMonth];
+
+      let revenueBookingChart, bookingStatusChart, topHotelsChart;
+
+      const ctxMix = document.getElementById('revenueBookingChart');
+      if(ctxMix) {
+        revenueBookingChart = new Chart(ctxMix.getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: currentData.chartLabels,
+            datasets: [
+              { label: 'Doanh thu (Triệu VNĐ)', type: 'bar', data: currentData.chartRevenue, backgroundColor: 'rgba(21, 101, 192, 0.8)', borderRadius: 4, yAxisID: 'y' },
+              { label: 'Lượt đặt phòng', type: 'line', data: currentData.chartBookings, borderColor: '#00BFA5', backgroundColor: '#00BFA5', borderWidth: 3, tension: 0.4, yAxisID: 'y1' }
+            ]
+          },
+          options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top' } }, scales: { y: { type: 'linear', display: true, position: 'left' }, y1: { type: 'linear', display: true, position: 'right', grid: { drawOnChartArea: false } } } }
+        });
+      }
+
+      const ctxStatus = document.getElementById('bookingStatusChart');
+      if(ctxStatus) {
+        bookingStatusChart = new Chart(ctxStatus.getContext('2d'), {
+          type: 'doughnut',
+          data: { labels: ['Hoàn thành', 'Chờ xác nhận', 'Đã hủy'], datasets: [{ data: currentData.status, backgroundColor: ['#10B981', '#F59E0B', '#EF4444'], borderWidth: 0, hoverOffset: 4 }] },
+          options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } } } }
+        });
+      }
+
+      const ctxTop = document.getElementById('topHotelsChart');
+      if(ctxTop) {
+        topHotelsChart = new Chart(ctxTop.getContext('2d'), {
+          type: 'bar',
+          data: { labels: ['Resort Mekong Delta', 'Luxury Beach Hotel', 'Downtown Business', 'Mountain View', 'Ocean Villa'], datasets: [{ label: 'Doanh thu', data: currentData.topHotels, backgroundColor: 'rgba(21, 101, 192, 0.85)', borderRadius: 4, barThickness: 24 }] },
+          options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: true, drawBorder: false, color: '#E2E8F0' } }, y: { grid: { display: false, drawBorder: false } } } }
+        });
+      }
+
+      function updateAllCharts() {
+        const filterType = document.getElementById('dashboard-filter-type').value;
+        const monthSelect = document.getElementById('dashboard-filter-month');
+        const yearVal = document.getElementById('dashboard-filter-year').value;
+
+        if (filterType === 'year') {
+          monthSelect.style.display = 'none';
+        } else {
+          monthSelect.style.display = 'inline-block';
+        }
+
+        let newData;
+        if (filterType === 'year') {
+          newData = mockDatabase[yearVal].yearly;
+        } else {
+          const monthVal = monthSelect.value;
+          newData = mockDatabase[yearVal].months[monthVal];
+        }
+
+        if(document.getElementById('dash-stat-revenue')) {
+            document.getElementById('dash-stat-revenue').innerText = newData.kpis.revenue;
+            document.getElementById('dash-stat-bookings').innerText = newData.kpis.bookings;
+            document.getElementById('dash-stat-users').innerText = newData.kpis.users;
+            document.getElementById('dash-stat-hosts').innerText = newData.kpis.hosts;
+            document.getElementById('dash-stat-disputes').innerText = newData.kpis.disputes;
+            document.getElementById('dash-stat-completion').innerText = newData.kpis.completion;
+        }
+
+        if(revenueBookingChart) {
+            revenueBookingChart.data.labels = newData.chartLabels;
+            revenueBookingChart.data.datasets[0].data = newData.chartRevenue;
+            revenueBookingChart.data.datasets[1].data = newData.chartBookings;
+            revenueBookingChart.update();
+        }
+
+        if(bookingStatusChart) {
+            bookingStatusChart.data.datasets[0].data = newData.status;
+            bookingStatusChart.update();
+        }
+        
+        if(topHotelsChart) {
+            topHotelsChart.data.datasets[0].data = newData.topHotels;
+            topHotelsChart.update();
+        }
+
+        const hotelsListContainer = document.getElementById('dashboard-hotels-list');
+        if (hotelsListContainer) {
+          const hotelNames = ['Resort Mekong Delta', 'Luxury Beach Hotel', 'Downtown Business', 'Mountain View', 'Ocean Villa'];
+          let listHtml = '';
+          
+          for(let i = 0; i < 5; i++) { 
+            let mockBookings = Math.floor(parseFloat(newData.topHotels[i]) * 4.2); 
+            
+            listHtml += `
+              <div class="list-item">
+                <div class="list-item-content">
+                  <div class="list-item-text">${hotelNames[i]}</div>
+                  <div class="list-item-subtext">${mockBookings} đơn đặt</div>
+                </div>
+                <div class="list-item-right cell-highlight">${newData.topHotels[i]}M ₫</div>
+              </div>
+            `;
+          }
+          hotelsListContainer.innerHTML = listHtml;
+        }
+      }
+
+      document.getElementById('dashboard-filter-type').addEventListener('change', updateAllCharts);
+      document.getElementById('dashboard-filter-month').addEventListener('change', updateAllCharts);
+      document.getElementById('dashboard-filter-year').addEventListener('change', updateAllCharts);
+      
+      updateAllCharts();
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
