@@ -341,7 +341,7 @@
 
             <div class="card">
               <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 class="card-title">Top 5 Đối tác doanh thu cao nhất</h2>
+                <h2 class="card-title">Top 5 đơn vị lưu trú doanh thu cao nhất</h2>
               </div>
               <div class="card-body" style="position: relative; height: 280px;">
                 <canvas id="topHotelsChart"></canvas>
@@ -352,7 +352,7 @@
           <div class="dashboard-grid">
             <div class="card">
               <div class="card-header">
-                <h2 class="card-title">Chi tiết Top khách sạn</h2>
+                <h2 class="card-title">Chi tiết Top đơn vị lưu trú</h2>
               </div>
               <div class="card-body">
                 <div class="list-container" id="dashboard-hotels-list">
@@ -491,8 +491,9 @@
 
           <div class="card">
             <div class="card-body">
-              <div class="table-filter-bar">
-                <div class="search-box-wrapper">
+              <div class="table-filter-bar" style="display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; justify-content: flex-start;">
+  
+                <div class="search-box-wrapper" style="flex: 1; min-width: 250px;">
                   <span class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -500,8 +501,18 @@
                       <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                   </span>
-                  <input type="text" class="search-input" id="search-users" placeholder="Tìm kiếm khách hàng..."
-                    onkeyup="filterTable('users-table', this.value)">
+                  <input type="text" class="search-input" id="search-bookings" placeholder="Tìm kiếm booking..."
+                    onkeyup="filterTable('bookings-table', this.value)">
+                </div>
+
+                <div class="filter-group" style="display: flex; gap: 12px; align-items: center;">
+                  <select class="filter-select" style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; background: #f1f5f9; cursor: pointer;">
+                    <option value="">Trạng thái (Tất cả)</option>
+                    <option value="xac-nhan">Hoạt động</option>
+                    <option value="cho-xac-nhan">Không hoạt động</option>
+                    <option value="hoan-thanh">Bị</option>
+                  </select>
+
                 </div>
               </div>
 
@@ -685,8 +696,9 @@
 
           <div class="card">
             <div class="card-body">
-              <div class="table-filter-bar">
-                <div class="search-box-wrapper">
+              <div class="table-filter-bar" style="display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; justify-content: flex-start;">
+  
+                <div class="search-box-wrapper" style="flex: 1; min-width: 250px;">
                   <span class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -696,6 +708,16 @@
                   </span>
                   <input type="text" class="search-input" id="search-hosts" placeholder="Tìm kiếm host..."
                     onkeyup="filterTable('hosts-table', this.value)">
+                </div>
+
+                <div class="filter-group" style="display: flex; gap: 12px; align-items: center;">
+                  <select class="filter-select" style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; background: #f1f5f9; cursor: pointer;">
+                    <option value="">Trạng thái (Tất cả)</option>
+                    <option value="duyet">Đã duyệt</option>
+                    <option value="cho-duyet">Chờ duyệt</option>
+                    <option value="tu-choi">Đã từ chối</option>
+                  </select>
+
                 </div>
               </div>
 
@@ -725,7 +747,7 @@
                       </td>
                       <td>Trần Minh Quân</td>
                       <td class="cell-bold">45</td>
-                      <td class="cell-highlight">₫2.3M</td>
+                      <td class="cell-highlight">2.3M ₫</td>
                       <td class="cell-bold">4.8 ⭐</td>
                       <td><span class="badge badge-success">Duyệt</span></td>
                       <td>
@@ -755,7 +777,7 @@
                       </td>
                       <td>Ngô Thị Lan</td>
                       <td class="cell-bold">32</td>
-                      <td class="cell-highlight">₫1.8M</td>
+                      <td class="cell-highlight">1.8M ₫</td>
                       <td class="cell-bold">4.6 ⭐</td>
                       <td><span class="badge badge-success">Duyệt</span></td>
                       <td>
@@ -785,7 +807,7 @@
                       </td>
                       <td>Võ Văn Tuấn</td>
                       <td class="cell-bold">28</td>
-                      <td class="cell-highlight">₫1.2M</td>
+                      <td class="cell-highlight">1.2M ₫</td>
                       <td class="cell-bold">-</td>
                       <td><span class="badge badge-warning">Chờ duyệt</span></td>
                       <td>
@@ -825,7 +847,7 @@
                       </td>
                       <td>Bùi Thanh Hương</td>
                       <td class="cell-bold">15</td>
-                      <td class="cell-highlight">₫850K</td>
+                      <td class="cell-highlight">850K ₫</td>
                       <td class="cell-bold">4.9 ⭐</td>
                       <td><span class="badge badge-success">Duyệt</span></td>
                       <td>
@@ -855,7 +877,7 @@
                       </td>
                       <td>Trường Thái Nguyên</td>
                       <td class="cell-bold">60</td>
-                      <td class="cell-highlight">₫3.5M</td>
+                      <td class="cell-highlight">3.5M ₫</td>
                       <td class="cell-bold">-</td>
                       <td><span class="badge badge-danger">Từ chối</span></td>
                       <td>
@@ -954,7 +976,7 @@
                       <td class="cell-bold">Phòng Deluxe</td>
                       <td>Minh Resort</td>
                       <td>2 người</td>
-                      <td class="cell-highlight">₫1.5M</td>
+                      <td class="cell-highlight">1.5M ₫</td>
                       <td class="cell-bold text-success" style="color:var(--success);">8 phòng</td>
                       <td><span class="badge badge-success">Hoạt động</span></td>
                       <td>
@@ -982,7 +1004,7 @@
                       <td class="cell-bold">Phòng Suite</td>
                       <td>Beach Paradise</td>
                       <td>4 người</td>
-                      <td class="cell-highlight">₫2.8M</td>
+                      <td class="cell-highlight">2.8M ₫</td>
                       <td class="cell-bold text-success" style="color:var(--success);">3 phòng</td>
                       <td><span class="badge badge-success">Hoạt động</span></td>
                       <td>
@@ -1010,7 +1032,7 @@
                       <td class="cell-bold">Phòng Tiêu chuẩn</td>
                       <td>City Hotel</td>
                       <td>2 người</td>
-                      <td class="cell-highlight">₫800K</td>
+                      <td class="cell-highlight">800K ₫</td>
                       <td class="cell-bold text-success" style="color:var(--success);">12 phòng</td>
                       <td><span class="badge badge-warning">Chờ duyệt</span></td>
                       <td>
@@ -1038,7 +1060,7 @@
                       <td class="cell-bold">Phòng VIP</td>
                       <td>Mountain Stay</td>
                       <td>6 người</td>
-                      <td class="cell-highlight">₫4.2M</td>
+                      <td class="cell-highlight">4.2M ₫</td>
                       <td class="cell-bold text-success" style="color:var(--success);">1 phòng</td>
                       <td><span class="badge badge-success">Hoạt động</span></td>
                       <td>
@@ -1066,7 +1088,7 @@
                       <td class="cell-bold">Phòng Luxury</td>
                       <td>Luxury Suites</td>
                       <td>3 người</td>
-                      <td class="cell-highlight">₫3.5M</td>
+                      <td class="cell-highlight">3.5M ₫</td>
                       <td class="cell-bold text-danger" style="color:var(--danger);">Hết phòng</td>
                       <td><span class="badge badge-danger">Không hoạt động</span></td>
                       <td>
@@ -1143,8 +1165,9 @@
 
           <div class="card">
             <div class="card-body">
-              <div class="table-filter-bar">
-                <div class="search-box-wrapper">
+              <div class="table-filter-bar" style="display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; justify-content: flex-start;">
+  
+                <div class="search-box-wrapper" style="flex: 1; min-width: 250px;">
                   <span class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1154,6 +1177,17 @@
                   </span>
                   <input type="text" class="search-input" id="search-bookings" placeholder="Tìm kiếm booking..."
                     onkeyup="filterTable('bookings-table', this.value)">
+                </div>
+
+                <div class="filter-group" style="display: flex; gap: 12px; align-items: center;">
+                  <select class="filter-select" style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; background: #f1f5f9; cursor: pointer;">
+                    <option value="">Trạng thái (Tất cả)</option>
+                    <option value="xac-nhan">Xác nhận</option>
+                    <option value="cho-xac-nhan">Chờ xác nhận</option>
+                    <option value="hoan-thanh">Hoàn thành</option>
+                    <option value="da-huy">Đã hủy</option>
+                  </select>
+
                 </div>
               </div>
 
@@ -1178,7 +1212,7 @@
                       <td>Minh Resort</td>
                       <td>2024-06-15</td>
                       <td>2024-06-17</td>
-                      <td class="cell-bold">₫3M</td>
+                      <td class="cell-bold">3M ₫</td>
                       <td><span class="badge badge-success">Xác nhận</span></td>
                       <td>
                         <div class="flex-align-center">
@@ -1209,7 +1243,7 @@
                       <td>Beach Paradise</td>
                       <td>2024-06-16</td>
                       <td>2024-06-18</td>
-                      <td class="cell-bold">₫5.6M</td>
+                      <td class="cell-bold">5.6M ₫</td>
                       <td><span class="badge badge-success">Xác nhận</span></td>
                       <td>
                         <div class="flex-align-center">
@@ -1240,7 +1274,7 @@
                       <td>City Hotel</td>
                       <td>2024-06-20</td>
                       <td>2024-06-22</td>
-                      <td class="cell-bold">₫1.6M</td>
+                      <td class="cell-bold">1.6M ₫</td>
                       <td><span class="badge badge-warning">Chờ xác nhận</span></td>
                       <td>
                         <div class="flex-align-center">
@@ -1271,7 +1305,7 @@
                       <td>Mountain Stay</td>
                       <td>2024-06-14</td>
                       <td>2024-06-16</td>
-                      <td class="cell-bold">₫8.4M</td>
+                      <td class="cell-bold">8.4M ₫</td>
                       <td><span class="badge badge-info">Hoàn thành</span></td>
                       <td>
                         <div class="flex-align-center">
@@ -1292,7 +1326,7 @@
                       <td>Luxury Suites</td>
                       <td>2024-06-10</td>
                       <td>2024-06-12</td>
-                      <td class="cell-bold">₫7M</td>
+                      <td class="cell-bold">7M ₫</td>
                       <td><span class="badge badge-danger">Đã hủy</span></td>
                       <td>
                         <div class="flex-align-center">
@@ -1354,8 +1388,9 @@
 
           <div class="card">
             <div class="card-body">
-              <div class="table-filter-bar">
-                <div class="search-box-wrapper">
+              <div class="table-filter-bar" style="display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; justify-content: flex-start;">
+  
+                <div class="search-box-wrapper" style="flex: 1; min-width: 250px;">
                   <span class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1363,17 +1398,18 @@
                       <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                   </span>
-                  <input type="text" class="search-input" id="search-disputes" placeholder="Tìm kiếm tranh chấp..."
-                    onkeyup="filterTable('disputes-table', this.value)">
+                  <input type="text" class="search-input" id="search-bookings" placeholder="Tìm kiếm booking..."
+                    onkeyup="filterTable('bookings-table', this.value)">
                 </div>
-                <div class="filter-controls">
-                  <select class="filter-select" id="filter-dispute-status"
-                    onchange="filterTableByStatus('disputes-table', this.value)">
-                    <option value="">Tất cả trạng thái</option>
-                    <option value="Chưa xử lý">Chưa xử lý</option>
-                    <option value="Đang xem xét">Đang xem xét</option>
-                    <option value="Đã giải quyết">Đã giải quyết</option>
+
+                <div class="filter-group" style="display: flex; gap: 12px; align-items: center;">
+                  <select class="filter-select" style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; background: #f1f5f9; cursor: pointer;">
+                    <option value="">Trạng thái (Tất cả)</option>
+                    <option value="xac-nhan">Chưa xử lý</option>
+                    <option value="cho-xac-nhan">Đang xem xét</option>
+                    <option value="hoan-thanh">Đã giải quyết</option>
                   </select>
+
                 </div>
               </div>
 
@@ -1512,33 +1548,34 @@
             <div class="stat-card" style="padding: 16px;">
               <div class="stat-info">
                 <span class="stat-label">Tổng giao dịch</span>
-                <span class="stat-value">₫125.3M</span>
+                      <td class="cell-bold">7M ₫</td>
+                <span class="stat-value">125.3M ₫</span>
               </div>
             </div>
             <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--success);">
               <div class="stat-info">
                 <span class="stat-label">Đã xử lý</span>
-                <span class="stat-value">₫118.5M</span>
+                <span class="stat-value">118.5M ₫</span>
               </div>
             </div>
             <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--warning);">
               <div class="stat-info">
                 <span class="stat-label">Đang chờ xử lý</span>
-                <span class="stat-value">₫6.8M</span>
+                <span class="stat-value">6.8M ₫</span>
               </div>
             </div>
             <div class="stat-card" style="padding: 16px; border-left: 4px solid var(--danger);">
               <div class="stat-info">
                 <span class="stat-label">Hoàn tiền</span>
-                <span class="stat-value">₫45.2M</span>
+                <span class="stat-value">45.2M ₫</span>
               </div>
             </div>
           </div>
 
           <div class="card">
             <div class="card-body">
-              <div class="table-filter-bar">
-                <div class="search-box-wrapper">
+              <div class="table-filter-bar" style="display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; justify-content: flex-start;">
+                <div class="search-box-wrapper" style="flex: 1; min-width: 250px;">
                   <span class="search-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1546,19 +1583,17 @@
                       <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                   </span>
-                  <input type="text" class="search-input" id="search-payments" placeholder="Tìm kiếm giao dịch..."
-                    onkeyup="filterTable('payments-table', this.value)">
+                  <input type="text" class="search-input" id="search-bookings" placeholder="Tìm kiếm booking..."
+                    onkeyup="filterTable('bookings-table', this.value)">
                 </div>
-                <div class="filter-controls">
-                  <button class="btn btn-secondary" onclick="triggerReportExport('Thanh toán')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                      <polyline points="7 10 12 15 17 10"></polyline>
-                      <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    <span>Xuất báo cáo</span>
-                  </button>
+
+                <div class="filter-group" style="display: flex; gap: 12px; align-items: center;">
+                  <select class="filter-select" style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none; background: #f1f5f9; cursor: pointer;">
+                    <option value="">Trạng thái (Tất cả)</option>
+                    <option value="xac-nhan">Hoàn thành</option>
+                    <option value="cho-xac-nhan">Chờ xử lý</option>
+                  </select>
+
                 </div>
               </div>
 
@@ -1579,7 +1614,7 @@
                     <tr data-id="tx1">
                       <td class="cell-highlight">TXN001</td>
                       <td class="cell-bold">BK001</td>
-                      <td class="cell-bold">₫3M</td>
+                      <td class="cell-bold">3M ₫</td>
                       <td>Booking Payment</td>
                       <td>2024-06-10</td>
                       <td><span class="badge badge-success">Hoàn thành</span></td>
@@ -1599,7 +1634,7 @@
                     <tr data-id="tx2">
                       <td class="cell-highlight">TXN002</td>
                       <td class="cell-bold">BK002</td>
-                      <td class="cell-bold">₫5.6M</td>
+                      <td class="cell-bold">5.6M ₫</td>
                       <td>Booking Payment</td>
                       <td>2024-06-09</td>
                       <td><span class="badge badge-success">Hoàn thành</span></td>
@@ -1619,7 +1654,7 @@
                     <tr data-id="tx3">
                       <td class="cell-highlight">TXN003</td>
                       <td class="cell-bold">BK003</td>
-                      <td class="cell-bold">₫1.6M</td>
+                      <td class="cell-bold">1.6M ₫</td>
                       <td>Refund</td>
                       <td>2024-06-08</td>
                       <td><span class="badge badge-warning">Chờ xử lý</span></td>
@@ -1646,7 +1681,7 @@
                     <tr data-id="tx4">
                       <td class="cell-highlight">TXN004</td>
                       <td class="cell-bold">BK004</td>
-                      <td class="cell-bold">₫8.4M</td>
+                      <td class="cell-bold">8.4M ₫</td>
                       <td>Host Payout</td>
                       <td>2024-06-07</td>
                       <td><span class="badge badge-success">Hoàn thành</span></td>
@@ -1666,7 +1701,7 @@
                     <tr data-id="tx5">
                       <td class="cell-highlight">TXN005</td>
                       <td class="cell-bold">BK005</td>
-                      <td class="cell-bold">₫7M</td>
+                      <td class="cell-bold">7M ₫</td>
                       <td>Refund</td>
                       <td>2024-06-06</td>
                       <td><span class="badge badge-success">Hoàn thành</span></td>
@@ -1734,17 +1769,17 @@
                 
                 <div class="promotion-filter-bar" style="display: flex; gap: 12px; align-items: center; flex: 1; flex-wrap: wrap;">
                   <div class="search-box" style="flex: 1; min-width: 250px;">
-                    <input type="text" placeholder="Tìm kiếm khuyến mãi..." style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                    <input type="text" placeholder="Tìm kiếm khuyến mãi..." style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f1f5f9;">
                   </div>
 
-                  <select class="filter-select" style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff;">
+                  <select class="filter-select" style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f1f5f9;">
                     <option value="">Loại (Tất cả)</option>
                     <option value="voucher">Phiếu giảm giá</option>
                     <option value="flashsale">Flash Sale</option>
                     <option value="promo">Promo</option>
                   </select>
 
-                  <select class="filter-select" style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff;">
+                  <select class="filter-select" style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px;background: #f1f5f9;">
                     <option value="">Trạng thái (Tất cả)</option>
                     <option value="active">Hoạt động</option>
                     <option value="pending">Chờ duyệt</option>
